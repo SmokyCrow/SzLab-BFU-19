@@ -1,2 +1,5 @@
-public class Saboteur {
+public class Saboteur extends Player{
+    public void doElement(){
+
+    }
 }
