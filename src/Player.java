@@ -1,14 +1,29 @@
-import java.util.ArrayList;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 public abstract class Player {
     protected Element element;
 
 
-    public void move(Element e){ //0
+    public void move(Element e) throws IOException { //0
         element.isNeighbour(e); //1
-        // felhasználótól megkérdezni, hogy foglalt-e a cső, ha nem:
-        e.acceptPlayer(this); //1
-        element.removePlayer(this); //1
+        // felhasználótól megkérdezni, hogy foglalt-e a cső
+        System.out.println("Is the pipe occupied? (Y/N)");
+        while(true) {
+            BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+            String s = reader.readLine();
+            if(s.equals("Y"))
+                return;
+            else if (s.equals("N")) {
+                e.acceptPlayer(this); //1
+                element.removePlayer(this); //1
+                return;
+            }
+            else{
+                System.out.println("Wrong input, please try again!");
+            }
+        }
     }
 
     public abstract void doElement();
