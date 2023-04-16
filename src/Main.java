@@ -102,7 +102,8 @@ public class Main {
                     s_control_pump();
                     break;
             }
-            Thread.sleep(2000);
+            //Thread.sleep(2000);
+            System.in.read();
         }
     }
 
