@@ -67,14 +67,18 @@ public class Mechanic extends Player{
         while(true) {
             BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
             String s = reader.readLine();
-            if(s.equals("Y"))
+            if(s.equals("Y")) {
+                System.out.println("The pipe is already occupied.");
                 return;
+            }
             else if (s.equals("N")) {
                 System.out.println("Does the mechanic have a pipe already? (Y/N)");
                 while(true) {
                     s = reader.readLine();
-                    if(s.equals("Y"))
+                    if(s.equals("Y")) {
+                        System.out.println("The mechanic already has a pipe.");
                         return;
+                    }
                     else if (s.equals("N")) {
                         for (int i = 0; i < depth; i++) {
                             System.out.print("    ");

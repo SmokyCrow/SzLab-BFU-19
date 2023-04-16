@@ -14,8 +14,8 @@ public abstract class Player {
     protected Element element;
 
     /**
-     *
-     * @return
+     * Az objektumok típusának kiírásához használt felüldefiniált föggvény
+     * @return az objektum típusa
      */
     @Override
     public abstract String toString();
@@ -28,7 +28,6 @@ public abstract class Player {
      * mezőn (element) meghívódik a RemovePlayer(p).
      * @param e az a mező, amire a játékos lépni szeretne
      * @param depth megadja, hogy a függvény milyen mélyen található a hívási listában
-     * @throws IOException
      */
     public void move(Element e, int depth) throws IOException {
         //0
@@ -40,40 +39,35 @@ public abstract class Player {
             System.out.print("    ");
         }
         System.out.print("->isNeighbour(" + e + ")");
-        depth += 1;
         element.isNeighbour(e);
 
         //Asks the user if the pipe is occupied
-        System.out.println("\nIs the " + e.toString() + " occupied? (Y/N)");
-        while(true) {
-            BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-            String s = reader.readLine();
-            if(s.equals("Y")) {
-                System.out.println("The "+e.toString()+" is already occupied.");
-                return;
+        if(e.toString().equals("pipe")){
+            System.out.println("\nIs the " + e.toString() + " occupied? (Y/N)");
+            while(true){
+                BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+                String s = reader.readLine();
+                if(s.equals("Y")) {
+                    System.out.println("The "+e.toString()+" is already occupied.");
+                    return;
+                }else if(s.equals("N"))
+                    break;
             }
-            else if (s.equals("N")) {
-                //1
-                e.acceptPlayer(new Mechanic());
-                for(int i = 0; i < depth; i++){
-                    System.out.print("    ");
-                }
-                System.out.print("->acceptPlayer(" + this.toString() + ")");
-                depth -= 1;
-                //2
-                element.removePlayer(this);
-                System.out.print("\n");
-                for(int i = 0; i < depth; i++){
-                    System.out.print("    ");
-                }
-                System.out.print("->removePlayer(" + this.toString() + ")");
-                return;
-            }
-            else{
-                System.out.println("Wrong input, please try again!");
-            }
-        }
 
+        }
+        System.out.print("\n");
+        e.acceptPlayer(new Mechanic());
+        for(int i = 0; i < depth; i++){
+            System.out.print("    ");
+        }
+        System.out.print("->acceptPlayer(" + this.toString() + ")");
+        element.removePlayer(this);
+        System.out.print("\n");
+        for(int i = 0; i < depth; i++){
+            System.out.print("    ");
+        }
+        System.out.print("->removePlayer(" + this.toString() + ")");
+        return;
     }
 
     /**
