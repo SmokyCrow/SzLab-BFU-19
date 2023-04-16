@@ -10,8 +10,11 @@ public abstract class Element {
         }
         System.out.print("->repairElement()");
     }
-    public void breakElement(){
-
+    public void breakElement(int depth){
+        for(int i = 0; i < depth; i++){
+            System.out.print("    ");
+        }
+        System.out.print("->breakElement()");
     }
 
     public boolean placeElement(Element e, int depth){

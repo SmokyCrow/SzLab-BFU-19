@@ -44,7 +44,8 @@ public class Main {
 
             BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
             String s = input.readLine();
-
+            int p = Integer.parseInt(s);
+            System.out.println("You've chosen to test "+cases.get(p));
             switch(s) {
                 case "0":
                     m_control_pump();
@@ -88,10 +89,18 @@ public class Main {
                 case "13":
                     s_moves_cistern_pipe();
                     break;
-                case "14": break;
-                case "15": break;
-                case "16": break;
-                case "17": break;
+                case "14":
+                    s_moves_pump_pipe();
+                    break;
+                case "15":
+                    s_moves_pipe_pump();
+                    break;
+                case "16":
+                    s_damages_pipe();
+                    break;
+                case "17":
+                    s_control_pump();
+                    break;
             }
             Thread.sleep(2000);
         }
@@ -221,6 +230,7 @@ public class Main {
         //Indentation
         System.out.print("\n");
     }
+    //Mechanic places pipe on pump
     private static void m_place_pipe_pump() throws IOException {
         //Initializing
         int depth = 0;
@@ -232,6 +242,61 @@ public class Main {
         //Indentation
         System.out.print("\n");
     }
+    //Saboteur moves from Pump to Pipe
+    private static void s_moves_pump_pipe() throws IOException {
+        //Initializing
+        int depth = 0;
+        int version = 1;
+        Saboteur s = new Saboteur();
+        s.element = new Pump();
+        PassiveElement pipe = new PassiveElement();
+
+        //Operations
+        s.move(pipe,version);
+        //Indentation
+        System.out.print("\n");
+    }
+
+    //Saboteur moves from Pipe to Pump
+    private static void s_moves_pipe_pump() throws IOException {
+        //Initializing
+        int depth = 0;
+        Saboteur s = new Saboteur();
+        s.element = new PassiveElement();
+        Pump pump = new Pump();
+
+        //Operations
+        s.move(pump,depth);
+        //Indentation
+        System.out.print("\n");
+    }
+
+    //Saboteur damages pipe
+    private static void s_damages_pipe(){
+        //Initializing
+        int depth = 0;
+        Saboteur s = new Saboteur();
+        s.element = new PassiveElement();
+
+        //Operations
+        s.doElement(depth);
+        //Indentation
+        System.out.println("\n");
+    }
+
+    //Saboteur controls Pump
+    private static void s_control_pump(){
+        //Initializing
+        int depth = 0;
+        Saboteur s = new Saboteur();
+        s.element = new Pump();
+        PassiveElement p1 = new PassiveElement();
+        PassiveElement p2 = new PassiveElement();
+
+        //Operations
+        s.controlPump(p1,p2,depth);
+        //Indentation
+        System.out.print("\n");
 
     private static void m_pick_pump() {
         int depth = 0;
@@ -280,4 +345,5 @@ public class Main {
 
     }
 
+    }
 }
