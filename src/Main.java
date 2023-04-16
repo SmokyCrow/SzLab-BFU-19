@@ -285,7 +285,7 @@ public class Main {
     }
 
     //Saboteur controls Pump
-    private static void s_control_pump(){
+    private static void s_control_pump() {
         //Initializing
         int depth = 0;
         Saboteur s = new Saboteur();
@@ -294,9 +294,10 @@ public class Main {
         PassiveElement p2 = new PassiveElement();
 
         //Operations
-        s.controlPump(p1,p2,depth);
+        s.controlPump(p1, p2, depth);
         //Indentation
         System.out.print("\n");
+    }
 
     private static void m_pick_pump() {
         int depth = 0;
@@ -342,8 +343,6 @@ public class Main {
         s.move(pipe, depth);
         //Indentation
         System.out.print("\n");
-
-    }
 
     }
 }
