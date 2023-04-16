@@ -10,8 +10,7 @@ public class Main {
 
     public static void main(String[] args) throws IOException, InterruptedException {
 
-        //Additional overridden ToString() methods were added in order to
-        //display object types in console
+
 
         //A String list containing the name of all the use-cases
         List<String> cases = new ArrayList<>(Arrays.asList(
@@ -34,14 +33,15 @@ public class Main {
                 "Saboteur damages pipe",
                 "Saboteur controls pump"));
 
-        //Loop waiting for input to show use-cases
+        /**
+         *  Loop waiting for input to show use-cases
+         */
         while(true) {
             for (int i = 0; i < cases.size(); i++) {
                 System.out.println(i + ": " + cases.get(i));
             }
 
             System.out.println("Which case you want? (number from 0 - 17)");
-
             BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
             String s = input.readLine();
             int p = Integer.parseInt(s);
@@ -335,7 +335,7 @@ public class Main {
     private static void s_moves_cistern_pipe() throws IOException {
         //Initializing
         int depth = 0;
-       Saboteur s = new Saboteur();
+        Saboteur s = new Saboteur();
         s.element = new PassiveElement();
         PassiveElement pipe = new PassiveElement();
 
