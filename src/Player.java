@@ -25,8 +25,10 @@ public abstract class Player {
         while(true) {
             BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
             String s = reader.readLine();
-            if(s.equals("Y"))
+            if(s.equals("Y")) {
+                System.out.println("The "+e.toString()+" is already occupied.");
                 return;
+            }
             else if (s.equals("N")) {
                 //1
                 e.acceptPlayer(new Mechanic());
