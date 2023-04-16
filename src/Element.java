@@ -58,9 +58,6 @@ public abstract class Element {
     }
 
 
-    public boolean connectElement(Element e){
-        return false;
-    }
 
     /**
      * Egy elementet ad vissza, ebben az osztályban még
