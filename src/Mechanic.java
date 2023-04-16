@@ -16,10 +16,12 @@ public class Mechanic extends Player{
         element.repairElement(depth); //1
     }
 
-    public void getPump(){ //0
-        element.giveElement(); //1
+    public void getPump(int depth){ //0
+        System.out.println("->getPump()");
+        depth = depth + 1;
+        element.giveElement(depth); //1
         Pump p = new Pump(); //2
-        this.setNewPump(p); //1
+        this.setNewPump(p, depth); //1
     }
 
     public void pickUpPipe(PassiveElement p, int depth) throws IOException {
@@ -77,7 +79,7 @@ public class Mechanic extends Player{
         for(int i = 0; i < depth; i++){
             System.out.print("  ");
         }
-        System.out.print("->isNeighbour(newpipe)\n");
+        System.out.print("->isNeighbour(newPipe)\n");
         System.out.println("Was the connecting successful? (Y/N)");
         while(true) {
             BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
@@ -98,15 +100,18 @@ public class Mechanic extends Player{
         }
     }
 
-    public void placePump() throws IOException {
-        element.placeElement(newPump);
+    public void placePump(int depth) throws IOException {
+        System.out.println("->placePump()");
+        this.newPump = new Pump();
+        depth += 1;
+        element.placeElement(newPump, depth);
         //felh. megkérdezni, hogy sikeres-e a lerakás
         System.out.println("Was the placing successful? (Y/N)");
         while(true) {
             BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
             String s = reader.readLine();
             if(s.equals("Y")) {
-                this.removeNewPump(); //1
+                this.removeNewPump(depth); //1
                 return;
             }
             else if (s.equals("N"))
@@ -117,13 +122,21 @@ public class Mechanic extends Player{
         }
     }
 
-    public void removeNewPump(){
+    public void removeNewPump(int depth){
+        for(int i = 0; i < depth; i++){
+            System.out.print("    ");
+        }
+        System.out.println("->removeNewPump()");
 
     }
 
-    public void setNewPump(Pump p){
-
+    public void setNewPump(Pump p, int depth){
+        for(int i = 0; i < depth; i++){
+            System.out.print("    ");
+        }
+        System.out.println("->setNewPump()");
     }
+
 
     public void removeNewPipe(){
 

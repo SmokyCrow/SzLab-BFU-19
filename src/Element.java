@@ -14,7 +14,11 @@ public abstract class Element {
 
     }
 
-    public boolean placeElement(Element e){
+    public boolean placeElement(Element e, int depth){
+        for(int i = 0; i < depth; i++){
+            System.out.print("    ");
+        }
+        System.out.println("->placeElement()");
         return false;
     }
 
@@ -22,7 +26,11 @@ public abstract class Element {
         return false;
     }
 
-    public Element giveElement(){
+    public Element giveElement(int depth){
+        for(int i = 0; i < depth; i++){
+            System.out.print("    ");
+        }
+        System.out.println("->giveElement()");
         return null;
     }
 

@@ -76,10 +76,18 @@ public class Main {
                 case "9":
                     m_place_pipe_pump();
                     break;
-                case "10": break;
-                case "11": break;
-                case "12": break;
-                case "13": break;
+                case "10":
+                    m_pick_pump();
+                    break;
+                case "11":
+                    m_place_pump();
+                    break;
+                case "12":
+                    s_moves_pipe_cistern();
+                    break;
+                case "13":
+                    s_moves_cistern_pipe();
+                    break;
                 case "14": break;
                 case "15": break;
                 case "16": break;
@@ -88,6 +96,9 @@ public class Main {
             Thread.sleep(2000);
         }
     }
+
+
+
 
     //Mechanic controls Pump
     private static void m_control_pump(){
@@ -220,6 +231,53 @@ public class Main {
         m.placePipe(depth);
         //Indentation
         System.out.print("\n");
+    }
+
+    private static void m_pick_pump() {
+        int depth = 0;
+        Mechanic m = new Mechanic();
+        m.element = new Cistern();
+        //Operations
+        m.getPump(depth);
+        //Indentation
+        System.out.print("\n");
+    }
+
+    private static void m_place_pump() throws IOException {
+        int depth = 0;
+        Mechanic m = new Mechanic();
+        m.element = new PassiveElement();
+        //Operations
+        m.placePump(depth);
+        //Indentation
+        System.out.print("\n");
+    }
+
+    private static void s_moves_pipe_cistern() throws IOException {
+        //Initializing
+        int depth = 0;
+        Saboteur s = new Saboteur();
+        s.element = new PassiveElement();
+        Cistern cistern = new Cistern();
+
+        //Operations
+        s.move(cistern,depth);
+        //Indentation
+        System.out.print("\n");
+    }
+
+    private static void s_moves_cistern_pipe() throws IOException {
+        //Initializing
+        int depth = 0;
+       Saboteur s = new Saboteur();
+        s.element = new PassiveElement();
+        PassiveElement pipe = new PassiveElement();
+
+        //Operations
+        s.move(pipe, depth);
+        //Indentation
+        System.out.print("\n");
+
     }
 
 }
