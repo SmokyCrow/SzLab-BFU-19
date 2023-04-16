@@ -1,8 +1,14 @@
 public abstract class Element {
     private Player[] players;
+    private boolean broken = false;
 
-    public void repairElement(){
+    public void setBroken(boolean b){ this.broken = b;}
 
+    public void repairElement(int depth){
+        for(int i = 0; i < depth; i++){
+            System.out.print("    ");
+        }
+        System.out.print("->repairElement()");
     }
     public void breakElement(){
 
@@ -33,4 +39,6 @@ public abstract class Element {
     }
 
     public abstract boolean isNeighbour(Element e);
+
+    public abstract String toString();
 }

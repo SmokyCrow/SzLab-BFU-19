@@ -7,8 +7,13 @@ public class Mechanic extends Player{
     private Pump newPump;
     private PassiveElement newPipe;
 
-    public void doElement() { //0
-        element.repairElement(); //1
+
+    @Override
+    public String toString() { return "mechanic";}
+    public void doElement(int depth) { //0
+        System.out.println("->doElement()");
+        depth +=1;
+        element.repairElement(depth); //1
     }
 
     public void getPump(){ //0
@@ -17,8 +22,14 @@ public class Mechanic extends Player{
         this.setNewPump(p); //1
     }
 
-    public void pickUpPipe(PassiveElement p) throws IOException {
-        System.out.println("Is the pipe occupied? (Y/N)");
+    public void pickUpPipe(PassiveElement p, int depth) throws IOException {
+        System.out.println("->pickUpPipe(" + p.toString() + ")");
+        depth += 1;
+        for(int i = 0; i < depth; i++){
+            System.out.print("    ");
+        }
+        System.out.print("->occupied()");
+        System.out.println("\nIs the pipe occupied? (Y/N)");
         while(true) {
             BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
             String s = reader.readLine();
@@ -31,9 +42,20 @@ public class Mechanic extends Player{
                     if(s.equals("Y"))
                         return;
                     else if (s.equals("N")) {
+                        for (int i = 0; i < depth; i++) {
+                            System.out.print("    ");
+                        }
+                        System.out.print("->giveElementEnd(" + p.toString() + ")\n");
                         boolean b = element.giveElementEnd(p); //1
-                        if(b == true)
-                            this.setNewPipe(p); //1
+
+                        if (b == true){
+                            for (int i = 0; i < depth; i++) {
+                                System.out.print("    ");
+                                }
+                                System.out.print("->setNewPipe(" + p.toString() + ")");
+                                depth -= 1;
+                                this.setNewPipe(p); //1
+                            }
                         return;
                     }
                     else{
@@ -47,14 +69,24 @@ public class Mechanic extends Player{
         }
     }
 
-    public void placePipe() throws IOException { //0
-        newPipe.setConnection((Pump) element); //1
-        //felh. megkérdezni, hogy sikeresen bekototte-e
+    public void placePipe(int depth) throws IOException {
+        System.out.println("->placePipe()");
+        depth += 1;
+        this.newPipe = new PassiveElement();
+        newPipe.setConnection((Pump) element);
+        for(int i = 0; i < depth; i++){
+            System.out.print("  ");
+        }
+        System.out.print("->isNeighbour(newpipe)\n");
         System.out.println("Was the connecting successful? (Y/N)");
         while(true) {
             BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
             String s = reader.readLine();
             if(s.equals("Y")) {
+                for(int i = 0; i < depth; i++){
+                    System.out.print("  ");
+                }
+                System.out.print("->removeNewPipe()");
                 this.removeNewPipe(); //1
                 return;
             }
@@ -100,4 +132,5 @@ public class Mechanic extends Player{
     public void setNewPipe(PassiveElement p){
 
     }
+
 }

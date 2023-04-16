@@ -1,5 +1,7 @@
 public class Cistern extends ActiveElement{
 
+    @Override
+    public String toString() { return "cistern";}
     public Element giveElement(){
         return null;
     }
@@ -15,4 +17,5 @@ public class Cistern extends ActiveElement{
     public void addPipe(PassiveElement p){
 
     }
+
 }

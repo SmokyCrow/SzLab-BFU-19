@@ -30,4 +30,9 @@ public class PassiveElement extends Element{
     public boolean connected(){
         return true;
     }
+
+    @Override
+    public String toString() {
+        return "pipe";
+    }
 }
