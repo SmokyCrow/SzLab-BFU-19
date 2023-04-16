@@ -84,6 +84,14 @@ public abstract class Player {
      */
     public abstract void doElement(int depth);
 
+    /**
+     *A metódus hívásával a játékos objektum egy pumpán átállítja a vizet szállító csöveket.
+     * A függvény a jelenlegi mezőn (element) meghívja annak setInPipe(p1) és setInPipe(p2)
+     * függvényeit ezzel beállítva a két új aktív csövet a paraméterben kapottakra(p1, p2).
+     * @param p1 az egyik működésbe hozandó cső (Pipe) mező
+     * @param p2 az egyik működésbe hozandó cső (Pipe) mező
+     * @param depth megadja, hogy a függvény milyen mélyen található a hívási listában
+     */
     public void controlPump(PassiveElement p1, PassiveElement p2, int depth){
         //0
         for(int i = 0; i < depth; i++){
@@ -95,10 +103,6 @@ public abstract class Player {
         ((Pump)this.element).setInPipe(p1,depth);
         //2
         ((Pump)this.element).setOutPipe(p2,depth);
-
-    }
-
-    public void setElement(Element e){
 
     }
 

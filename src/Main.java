@@ -11,7 +11,6 @@ public class Main {
     public static void main(String[] args) throws IOException, InterruptedException {
 
 
-
         //A String list containing the name of all the use-cases
         List<String> cases = new ArrayList<>(Arrays.asList(
                 "Mechanic controls pump",
@@ -36,7 +35,7 @@ public class Main {
         /**
          *  Loop waiting for input to show use-cases
          */
-        while(true) {
+        while (true) {
             for (int i = 0; i < cases.size(); i++) {
                 System.out.println(i + ": " + cases.get(i));
             }
@@ -45,8 +44,8 @@ public class Main {
             BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
             String s = input.readLine();
             int p = Integer.parseInt(s);
-            System.out.println("You've chosen to test "+cases.get(p));
-            switch(s) {
+            System.out.println("You've chosen to test " + cases.get(p));
+            switch (s) {
                 case "0":
                     m_control_pump();
                     break;
@@ -107,10 +106,8 @@ public class Main {
     }
 
 
-
-
     //Mechanic controls Pump
-    private static void m_control_pump(){
+    private static void m_control_pump() {
         //Initializing
         int depth = 0;
         Mechanic m = new Mechanic();
@@ -119,11 +116,12 @@ public class Main {
         PassiveElement p2 = new PassiveElement();
 
         //Operations
-        m.controlPump(p1,p2,depth);
+        m.controlPump(p1, p2, depth);
         //Indentation
         System.out.print("\n");
 
     }
+
     //Mechanic moves from Pump to Pipe
     private static void m_moves_pump_pipe() throws IOException {
         //Initializing
@@ -134,11 +132,12 @@ public class Main {
         PassiveElement pipe = new PassiveElement();
 
         //Operations
-        m.move(pipe,version);
+        m.move(pipe, version);
         //Indentation
         System.out.print("\n");
 
     }
+
     //Mechanic moves from Pipe to Pump
     private static void m_moves_pipe_pump() throws IOException {
         //Initializing
@@ -148,11 +147,12 @@ public class Main {
         Pump pump = new Pump();
 
         //Operations
-        m.move(pump,depth);
+        m.move(pump, depth);
         //Indentation
         System.out.print("\n");
 
     }
+
     //Mechanic moves from Pipe to Cistern
     private static void m_moves_pipe_cistern() throws IOException {
         //Initializing
@@ -162,10 +162,11 @@ public class Main {
         Cistern cistern = new Cistern();
 
         //Operations
-        m.move(cistern,depth);
+        m.move(cistern, depth);
         //Indentation
         System.out.print("\n");
     }
+
     //Mechanic moves from Cistern to Pipe
     private static void m_moves_cistern_pipe() throws IOException {
         //Initializing
@@ -180,6 +181,7 @@ public class Main {
         System.out.print("\n");
 
     }
+
     //Mechanic repairs Pipe
     private static void m_repair_pipe() {
         //Initializing
@@ -193,6 +195,7 @@ public class Main {
         //Indentation
         System.out.print("\n");
     }
+
     //Mechanic repairs Pump
     private static void m_repair_pump() {
         //Initializing
@@ -206,6 +209,7 @@ public class Main {
         //Indentation
         System.out.print("\n");
     }
+
     //Mechanic picks Pipe from Pump
     private static void m_pick_pipe_pump() throws IOException {
         //Initializing
@@ -214,10 +218,11 @@ public class Main {
         m.element = new Pump();
         PassiveElement pipe = new PassiveElement();
         //Operations
-        m.pickUpPipe(pipe,depth);
+        m.pickUpPipe(pipe, depth);
         //Indentation
         System.out.print("\n");
     }
+
     //Mechanic picks Pipe from Cistern
     private static void m_pick_pipe_cistern() throws IOException {
         //Initializing
@@ -226,10 +231,11 @@ public class Main {
         m.element = new Cistern();
         PassiveElement pipe = new PassiveElement();
         //Operations
-        m.pickUpPipe(pipe,depth);
+        m.pickUpPipe(pipe, depth);
         //Indentation
         System.out.print("\n");
     }
+
     //Mechanic places pipe on pump
     private static void m_place_pipe_pump() throws IOException {
         //Initializing
@@ -242,6 +248,7 @@ public class Main {
         //Indentation
         System.out.print("\n");
     }
+
     //Saboteur moves from Pump to Pipe
     private static void s_moves_pump_pipe() throws IOException {
         //Initializing
@@ -252,7 +259,7 @@ public class Main {
         PassiveElement pipe = new PassiveElement();
 
         //Operations
-        s.move(pipe,version);
+        s.move(pipe, version);
         //Indentation
         System.out.print("\n");
     }
@@ -266,13 +273,13 @@ public class Main {
         Pump pump = new Pump();
 
         //Operations
-        s.move(pump,depth);
+        s.move(pump, depth);
         //Indentation
         System.out.print("\n");
     }
 
     //Saboteur damages pipe
-    private static void s_damages_pipe(){
+    private static void s_damages_pipe() {
         //Initializing
         int depth = 0;
         Saboteur s = new Saboteur();
@@ -327,7 +334,7 @@ public class Main {
         Cistern cistern = new Cistern();
 
         //Operations
-        s.move(cistern,depth);
+        s.move(cistern, depth);
         //Indentation
         System.out.print("\n");
     }
