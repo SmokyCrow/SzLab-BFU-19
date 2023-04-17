@@ -37,7 +37,8 @@ public class Main {
                 "Saboteur moves from pump to pipe",
                 "Saboteur move from pipe to pump",
                 "Saboteur damages pipe",
-                "Saboteur controls pump"));
+                "Saboteur controls pump",
+                "Exit"));
 
         /**
          *  Loop waiting for input to show use-cases
@@ -54,7 +55,7 @@ public class Main {
             BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
             String s = input.readLine();
             int p = Integer.parseInt(s);
-            while(p < 0 || p > 17){
+            while(p < 0 || p > 18){
                 System.out.println("Wrong input! Try again:");
                 s = input.readLine();
                 p = Integer.parseInt(s);
@@ -65,6 +66,7 @@ public class Main {
              * Adott értékre adott forgatókönyvet megvalósító függvény hívódik meg.
              */
             switch (s) {
+
                 case "0":
                     m_control_pump();
                     break;
@@ -119,10 +121,12 @@ public class Main {
                 case "17":
                     s_control_pump();
                     break;
+                case "18":
+                    return;
             }
             System.out.println("Press Enter to continue.");
             System.in.read();
-
+            System.in.skip(2);
         }
     }
 
