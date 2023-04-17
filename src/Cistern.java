@@ -1,6 +1,6 @@
 public class Cistern extends ActiveElement{
     /**
-     * Az objektumok típusának kiírásához használt felüldefiniált föggvény
+     * Az objektumok típusának kiírásához használt felüldefiniált függvény
      * @return az objektum típusa
      */
     @Override

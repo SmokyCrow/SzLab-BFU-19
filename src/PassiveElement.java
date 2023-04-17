@@ -1,4 +1,5 @@
-/** A csoveket megvalosito osztaly
+/**
+ * A csoveket megvalosito osztaly
  * Ezek a palya "alkotoelemei", bennuk folyik a viz
  */
 public class PassiveElement extends Element{

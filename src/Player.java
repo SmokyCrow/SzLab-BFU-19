@@ -38,36 +38,38 @@ public abstract class Player {
         for(int i = 0; i < depth; i++){
             System.out.print("    ");
         }
-        System.out.print("->isNeighbour(" + e + ")");
+        System.out.print("->isNeighbour(" + e + ")\n");
         element.isNeighbour(e);
 
         //Asks the user if the pipe is occupied
         if(e.toString().equals("pipe")){
-            System.out.println("\nIs the " + e.toString() + " occupied? (Y/N)");
+            System.out.println("\nIs the " + e + " occupied? (Y/N)");
             while(true){
                 BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
                 String s = reader.readLine();
                 if(s.equals("Y")) {
-                    System.out.println("The "+e.toString()+" is already occupied.");
+                    System.out.println("The "+ e +" is already occupied.");
                     return;
                 }else if(s.equals("N"))
                     break;
+                else{
+                    System.out.println("Wrong input! Try again:");
+                }
             }
 
         }
-        System.out.print("\n");
+        //System.out.print("\n");
         e.acceptPlayer(new Mechanic());
         for(int i = 0; i < depth; i++){
             System.out.print("    ");
         }
-        System.out.print("->acceptPlayer(" + this.toString() + ")");
+        System.out.print("->acceptPlayer(" + this + ")");
         element.removePlayer(this);
         System.out.print("\n");
         for(int i = 0; i < depth; i++){
             System.out.print("    ");
         }
-        System.out.print("->removePlayer(" + this.toString() + ")");
-        return;
+        System.out.print("->removePlayer(" + this + ")");
     }
 
     /**

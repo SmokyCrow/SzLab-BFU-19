@@ -54,6 +54,11 @@ public class Main {
             BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
             String s = input.readLine();
             int p = Integer.parseInt(s);
+            while(p < 0 || p > 17){
+                System.out.println("Wrong input! Try again:");
+                s = input.readLine();
+                p = Integer.parseInt(s);
+            }
             System.out.println("You've chosen to test " + cases.get(p));
             /**
              * Switch amely a forgatókönyvek kiválasztását valósítja meg.
@@ -115,8 +120,9 @@ public class Main {
                     s_control_pump();
                     break;
             }
-            //Thread.sleep(2000);
+            System.out.println("Press Enter to continue.");
             System.in.read();
+
         }
     }
 

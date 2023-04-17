@@ -47,7 +47,7 @@ public abstract class Element {
      * megvalósító függvény. A leszármazottak felüldefiniálják, itt még csak false-al tér vissza.
      * @param e a letenni kívánt elem
      * @param depth megadja, hogy a függvény milyen mélyen található a hívási listában
-     * @return false
+     * @return most még false-al tér vissza mindig, később nem így lesz
      */
     public boolean placeElement(Element e, int depth){
         for(int i = 0; i < depth; i++){
@@ -63,7 +63,7 @@ public abstract class Element {
      * Egy elementet ad vissza, ebben az osztályban még
      * “null”-al tér vissza. Felüldefiniálva a Cistern-nél van csak.
      * @param depth megadja, hogy a függvény milyen mélyen található a hívási listában
-     * @return null
+     * @return itt még null-al tér vissza mindig, később ez nem így lesz
      */
     public Element giveElement(int depth){
         for(int i = 0; i < depth; i++){
@@ -77,7 +77,7 @@ public abstract class Element {
      * Itt még csak false-al tér vissza, a Cistern és a
      * Pump-ban lesz megvalósítva (és részletezve).
      * @param e az átvenni kívnt véghez tartozó elem
-     * @return false
+     * @return a skeletonban mindig false
      */
     public boolean giveElementEnd(Element e){
         return false;

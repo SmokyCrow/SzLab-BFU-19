@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 
-/**A belso mukodest kezelo osztaly
+/**
+ * A belso mukodest kezelo osztaly
  * A program altal kezelt funkciokat valositja meg
  */
 
