@@ -4,11 +4,13 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * A Main osztály
  */
 public class Main {
+    static ArrayList<Object> game = new ArrayList<Object>();
     /**
      * Main függvény amely megvalósítja a különböző futtatható szcenáriókat
      * @param args
@@ -17,116 +19,41 @@ public class Main {
      */
     public static void main(String[] args) throws IOException, InterruptedException {
 
-
-        //A String list containing the name of all the use-cases
-        List<String> cases = new ArrayList<>(Arrays.asList(
-                "Mechanic controls pump",
-                "Mechanic moves from pump to pipe",
-                "Mechanic moves from pipe to pump",
-                "Mechanic moves from pipe to cistern",
-                "Mechanic moves from cistern to pipe",
-                "Mechanic repair pipe",
-                "Mechanic repair pump",
-                "Mechanic pick up pipe from pump",
-                "Mechanic pick up pipe from cistern",
-                "Mechanic places pipe on pump",
-                "Mechanic picks up pump",
-                "Mechanic places pump",
-                "Saboteur moves from pipe to cistern",
-                "Saboteur moves from cistern to pipe",
-                "Saboteur moves from pump to pipe",
-                "Saboteur move from pipe to pump",
-                "Saboteur damages pipe",
-                "Saboteur controls pump",
-                "Exit"));
-
         /**
          *  Loop waiting for input to show use-cases
          */
         while (true) {
-            for (int i = 0; i < cases.size(); i++) {
-                System.out.println(i + ": " + cases.get(i));
-            }
+
+
             /**
              * A felhasználó beírja az futtatni kívánt scenárió sorszámát,
              * a szabványos bemenetre, a program olvassa azt és elindítja az annak megfelelő forgatókönyvet
              */
-            System.out.println("Which case you want? (number from 0 - 17)");
             BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
             String s = input.readLine();
-            int p = Integer.parseInt(s);
-            while(p < 0 || p > 18){
-                System.out.println("Wrong input! Try again:");
-                s = input.readLine();
-                p = Integer.parseInt(s);
-            }
-            System.out.println("You've chosen to test " + cases.get(p));
-            /**
-             * Switch amely a forgatókönyvek kiválasztását valósítja meg.
-             * Adott értékre adott forgatókönyvet megvalósító függvény hívódik meg.
-             */
-            switch (s) {
+            String command;
+            String[] paramArray;
+            String[] temp = s.split(" ");
+            command = temp[0];
+            String params = temp[1];
+            paramArray = params.split(",");
 
-                case "0":
-                    m_control_pump();
-                    break;
-                case "1":
-                    m_moves_pump_pipe();
-                    break;
-                case "2":
-                    m_moves_pipe_pump();
-                    break;
-                case "3":
-                    m_moves_pipe_cistern();
-                    break;
-                case "4":
-                    m_moves_cistern_pipe();
-                    break;
-                case "5":
-                    m_repair_pipe();
-                    break;
-                case "6":
-                    m_repair_pump();
-                    break;
-                case "7":
-                    m_pick_pipe_pump();
-                    break;
-                case "8":
-                    m_pick_pipe_cistern();
-                    break;
-                case "9":
-                    m_place_pipe_pump();
-                    break;
-                case "10":
-                    m_pick_pump();
-                    break;
-                case "11":
-                    m_place_pump();
-                    break;
-                case "12":
-                    s_moves_pipe_cistern();
-                    break;
-                case "13":
-                    s_moves_cistern_pipe();
-                    break;
-                case "14":
-                    s_moves_pump_pipe();
-                    break;
-                case "15":
-                    s_moves_pipe_pump();
-                    break;
-                case "16":
-                    s_damages_pipe();
-                    break;
-                case "17":
-                    s_control_pump();
-                    break;
-                case "18":
-                    return;
+            switch (command) {
+                case "initmap":
+                    for(int i = 0; i < paramArray.length; i++){
+                        String type;
+                        int id;
+                        temp = paramArray[i].split("_");
+                        type = temp[0];
+                        id = Integer.parseInt(temp[1]);
+                        switch (type){
+                            case "pi":
+
+                        }
+                    }
+
             }
-            System.out.println("Press Enter to continue.");
-            System.in.read();
-            System.in.skip(2);
+
         }
     }
 

@@ -3,6 +3,8 @@
  * Ezek a palya "alkotoelemei", bennuk folyik a viz
  */
 public class PassiveElement extends Element{
+
+
     /** Tagvaltozo, a cso egyik vegebe kotott pumpa
      */
     private Pump pump1;

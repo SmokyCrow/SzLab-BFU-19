@@ -116,7 +116,7 @@ public class Mechanic extends Player{
     public void placePipe(int depth) throws IOException {
         System.out.println("->placePipe()");
         depth += 1;
-        this.newPipe = new PassiveElement();
+        //this.newPipe = new PassiveElement();
         newPipe.setConnection((Pump) element);
         for(int i = 0; i < depth; i++){
             System.out.print("  ");
