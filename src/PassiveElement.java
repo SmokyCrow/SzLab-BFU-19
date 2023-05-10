@@ -3,25 +3,41 @@
  * Ezek a palya "alkotoelemei", bennuk folyik a viz
  */
 public class PassiveElement extends Element{
+    private int id;
+    private int capacity;
+    private int load;
+    private Element e1;
+    private Element e2;
+    private int protectTime;
+    private int slipTime;
+    private int stickTime;
 
 
-    /** Tagvaltozo, a cso egyik vegebe kotott pumpa
-     */
-    private Pump pump1;
-    /** Tagvaltozo,  cso masik vegebe kotott pumpa
-     */
-    private Pump pump2;
+
+    public PassiveElement(Element _e1, Element _e2, int _id){
+        e1 = _e1;
+        e2 = _e2;
+        id = _id;
+    }
 
     /** Egy pumpaval valo kapcsolodast allitja be
      * @param p a beallitani kivant pumpa
      */
     public void setConnection(Pump p){
+        if(e1 == null)
+            e1 = p;
+        else if(e2 == null)
+            e2 = p;
     }
 
     /** Egy pumpaval valo kapcsolodast tavolitja el
      * @param p az eltavolitando pumpa
      */
     public void removeConnection(Pump p){
+        if(((Pump)e1).getId() == p.getId())
+            e1 = null;
+        else if(((Pump)e2).getId() == p.getId())
+            e2 = null;
     }
 
     /** Egy uj pumpa lerakasa
@@ -63,11 +79,38 @@ public class PassiveElement extends Element{
         return true;
     }
 
+    public int getId(){
+        return id;
+    }
+
+    public void setStickTime(int n){
+        stickTime = n;
+    }
+
+    public void setSlipTime(int n){
+        slipTime = n;
+    }
+
+    public int removeWater(){
+        int temp = load;
+        load = 0;
+        return load;
+    }
+
     /** A Skeleton teszt programhoz keszitett override-olt toString metodus
      * @return az adott objektum tipusat adja vissza String-kent
      */
     @Override
     public String toString() {
-        return "pipe";
+        return "pi_" + id;
+    }
+
+    public int leak() {
+        int points = removeWater();
+        if(e1 == null || e2 == null || broken){
+            game.incrementSaboteurPoints(points);
+            return 0;
+        }
+        return points;
     }
 }

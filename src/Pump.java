@@ -3,35 +3,32 @@
  */
 
 public class Pump extends ActiveElement{
+    private int id;
 
+    public Pump(int _id){
+        id = _id;
+    }
 
 
     @Override
-    public String toString() { return "pump";}
+    public String toString() { return "pu_" + id;}
 
     /**
      * Beállítja a befolyó csövet (inPipe) a paraméterül kapottra.
+     *
      * @param p azon cső mező, amelyből a víz folyni fog a pumpába
-     * @param depth megadja, hogy a függvény milyen mélyen található a hívási listában
      */
-    public void setInPipe(PassiveElement p, int depth){
-        for(int i = 0; i < depth; i++){
-            System.out.print("    ");
-        }
-        System.out.print("->setInPipe(" + p.toString() + ")");
+    public void setInPipe(PassiveElement p){
+
     }
 
     /**
      * Beállítja a kifolyó csövet (outPipe) a paraméterül kapottra.
+     *
      * @param p azon cső mező, amelyből a víz folyni fog a pumpába
-     * @param depth megadja, hogy a függvény milyen mélyen található a hívási listában
      */
-    public void setOutPipe(PassiveElement p, int depth){
-        System.out.print("\n");
-        for(int i = 0; i < depth; i++){
-            System.out.print("    ");
-        }
-        System.out.print("->setOutPipe(" + p.toString() + "2)");
+    public void setOutPipe(PassiveElement p){
+
     }
 
     /**
@@ -40,6 +37,10 @@ public class Pump extends ActiveElement{
      */
     public boolean giveElementEnd(Element e){
         return true;
+    }
+
+    public int getId(){
+        return id;
     }
 
     /**

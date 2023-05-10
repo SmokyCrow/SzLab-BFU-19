@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  A nem cső (PassiveElement) típusú játékmezőket modellező ősosztály, leszármazottai a Source,
@@ -6,6 +7,26 @@ import java.util.ArrayList;
  */
 
 public class ActiveElement extends Element{
+    protected int waterInside;
+    protected List<PassiveElement> pipes;
+
+    public void breakRandom(){ }
+
+    public boolean isNeighbour(Element e){
+        for (PassiveElement pipe : pipes) {
+            if (pipe.getId() == ((PassiveElement) e).getId())
+                return true;
+        }
+        return false;
+    }
+
+    public int getWaterInside(){
+        return waterInside;
+    }
+
+    public void setWaterInside(int n){
+        waterInside = n;
+    }
 
 
     /**
@@ -14,18 +35,6 @@ public class ActiveElement extends Element{
      */
     @Override
     public String toString() {
-        return "pipe";
+        return "activeElement";
     }
-
-
-    /**
-     * Megnézi, hogy a paraméterben kapott mező szomszédos-e a jelenlegi mezővel.
-     * @param e a megvizsgálandó mező
-     * @return boolean, mindig "true" a skeletonban
-     */
-    public boolean isNeighbour(Element e){
-        return true;
-    }
-
-
 }

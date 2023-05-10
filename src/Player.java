@@ -12,6 +12,7 @@ public abstract class Player {
      * -element: az a mező, amin a játékos áll.
      */
     protected Element element;
+    private boolean stuck = false;
 
     /**
      * Az objektumok típusának kiírásához használt felüldefiniált föggvény
@@ -27,58 +28,19 @@ public abstract class Player {
      * meghívódik az e-n az AcceptPlayer(p) függvény, amivel a játékos odalép, illetve az eddigi
      * mezőn (element) meghívódik a RemovePlayer(p).
      * @param e az a mező, amire a játékos lépni szeretne
-     * @param depth megadja, hogy a függvény milyen mélyen található a hívási listában
      */
-    public void move(Element e, int depth) throws IOException {
-        //0
-        System.out.print("->move(" + e.toString() + ")\n");
-        depth += 1;
-
-        //1
-        for(int i = 0; i < depth; i++){
-            System.out.print("    ");
-        }
-        System.out.print("->isNeighbour(" + e + ")\n");
-        element.isNeighbour(e);
-
-        //Asks the user if the pipe is occupied
-        if(e.toString().equals("pipe")){
-            System.out.println("\nIs the " + e + " occupied? (Y/N)");
-            while(true){
-                BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-                String s = reader.readLine();
-                if(s.equals("Y")) {
-                    System.out.println("The "+ e +" is already occupied.");
-                    return;
-                }else if(s.equals("N"))
-                    break;
-                else{
-                    System.out.println("Wrong input! Try again:");
-                }
+    public void move(Element e) {
+        if(!stuck){
+            if(element.isNeighbour(e)){
+                element.removePlayer(this);
+                e.acceptPlayer(this);
             }
-
         }
-        //System.out.print("\n");
-        e.acceptPlayer(new Mechanic());
-        for(int i = 0; i < depth; i++){
-            System.out.print("    ");
-        }
-        System.out.print("->acceptPlayer(" + this + ")");
-        element.removePlayer(this);
-        System.out.print("\n");
-        for(int i = 0; i < depth; i++){
-            System.out.print("    ");
-        }
-        System.out.print("->removePlayer(" + this + ")");
     }
 
-    /**
-     * A játékos objektum interakcióját valósítja meg az adott
-     * mezővel (Element) amin áll: szerelőnél (Mechanic) - cső és pumpa javítása (RepairElement()),
-     * szabotőrnél (Saboteur) - cső kilyukasztása (breakElement()).
-     * @param depth megadja, hogy a függvény milyen mélyen található a hívási listában
-     */
-    public abstract void doElement(int depth);
+    public void punchHole(){
+        element.breakElement();
+    }
 
     /**
      *A metódus hívásával a játékos objektum egy pumpán átállítja a vizet szállító csöveket.
@@ -86,20 +48,13 @@ public abstract class Player {
      * függvényeit ezzel beállítva a két új aktív csövet a paraméterben kapottakra(p1, p2).
      * @param p1 az egyik működésbe hozandó cső (Pipe) mező
      * @param p2 az egyik működésbe hozandó cső (Pipe) mező
-     * @param depth megadja, hogy a függvény milyen mélyen található a hívási listában
      */
-    public void controlPump(PassiveElement p1, PassiveElement p2, int depth){
-        //0
-        for(int i = 0; i < depth; i++){
-            System.out.print("    ");
-        }
-        System.out.print("->controlPump(" + p1.toString() + "," + p2.toString() + "2)\n");
-        depth+= 1;
-        //1
-        ((Pump)this.element).setInPipe(p1,depth);
-        //2
-        ((Pump)this.element).setOutPipe(p2,depth);
-
+    public void controlPump(PassiveElement p1, PassiveElement p2){
+        ((Pump)element).setInPipe(p1);
+        ((Pump)element).setOutPipe(p2);
     }
 
+    public void makeSticky(){
+        ((PassiveElement)element).setStickTime(10);
+    }
 }

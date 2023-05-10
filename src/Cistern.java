@@ -1,15 +1,35 @@
+import java.nio.channels.Pipe;
+
 public class Cistern extends ActiveElement{
+    private int id;
+
+    public Cistern(int _id){
+        id = _id;
+    }
+
+    public void moveWater(){
+        for(int i = 0; i < pipes.size(); i++){
+            int points = pipes.get(i).leak();
+            game.incrementMechanicPoints(points);
+        }
+    }
+
+    public Element giveElement(){
+        return new Pump(game.getPumpList().size() + 1);
+    }
+
+
+
     /**
      * Az objektumok típusának kiírásához használt felüldefiniált függvény
      * @return az objektum típusa
      */
     @Override
-    public String toString() { return "cistern";}
+    public String toString() { return "ci_" + id;}
 
     /**
      * Visszaadja, hogy sikeresen fel lehet-e venni egy új csövet vagy sem.
      * @param e az ellenőrizendő mező
-     * @return mindig true a skeletonban
      */
     public boolean giveElementEnd(Element e){
         return true;
@@ -21,7 +41,15 @@ public class Cistern extends ActiveElement{
      * @return mindig true a skeletonbaqn.
      */
     public boolean connectElement(Element e){
-        return true;
+        for(int i = 0; i < pipes.size(); i++){
+            if(pipes.get(i).getId() == ((PassiveElement)e).getId())
+                return true;
+        }
+        return false;
+    }
+
+    public void addPipe(PassiveElement p){
+        pipes.add(p);
     }
 
 }
