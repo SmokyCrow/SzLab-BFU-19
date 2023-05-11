@@ -15,7 +15,8 @@ public class Cistern extends ActiveElement{
     }
 
     public Element giveElement(){
-        return new Pump(game.getPumpList().size() + 1);
+        //return new Pump(game.getPumpList().size() + 1);
+        return null;
     }
 
 

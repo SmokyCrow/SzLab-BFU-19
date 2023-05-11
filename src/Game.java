@@ -1,50 +1,114 @@
+import java.lang.annotation.ElementType;
 import java.lang.reflect.Array;
 import java.nio.channels.Pipe;
 import java.util.ArrayList;
 
 public class Game {
-    private ArrayList<Mechanic> mechanics = new ArrayList<>();
-    private ArrayList<Saboteur> saboteurs = new ArrayList<>();
-    private ArrayList<PassiveElement> pipes = new ArrayList<>();
-    private ArrayList<Pump> pumps = new ArrayList<>();
-    private ArrayList<Cistern> cisterns = new ArrayList<>();
-    private ArrayList<Source> sources = new ArrayList<>();
+    private ArrayList<Element> elements = new ArrayList<>();
+    private ArrayList<Player> players = new ArrayList<>();
     private int mechanicPoints = 0;
     private int saboteurPoints = 0;
     private int time = 300;
 
 
-    public void addMechanic(int id){
-        mechanics.add(new Mechanic(id));
+    public void addElement(String id){
+        int elementId = Integer.parseInt(id.replaceAll("[^0-9]", ""));
+        if(id.startsWith("pi"))
+            elements.add(new PassiveElement(elementId));
+
+        if(id.startsWith("pu"))
+            elements.add(new Pump(elementId));
+
+        if(id.startsWith("ci"))
+            elements.add(new Cistern(elementId));
+
+        if(id.startsWith("so"))
+            elements.add(new Source(elementId));
     }
 
-    public void addSaboteur(int id){
-        saboteurs.add(new Saboteur(id));
+    public void addPlayer(String playerId, String elementId){
+        int id = Integer.parseInt(playerId.replaceAll("[^0-9]", ""));
+        if(playerId.startsWith("s"))
+            players.add(new Saboteur(id));
+
+        if(playerId.startsWith("m"))
+            players.add(new Mechanic(id));
+
+        Player p = players.get(players.size() - 1);
+        Element e = null;
+        for (Element element : elements) {
+            if (element.toString().equals(elementId))
+                e = element;
+        }
+        if(e != null)
+            e.acceptPlayer(p);
     }
 
-    public void addPipe(int id){
-        pipes.add(new PassiveElement(id));
+
+    public void connect(String element1Id, String element2Id){
+        Element e1 = null;
+        Element e2 = null;
+        for(int i = 0; i < elements.size(); i++){
+            if(elements.get(i).toString().equals(element1Id))
+                e1 = elements.get(i);
+            if(elements.get(i).toString().equals(element2Id))
+                e2 = elements.get(i);
+        }
+        if(e1 != null)
+            ((PassiveElement) e1).setConnection((ActiveElement) e2);
     }
 
-    public void addPump(int id){
-        pumps.add(new Pump(id));
+
+    public void movePlayer(String playerId, String elementId){
+        Player p = null;
+        Element e = null;
+        for(int i = 0; i < players.size(); i++){
+            if(players.get(i).toString().equals(playerId))
+                p = players.get(i);
+        }
+
+        for(int i = 0; i < elements.size(); i++){
+            if(elements.get(i).toString().equals(elementId))
+                e = elements.get(i);
+        }
+
+        if(p != null)
+            p.move(e);
     }
 
-    public void addCistern(int id){
-        cisterns.add(new Cistern(id));
+
+    public void repair(String playerId){
+        Player m = null;
+        for (Player player : players) {
+            if (player.toString().equals(playerId))
+                m = player;
+        }
+
+        if(m != null){
+            ((Mechanic)m).repair();
+        }
     }
-    public void addSource(int id){
-        sources.add(new Source(id));
+
+    public void damage(String playerId){
+        Player p = null;
+        for (Player player : players) {
+            if (player.toString().equals(playerId))
+                p = player;
+        }
+
+        if(p != null){
+            p.punchHole();
+        }
     }
+
+
+
 
     public void listMap(){
-        for (Mechanic mechanic : mechanics) System.out.println(mechanic);
-        for (Saboteur saboteur : saboteurs) System.out.println(saboteur);
-        for (Pump pump : pumps) System.out.println(pump);
-        for (PassiveElement pipe : pipes) System.out.println(pipe);
-        for (Cistern cistern : cisterns) System.out.println(cistern);
-        for (Source source : sources) System.out.println(source);
+        for (Element element : elements) System.out.println(element + " " + element.broken);
+        for (Player player : players) System.out.println(player + " " + player.element);
     }
+
 
     public void tick() throws InterruptedException {
         while(time != 0){
@@ -77,21 +141,11 @@ public class Game {
 
     }
 
-    public ArrayList<Pump> getPumpList(){
-        return pumps;
+    public ArrayList<Element> getElements(){
+        return elements;
     }
 
-    public int getPipeNumber(){
-        return pipes.size();
+    public ArrayList<Player> getPlayers(){
+        return players;
     }
-
-    public PassiveElement getPipe(int id){
-        for (PassiveElement p: pipes) {
-            if(p.getId() == id)
-                return p;
-        }
-        return null;
-    }
-
-
 }

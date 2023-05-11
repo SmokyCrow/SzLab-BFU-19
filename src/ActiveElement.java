@@ -8,7 +8,7 @@ import java.util.List;
 
 public class ActiveElement extends Element{
     protected int waterInside;
-    protected List<PassiveElement> pipes;
+    protected List<PassiveElement> pipes = new ArrayList<>();
 
     public void breakRandom(){ }
 

@@ -11,7 +11,7 @@ public abstract class Element {
      * -Player players: A játékmező tárolja a rajta álló játékosokat.
      * -boolean broken: A játékmező tudja, ha elromlott/lyukas.
      */
-    protected ArrayList<Player> players;
+    protected ArrayList<Player> players = new ArrayList<>();
     protected boolean broken = false;
     protected Game game;
 
@@ -98,4 +98,5 @@ public abstract class Element {
     public int getId(){
         return -1;
     }
+
 }

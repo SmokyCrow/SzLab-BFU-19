@@ -33,33 +33,37 @@ public class Main {
             String s = input.readLine();
             String command;
             String[] paramArray;
-            String[] temp = s.split(" ");
-            command = temp[0];
-            String params = temp[1];
+            String[] commands = s.split(" ");
+            command = commands[0];
+            String params = commands[1];
             paramArray = params.split(",");
 
             switch (command) {
                 case "initmap":
-                    for(int i = 0; i < paramArray.length; i++){
-                        String type;
-                        int id;
-                        temp = paramArray[i].split("_");
-                        type = temp[0];
-                        id = Integer.parseInt(temp[1]);
-                        switch (type){
-                            case "pi":
-                                game.addPipe(id); break;
-                            case "pu":
-                                game.addPump(id); break;
-                            case "ci":
-                                game.addCistern(id); break;
-                            case "so":
-                                game.addSource(id); break;
-                        }
+                    for (String value : paramArray) {
+                        game.addElement(value);
                     }
+                    break;
 
-                case "mechanic":
+                case "connect":
+                        game.connect(paramArray[0], paramArray[1]);
+                    break;
 
+                case "mechanic", "saboteur":
+                    game.addPlayer(paramArray[0], paramArray[1]);
+                    break;
+
+                case "step":
+                    game.movePlayer(paramArray[0], paramArray[1]);
+                    break;
+
+                case "repair":
+                    game.repair(paramArray[0]);
+                    break;
+
+                case "damage":
+                    game.damage(paramArray[0]);
+                    break;
             }
 
             game.listMap();

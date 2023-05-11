@@ -30,9 +30,11 @@ public class PassiveElement extends Element{
             e1 = p;
             e1.connectElement(this);
         }
-        else if(e2 == null)
+        else if(e2 == null){
             e2 = p;
             e2.connectElement(this);
+        }
+
     }
 
     /** Egy pumpaval valo kapcsolodast tavolitja el
@@ -54,12 +56,12 @@ public class PassiveElement extends Element{
      * @return true vagy false, attol fuggoen, hogy siikerult-e a pumpa lerakasa
      */
     public boolean placeElement(Element e){
-        removeConnection(e1);
-        int pid = game.getPipeNumber();
-        game.addPipe(pid);
-        game.getPipe(pid).setConnection((ActiveElement) e);
-        game.getPipe(pid).setConnection(e1);
-        setConnection((ActiveElement) e);
+//        removeConnection(e1);
+//        int pid = game.getPipeNumber();
+//        game.addPipe(pid);
+//        game.getPipe(pid).setConnection((ActiveElement) e);
+//        game.getPipe(pid).setConnection(e1);
+//        setConnection((ActiveElement) e);
         return true;
     }
 
@@ -130,9 +132,9 @@ public class PassiveElement extends Element{
         }
         else if(stickTime > 0){
             stick(p);
-            p.setElement(this);
-            players.add(p);
         }
+        p.setElement(this);
+        players.add(p);
     }
 
     public int getId(){
