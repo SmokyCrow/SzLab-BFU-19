@@ -77,8 +77,10 @@ public class Mechanic extends Player{
      * eldobja a newPump-ot magától.
      */
     public void placePump() {
-        if(element.placeElement(newPump)){
-            newPump = null;
+        if(newPump != null) {
+            if (element.placeElement(newPump)) {
+                newPump = null;
+            }
         }
     }
 }

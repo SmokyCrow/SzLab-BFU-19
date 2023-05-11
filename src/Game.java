@@ -98,8 +98,61 @@ public class Game {
         }
     }
 
+    public void setPump(String playerId, String pipe1, String pipe2){
+        Player p = null;
+        Element pi1 = null;
+        Element pi2 = null;
+        for (Player player : players) {
+            if (player.toString().equals(playerId))
+                p = player;
+        }
+        for (Element element : elements) {
+            if (element.toString().equals(pipe1))
+                pi1 = element;
+            if (element.toString().equals(pipe2))
+                pi2 = element;
+        }
 
+        if(p != null && pi1 != null && pi2 != null){
+            p.controlPump((PassiveElement) pi1, (PassiveElement) pi2);
+        }
+    }
 
+    public void pickUpPipe(String playerId, String elementId){
+        Player p = null;
+        Element pi = null;
+
+        for (Player player : players) {
+            if (player.toString().equals(playerId))
+                p = player;
+        }
+        for (Element element : elements) {
+            if (element.toString().equals(elementId))
+                pi = element;
+        }
+
+        if(p != null && pi != null){
+            ((Mechanic) p).pickUpPipe((PassiveElement) pi);
+        }
+    }
+
+    public void pumpUpOrDown(String playerId){
+        Player p = null;
+
+        for (Player player : players) {
+            if (player.toString().equals(playerId))
+                p = player;
+        }
+
+        if(p != null){
+            if (p.element.toString().contains("pi")){
+                ((Mechanic) p).placePump();
+            }
+            else if(p.element.toString().contains("ci")){
+                ((Mechanic) p).getPump();
+            }
+        }
+    }
 
     public void listMap(){
         for (Element element : elements) System.out.println(element + " " + element.broken);

@@ -50,6 +50,18 @@ public class Main {
                 case "damage":
                     game.damage(paramArray[0]);
                     break;
+
+                case "set":
+                    game.setPump(paramArray[0], paramArray[1], paramArray[2]);
+                    break;
+
+                case "PipeTamper":
+                    game.pickUpPipe(paramArray[0], paramArray[1]);
+                    break;
+
+                case "PumpTamper":
+                    game.pumpUpOrDown(paramArray[0]);
+                    break;
             }
 
             game.listMap();
