@@ -12,6 +12,18 @@ public class ActiveElement extends Element{
 
     public void breakRandom(){ }
 
+    public int getId(){
+        return -1;
+    }
+
+    public boolean connectElement(Element e){
+        return false;
+    }
+
+    public void disconnectPipe(PassiveElement p){
+
+    }
+
     public boolean isNeighbour(Element e){
         for (PassiveElement pipe : pipes) {
             if (pipe.getId() == ((PassiveElement) e).getId())

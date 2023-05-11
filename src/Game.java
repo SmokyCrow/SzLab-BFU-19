@@ -22,7 +22,7 @@ public class Game {
     }
 
     public void addPipe(int id){
-        pipes.add(new PassiveElement(null, null, id));
+        pipes.add(new PassiveElement(id));
     }
 
     public void addPump(int id){
@@ -47,6 +47,18 @@ public class Game {
 
     public ArrayList<Pump> getPumpList(){
         return pumps;
+    }
+
+    public int getPipeNumber(){
+        return pipes.size();
+    }
+
+    public PassiveElement getPipe(int id){
+        for (PassiveElement p: pipes) {
+            if(p.getId() == id)
+                return p;
+        }
+        return null;
     }
 
     public void incrementMechanicPoints(int n){

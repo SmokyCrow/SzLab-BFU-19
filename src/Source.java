@@ -9,6 +9,17 @@ public class Source extends ActiveElement{
         id = _id;
     }
 
+    public void moveWater(){
+        PassiveElement outP = pipes.get(0);
+        if(outP.getLoad() == 0){
+            outP.addWater(1);
+        }
+    }
+
     @Override
     public String toString() { return "so_" + id;}
+
+    public int getId(){
+        return id;
+    }
 }

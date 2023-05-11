@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 /**
  * A játékmezőket leíró absztrakt osztály. Egy mezőt reprezentál. Példánya lehet például egy cső,
  * vagy valamilyen nem cső típusú mező.
@@ -9,7 +11,7 @@ public abstract class Element {
      * -Player players: A játékmező tárolja a rajta álló játékosokat.
      * -boolean broken: A játékmező tudja, ha elromlott/lyukas.
      */
-    protected Player[] players;
+    protected ArrayList<Player> players;
     protected boolean broken = false;
     protected Game game;
 
@@ -65,7 +67,10 @@ public abstract class Element {
      * rálépő játékost a players tömbben.
      * @param p a mezőre lépő játékos
      */
-    public void acceptPlayer(Player p){ }
+    public void acceptPlayer(Player p){
+        p.setElement(this);
+        players.add(p);
+    }
 
     /**
      * A függvény meghívásakor a játékosmező kitörli a
@@ -89,4 +94,8 @@ public abstract class Element {
      * @return az objektum típusa
      */
     public abstract String toString();
+
+    public int getId(){
+        return -1;
+    }
 }
