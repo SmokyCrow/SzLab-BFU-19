@@ -1,0 +1,7 @@
+initmap pi_1,ci_1
+connect pi_1,ci_1
+mechanic m_1,pi_1
+step m_1,ci_1
+stat pi_1
+stat ci_1
+stat m_1

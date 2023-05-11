@@ -1,0 +1,13 @@
+stat pi_1
+ends: ci_1
+leaking: false
+stickTime: 0
+slipTime: 0
+protectTime: 0
+waterInside: 0
+stat ci_1
+pipes: pi_1
+waterInside: 0
+stat s_1
+pos: ci_1
+stuck: false
