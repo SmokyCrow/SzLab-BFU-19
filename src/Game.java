@@ -11,7 +11,8 @@ public class Game {
     private ArrayList<Source> sources = new ArrayList<>();
     private int mechanicPoints = 0;
     private int saboteurPoints = 0;
-    private int time = 0;
+    private int time = 300;
+
 
     public void addMechanic(int id){
         mechanics.add(new Mechanic(id));
@@ -45,6 +46,37 @@ public class Game {
         for (Source source : sources) System.out.println(source);
     }
 
+    public void tick() throws InterruptedException {
+        while(time != 0){
+            time--;
+            wait(1000);
+        }
+    }
+
+    public void incrementMechanicPoints(int n){
+        mechanicPoints += n;
+    }
+
+    public void incrementSaboteurPoints(int n){
+        saboteurPoints += n;
+    }
+
+    public void GameOverCheck(){
+
+    }
+
+    public void elementInit(int n){
+
+    }
+
+    public void playerInit(int s, int m){
+
+    }
+
+    public void placePlayerRandom(Player p){
+
+    }
+
     public ArrayList<Pump> getPumpList(){
         return pumps;
     }
@@ -61,11 +93,5 @@ public class Game {
         return null;
     }
 
-    public void incrementMechanicPoints(int n){
-        mechanicPoints += n;
-    }
 
-    public void incrementSaboteurPoints(int n){
-        saboteurPoints += n;
-    }
 }

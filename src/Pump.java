@@ -3,7 +3,7 @@
  */
 
 public class Pump extends ActiveElement{
-    private int id;
+    private final int id;
     private PassiveElement inPipe;
     private PassiveElement outPipe;
 

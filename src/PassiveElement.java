@@ -1,3 +1,5 @@
+import java.util.Random;
+
 /**
  * A csoveket megvalosito osztaly
  * Ezek a palya "alkotoelemei", bennuk folyik a viz
@@ -73,6 +75,30 @@ public class PassiveElement extends Element{
         return false;
     }
 
+    public int removeWater(){
+        leak();
+        int temp = load;
+        load = 0;
+        return load;
+    }
+
+    public void addWater(int i){
+        leak();
+        load += i;
+    }
+
+    public void leak() {
+        if(e1 == null || e2 == null || broken){
+            int points = load;
+            load = 0;
+            game.incrementSaboteurPoints(points);
+        }
+    }
+
+    public boolean occupied(){
+        return players.size() == 0;
+    }
+
     /** A csovet viz befogadasara alkalmatlanna teszi
      * Meghivasakor a metodus beallitja a broken tagvaltozo
      * erteket "true"-ra
@@ -83,10 +109,29 @@ public class PassiveElement extends Element{
         }
     }
 
+    public int getLoad(){
+        return load;
+    }
+
+    public boolean connected(){
+        return e1 != null && e2 != null;
+    }
+
     public void repairElement(){
         if(broken) {
             broken = false;
             protectTime = 10;
+        }
+    }
+
+    public void acceptPlayer(Player p){
+        if(slipTime > 0){
+            slip(p);
+        }
+        else if(stickTime > 0){
+            stick(p);
+            p.setElement(this);
+            players.add(p);
         }
     }
 
@@ -102,39 +147,24 @@ public class PassiveElement extends Element{
         slipTime = n;
     }
 
-    public int removeWater(){
-        leak();
-        int temp = load;
-        load = 0;
-        return load;
-    }
-
-    public void addWater(int i){
-        leak();
-        load += i;
-    }
-
-    public int getLoad(){
-        return load;
-    }
-
-    public void acceptPlayer(Player p){
-        if(slipTime > 0){
-            slip(p);
-        }
-        else if(stickTime > 0){
-            stick(p);
-            p.setElement(this);
-            players.add(p);
-        }
-    }
 
     public void slip(Player p){
-
+        Element e = this.randomEnd();
+        e.acceptPlayer(p);
+        p.setElement(e);
     }
 
     public void stick(Player p){
         p.setStuck(true);
+    }
+
+    public Element randomEnd(){
+        Random r = new Random();
+        int end = r.nextInt(0, 1);
+        if(end == 0)
+            return e1;
+        else
+            return e2;
     }
 
     /** A Skeleton teszt programhoz keszitett override-olt toString metodus
@@ -145,11 +175,5 @@ public class PassiveElement extends Element{
         return "pi_" + id;
     }
 
-    public void leak() {
-        if(e1 == null || e2 == null || broken){
-            int points = load;
-            load = 0;
-            game.incrementSaboteurPoints(points);
-        }
-    }
+
 }
