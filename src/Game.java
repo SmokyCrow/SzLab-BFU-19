@@ -1,6 +1,3 @@
-import java.lang.annotation.ElementType;
-import java.lang.reflect.Array;
-import java.nio.channels.Pipe;
 import java.util.ArrayList;
 
 public class Game {
@@ -48,11 +45,11 @@ public class Game {
     public void connect(String element1Id, String element2Id){
         Element e1 = null;
         Element e2 = null;
-        for(int i = 0; i < elements.size(); i++){
-            if(elements.get(i).toString().equals(element1Id))
-                e1 = elements.get(i);
-            if(elements.get(i).toString().equals(element2Id))
-                e2 = elements.get(i);
+        for (Element element : elements) {
+            if (element.toString().equals(element1Id))
+                e1 = element;
+            if (element.toString().equals(element2Id))
+                e2 = element;
         }
         if(e1 != null)
             ((PassiveElement) e1).setConnection((ActiveElement) e2);
@@ -62,14 +59,14 @@ public class Game {
     public void movePlayer(String playerId, String elementId){
         Player p = null;
         Element e = null;
-        for(int i = 0; i < players.size(); i++){
-            if(players.get(i).toString().equals(playerId))
-                p = players.get(i);
+        for (Player player : players) {
+            if (player.toString().equals(playerId))
+                p = player;
         }
 
-        for(int i = 0; i < elements.size(); i++){
-            if(elements.get(i).toString().equals(elementId))
-                e = elements.get(i);
+        for (Element element : elements) {
+            if (element.toString().equals(elementId))
+                e = element;
         }
 
         if(p != null)
