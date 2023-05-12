@@ -29,12 +29,14 @@ public abstract class Player {
      * mezőn (element) meghívódik a RemovePlayer(p).
      * @param e az a mező, amire a játékos lépni szeretne
      */
-    public void move(Element e) {
+    public void move(Element e) throws Exception {
         if(!stuck){
             if(element.isNeighbour(e)){
                 element.removePlayer(this);
                 e.acceptPlayer(this);
             }
+            else
+                throw new Exception("Rossz mozgas!");
         }
     }
 

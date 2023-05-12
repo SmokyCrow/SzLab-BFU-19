@@ -35,8 +35,9 @@ public class Cistern extends ActiveElement{
      * @param e az ellenőrizendő mező
      */
     public boolean giveElementEnd(Element e){
-        pipes.remove(e);
-        return true;
+        if(((PassiveElement) e).getE1() == null || ((PassiveElement) e).getE2() == null)
+            return true;
+        return false;
     }
 
     /**

@@ -59,11 +59,11 @@ stickTime: 0
 slipTime: 0
 protectTime: 0
 waterInside: 0
+stat s_1
+pos: pu_2
+stuck: false
 stat m_1
 pos: pi_2
 stuck: true
 hasPipe: false
 hasPump: false
-stat s_1
-pos: pu_2
-stuck: false

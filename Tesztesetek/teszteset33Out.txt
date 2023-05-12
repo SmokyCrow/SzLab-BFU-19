@@ -1,16 +1,20 @@
 stat pi_1
-ends: pu_1, pu_2
+ends: pu_1,pu_2
 leaking: false
-stickTime: 5
+stickTime: 10
 slipTime: 0
 protectTime: 0
 waterInside: 0
 stat pu_1
 pipes: pi_1
+inPipe: null
+outPipe: null
 waterInside: 0
 broken: false
 stat pu_2
 pipes: pi_1
+inPipe: null
+outPipe: null
 waterInside: 0
 broken: false
 stat s_1
@@ -19,5 +23,3 @@ stuck: false
 stat s_2
 pos: pi_1
 stuck: true
-hasPipe: false
-hasPump: false

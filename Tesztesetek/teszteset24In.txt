@@ -8,16 +8,12 @@ connect pu_2,pi_1
 connect pu_2,pi_4
 connect ci_1,pi_3
 mechanic m_1,pu_1
-saboteur s_1, pu_2
+saboteur s_1,pi_4
 damage s_1
-move s_1,pi_1
-move s_1,so_1
-move m_1,pi_4
-move m_1, pu_2
+step s_1,pu_1
+step m_1,pi_4
 repair m_1
-move s_1, pi_2
-move s_1, pu_1
-set s_1, pi_4, pi_2
+set s_1,pi_4,pi_2
 stat pi_1
 stat pi_2
 stat pi_3
@@ -27,4 +23,4 @@ stat pu_2
 stat ci_1
 stat so_1
 stat m_1
-stat s_1 
+stat s_1

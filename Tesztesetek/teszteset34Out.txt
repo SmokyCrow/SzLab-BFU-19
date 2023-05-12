@@ -7,6 +7,8 @@ protectTime: 0
 waterInside: 0
 stat pu_1
 pipes: pi
+inPipe: null
+outPipe: null
 waterInside: 0
 stat m_1
 pos: pu_1

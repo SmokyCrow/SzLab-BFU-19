@@ -1,7 +1,7 @@
 stat pi_1
-ends: pu_1, pu_2
+ends: pu_1,pu_2
 leaking: false
-stickTime: 5
+stickTime: 10
 slipTime: 0
 protectTime: 0
 waterInside: 0

@@ -12,7 +12,7 @@ public class Main {
     /**
      * Main függvény amely megvalósítja a különböző futtatható szcenáriókat
      */
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws Exception {
         Game game = new Game();
         List<String> allCommands = new ArrayList<>();
         BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
@@ -61,7 +61,7 @@ public class Main {
                     break;
 
                 case "pipeTamper":
-                    game.pickUpPipe(paramArray[0], paramArray[1]);
+                    game.pipeUpOrDown(paramArray[0], paramArray[1]);
                     break;
 
                 case "pumpTamper":

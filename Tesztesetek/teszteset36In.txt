@@ -1,6 +1,6 @@
 initmap pi_1
 mechanic m_1,pi_1
-Damage m_1
+damage m_1
 stat pi_1
 stat pu_1
 stat m_1

@@ -58,7 +58,7 @@ public class Game {
     }
 
 
-    public void movePlayer(String playerId, String elementId){
+    public void movePlayer(String playerId, String elementId) throws Exception {
         Player p = null;
         Element e = null;
         for (Player player : players) {
@@ -120,7 +120,7 @@ public class Game {
         }
     }
 
-    public void pickUpPipe(String playerId, String elementId){
+    public void pipeUpOrDown(String playerId, String elementId){
         Player p = null;
         Element pi = null;
 
@@ -134,7 +134,10 @@ public class Game {
         }
 
         if(p != null && pi != null){
-            ((Mechanic) p).pickUpPipe((PassiveElement) pi);
+            if(((Mechanic) p).getNewPipe() == null)
+                ((Mechanic) p).pickUpPipe((PassiveElement) pi);
+            else
+                ((Mechanic) p).placePipe();
         }
     }
 

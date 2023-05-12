@@ -68,7 +68,7 @@ public class Mechanic extends Player{
      * tér vissza, akkor törli a newPipe-ból a csövet (Pipe).
      */
     public void placePipe() {
-        newPipe.setConnection((Pump)element);
+        newPipe.setConnection((ActiveElement) element);
         if(element.isNeighbour(newPipe))
             newPipe = null;
     }

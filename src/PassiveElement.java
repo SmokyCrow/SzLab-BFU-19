@@ -57,11 +57,12 @@ public class PassiveElement extends Element{
      * @return true vagy false, attol fuggoen, hogy siikerult-e a pumpa lerakasa
      */
     public boolean placeElement(Element e){
+        ActiveElement temp = e1;
         removeConnection(e1);
         String pid = game.getNewPipeId();
         game.addElement(pid);
         game.getPipe(pid).setConnection((ActiveElement) e);
-        game.getPipe(pid).setConnection(e1);
+        game.getPipe(pid).setConnection(temp);
         setConnection((ActiveElement) e);
         return true;
     }
@@ -130,6 +131,7 @@ public class PassiveElement extends Element{
     public void acceptPlayer(Player p){
         if(slipTime > 0){
             slip(p);
+            return;
         }
         else if(stickTime > 0){
             stick(p);
