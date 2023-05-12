@@ -1,0 +1,7 @@
+initmap pi_1,so_1
+connect pi_1,so_1
+saboteur s_1,pi_1
+step s_1,so_1
+stat pi_1
+stat so_1
+stat s_1

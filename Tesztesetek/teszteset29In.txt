@@ -1,0 +1,6 @@
+initmap pu_1,pi_1
+mechanic m_1,pi_1
+pumpTamper m_1
+stat pi_1
+stat pu_1
+stat m_1

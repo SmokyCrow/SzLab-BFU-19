@@ -1,0 +1,6 @@
+initmap pi_1
+mechanic s_1,pi_1
+Damage s_1
+stat pi_1
+stat pu_1
+stat m_1

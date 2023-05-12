@@ -1,0 +1,4 @@
+stat pu_1
+pipes: pi_1
+waterInside: 0
+broken: true

@@ -1,40 +1,117 @@
+/**
+ * A Pumpa típusú játék mezőt modellező osztály.
+ */
+
 public class Pump extends ActiveElement{
+    private final int id;
+    private PassiveElement inPipe;
+    private PassiveElement outPipe;
+
+    public Pump(int _id, Game _game){
+        super(_game);
+        id = _id;
+    }
+
 
     @Override
-    public String toString() { return "pump";}
-    public void setInPipe(PassiveElement p, int depth){
-        for(int i = 0; i < depth; i++){
-            System.out.print("    ");
+    public String toString() { return "pu_" + id;}
+
+    /**
+     * Beállítja a befolyó csövet (inPipe) a paraméterül kapottra.
+     *
+     * @param p azon cső mező, amelyből a víz folyni fog a pumpába
+     */
+    public void setInPipe(PassiveElement p){
+        boolean n = false;
+        for (PassiveElement pi: pipes) {
+            if(pi.getId() == p.getId()) {
+                n = true;
+                break;
+            }
         }
-        System.out.print("->setInPipe(" + p.toString() + ")");
+        if(n && (outPipe == null || p.getId() != outPipe.getId()))
+            inPipe = p;
     }
 
-    public void setOutPipe(PassiveElement p, int depth){
-        System.out.print("\n");
-        for(int i = 0; i < depth; i++){
-            System.out.print("    ");
+    /**
+     * Beállítja a kifolyó csövet (outPipe) a paraméterül kapottra.
+     *
+     * @param p azon cső mező, amelyből a víz folyni fog a pumpába
+     */
+    public void setOutPipe(PassiveElement p){
+        boolean n = false;
+        for (PassiveElement pi: pipes) {
+            if(pi.getId() == p.getId()) {
+                n = true;
+                break;
+            }
         }
-        System.out.print("->setOutPipe(" + p.toString() + "2)");
+        if(n && p.getId() != inPipe.getId())
+            outPipe = p;
     }
 
+    /**
+     * A víz mozgatásáért felelős metódus
+     * Csak akkor mozgat vizet, ha a pumpa nem broken
+     * Ha a kimeneti cső tele van akkor nem tud beletenni több vizet
+     */
+    public void moveWater(){
+        if(!broken) {
+            int a = inPipe.removeWater();
+            waterInside += a;
+            if(outPipe.getLoad() == 0){
+                outPipe.addWater(1);
+                if(waterInside > 0)
+                    waterInside -= 1;
+            }
+        }
+    }
+
+    /**
+     * Visszaadja, hogy a paraméterként átadott element leszedhető-e a pumpáról.
+     * A skeletonban még nem lényeges, a visszatérési érték mindig "igaz".
+     */
     public boolean giveElementEnd(Element e){
-        return true;
+        if(isNeighbour(e)){
+            ((PassiveElement) e).removeConnection(this);
+            return true;
+        }
+        return false;
     }
 
+    /**
+     * Lecsatlakoztatja a paraméterként kapott csövet.
+     */
+    public void disconnectPipe(PassiveElement p) {
+        pipes.remove(p);
+    }
+
+    public int getId(){
+        return id;
+    }
+
+    /**
+     * Csatlakoztatja a paraméterként kapott elementet a pumpára, ha az eddig nem volt rákötve.
+     * A skeletonban még nem lényeges, a visszatérési érték mindig "igaz".
+     */
     public boolean connectElement(Element e) {
-        return true;
+        if(!isNeighbour(e)){
+            pipes.add((PassiveElement) e);
+            return true;
+        }
+        return false;
     }
 
     public void breakRandom(){
-
+        broken = true;
     }
 
-    public void addPipe(PassiveElement p){
-
+    public PassiveElement getInPipe(){
+        return inPipe;
     }
 
-    public void disconnectPipe(PassiveElement p){
-
+    public PassiveElement getOutPipe(){
+        return outPipe;
     }
 
 }

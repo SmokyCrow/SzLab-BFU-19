@@ -2,135 +2,95 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+/**
+ * A szerelő szerepkört megvalósító osztály, ami a játékos által irányított karakterek egyike.
+ */
 public class Mechanic extends Player{
+    private final int id;
 
-    private Pump newPump;
-    private PassiveElement newPipe;
+    public Mechanic(int _id){
+        id = _id;
+    }
+
+    /**
+     * Attribútumok
+     * -PassiveElement newPipe: az a cső mező, amelynek egyik végét a szerelő felvesz és
+     * lerak egy másik pumpánál.
+     * -Pump newPump: megmutatja, hogy van-e a szerelőnél pumpa: ha true- van, ha false - nincs
+     */
+    private Pump newPump = null;
+    private PassiveElement newPipe = null;
 
 
+    /**
+     * Az objektumok típusának kiírásához használt felüldefiniált föggvény
+     * @return az objektum típusa
+     */
     @Override
-    public String toString() { return "mechanic";}
-    public void doElement(int depth) { //0
-        System.out.println("->doElement()");
-        depth +=1;
-        element.repairElement(depth); //1
+    public String toString() { return "m_" + id;}
+
+    /**
+     * A szerelő megjavítja a pumpát(Pump), illetve a csövet (Pipe). A
+     * függvény meghívja a jelenlegi mezőre (element) a repairElement() függvényt.
+     */
+    public void repair() {
+        element.repairElement();
+        if(element.toString().startsWith("pi"))
+            ((PassiveElement)element).setProtectTime(10);
     }
 
-    public void getPump(){ //0
-        element.giveElement(); //1
-        Pump p = new Pump(); //2
-        this.setNewPump(p); //1
+    /**
+     * A szerelő felvesz egy új pumpát (Pump) a ciszternánál. A függvény
+     * a giveElement() függvényt hívja meg a mezőn (element), és felveszi a newPump-ba a kapott
+     * pumpát (Pump), ha jó helyen áll.
+     */
+    public void getPump(){
+        if(newPump == null)
+            newPump = (Pump)element.giveElement();
     }
 
-    public void pickUpPipe(PassiveElement p, int depth) throws IOException {
-        System.out.println("->pickUpPipe(" + p.toString() + ")");
-        depth += 1;
-        for(int i = 0; i < depth; i++){
-            System.out.print("    ");
-        }
-        System.out.print("->occupied()");
-        System.out.println("\nIs the pipe occupied? (Y/N)");
-        while(true) {
-            BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-            String s = reader.readLine();
-            if(s.equals("Y"))
-                return;
-            else if (s.equals("N")) {
-                System.out.println("Does the mechanic have a pipe already? (Y/N)");
-                while(true) {
-                    s = reader.readLine();
-                    if(s.equals("Y"))
-                        return;
-                    else if (s.equals("N")) {
-                        for (int i = 0; i < depth; i++) {
-                            System.out.print("    ");
-                        }
-                        System.out.print("->giveElementEnd(" + p.toString() + ")\n");
-                        boolean b = element.giveElementEnd(p); //1
-
-                        if (b == true){
-                            for (int i = 0; i < depth; i++) {
-                                System.out.print("    ");
-                                }
-                                System.out.print("->setNewPipe(" + p.toString() + ")");
-                                depth -= 1;
-                                this.setNewPipe(p); //1
-                            }
-                        return;
-                    }
-                    else{
-                        System.out.println("Wrong input, please try again!");
-                    }
-                }
-            }
-            else{
-                System.out.println("Wrong input, please try again!");
-            }
+    /**
+     * A szerelő felvesz egy csövet (Pipe). A
+     * függvény a giveElementEnd(p) függvényt hívja meg a mezőn (element), és a newPipe
+     * attribútumába kapja meg a felvett csövet, ha jó helyen áll.
+     * @param p a felvenni kívánt cső
+     */
+    public void pickUpPipe(PassiveElement p) {
+        if(newPipe == null){
+           if(element.giveElementEnd(p))
+               newPipe = p;
         }
     }
 
-    public void placePipe(int depth) throws IOException {
-        System.out.println("->placePipe()");
-        depth += 1;
-        this.newPipe = new PassiveElement();
-        newPipe.setConnection((Pump) element);
-        for(int i = 0; i < depth; i++){
-            System.out.print("  ");
-        }
-        System.out.print("->isNeighbour(newpipe)\n");
-        System.out.println("Was the connecting successful? (Y/N)");
-        while(true) {
-            BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-            String s = reader.readLine();
-            if(s.equals("Y")) {
-                for(int i = 0; i < depth; i++){
-                    System.out.print("  ");
-                }
-                System.out.print("->removeNewPipe()");
-                this.removeNewPipe(); //1
-                return;
-            }
-            else if (s.equals("N"))
-                return;
-            else{
-                System.out.println("Wrong input, please try again!");
+    /**
+     * A szerelő beköti egy pumpába (Pump) a csövet (newPipe).A
+     * függvény a jelenlegi mezőn (element) meghívja a placeElement(newPipe)-ot és ha az true-val
+     * tér vissza, akkor törli a newPipe-ból a csövet (Pipe).
+     */
+    public void placePipe() {
+        newPipe.setConnection((Pump)element);
+        if(element.isNeighbour(newPipe))
+            newPipe = null;
+    }
+
+    /**
+     * Meghívja a jelenlegi mezőn (element), ha van a szerelőnél pumpa
+     * (newPump != null) a placeElement()-et, ha az true-val tér vissza, az elhelyezés sikeres volt,
+     * eldobja a newPump-ot magától.
+     */
+    public void placePump() {
+        if(newPump != null) {
+            if (element.placeElement(newPump)) {
+                newPump = null;
             }
         }
     }
 
-    public void placePump() throws IOException {
-        element.placeElement(newPump);
-        //felh. megkérdezni, hogy sikeres-e a lerakás
-        System.out.println("Was the placing successful? (Y/N)");
-        while(true) {
-            BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-            String s = reader.readLine();
-            if(s.equals("Y")) {
-                this.removeNewPump(); //1
-                return;
-            }
-            else if (s.equals("N"))
-                return;
-            else{
-                System.out.println("Wrong input, please try again!");
-            }
-        }
+    public PassiveElement getNewPipe(){
+        return newPipe;
     }
 
-    public void removeNewPump(){
-
+    public Pump getNewPump(){
+        return newPump;
     }
-
-    public void setNewPump(Pump p){
-
-    }
-
-    public void removeNewPipe(){
-
-    }
-
-    public void setNewPipe(PassiveElement p){
-
-    }
-
 }

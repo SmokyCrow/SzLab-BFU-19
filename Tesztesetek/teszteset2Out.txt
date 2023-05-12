@@ -1,0 +1,16 @@
+stat pu_1
+pipes: pi_1
+waterInside: 0
+broken: false
+stat pi_1
+ends: pu_1
+leaking: false
+stickTime: 0
+slipTime: 0
+protectTime: 0
+waterInside: 0
+stat m_1
+pos: pi_1
+stuck: false
+hasPipe: false
+hasPump: false
