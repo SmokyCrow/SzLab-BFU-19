@@ -5,17 +5,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="caa5c14f-448e-4f6e-bcf5-a7d508c49328" name="Changes" comment="All methods added, not all implemented yet">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_05_2023_11_08__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_05_2023_11_08__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_05_2023_21_01__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_05_2023_21_01__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ActiveElement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ActiveElement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Cistern.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Cistern.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Element.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Element.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Mechanic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Mechanic.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PassiveElement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PassiveElement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Pump.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pump.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Source.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Source.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tesztesetek/teszteset11Out.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Tesztesetek/teszteset11Out.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tesztesetek/teszteset14In.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Tesztesetek/teszteset14In.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tesztesetek/teszteset14Out.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Tesztesetek/teszteset14Out.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tesztesetek/teszteset15In.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Tesztesetek/teszteset15In.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tesztesetek/teszteset15Out.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Tesztesetek/teszteset15Out.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tesztesetek/teszteset16In.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Tesztesetek/teszteset16In.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tesztesetek/teszteset16Out.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Tesztesetek/teszteset16Out.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tesztesetek/teszteset17In.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Tesztesetek/teszteset17In.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tesztesetek/teszteset17Out.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Tesztesetek/teszteset17Out.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tesztesetek/teszteset18In.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Tesztesetek/teszteset18In.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tesztesetek/teszteset18Out.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Tesztesetek/teszteset18Out.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tesztesetek/teszteset19Out.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Tesztesetek/teszteset19Out.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tesztesetek/teszteset1Out.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Tesztesetek/teszteset1Out.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tesztesetek/teszteset20In.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Tesztesetek/teszteset20In.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tesztesetek/teszteset20Out.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Tesztesetek/teszteset20Out.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tesztesetek/teszteset6Out.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Tesztesetek/teszteset6Out.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tesztesetek/teszteset8Out.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Tesztesetek/teszteset8Out.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -203,6 +212,7 @@
     <option name="LAST_COMMIT_MESSAGE" value="All methods added, not all implemented yet" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/SzLab_BFU_19$Main.ic" NAME="Main Coverage Results" MODIFIED="1681589052545" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/szkeleton$Main.ic" NAME="Main Coverage Results" MODIFIED="1681670561842" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

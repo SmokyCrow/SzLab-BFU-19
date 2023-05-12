@@ -1,5 +1,5 @@
 stat pi_1
-ends: ci_1
+ends: so_1
 leaking: false
 stickTime: 0
 slipTime: 0

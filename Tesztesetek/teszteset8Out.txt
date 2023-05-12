@@ -4,7 +4,7 @@ leaking: false
 stickTime: 0
 slipTime: 0
 protectTime: 0
-waterInside: 1
+waterInside: 0
 stat so_1
 pipes: pi_1
 stat s_1

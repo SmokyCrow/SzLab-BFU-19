@@ -1,33 +1,33 @@
-initmap ci_1, pu_1, pu_2, pu_3, so_1, so_2, pi_1, pi_2, pi_3, pi_4, pi_5, pi_6
-connect ci_1, pi_1
-connect pi_1, pu_1
-connect pu_1, pi_2
-connect pi_2, pu_2
-connect pu_1, pi_3
-connect pi_3, pu_3
-connect pu_3, pi_6
-connect pi_6, pu_2
-connect pu_3, pi_4
-connect pi_4, so_1
-connect pu_2, pi_5
-connect pi_5, so_2
-saboteur s_1, ci_1
-step s_1, pi_1
-step s_1, pu_1
-step s_1, pi_2
+initmap ci_1,pu_1,pu_2,pu_3,so_1,so_2,pi_1,pi_2,pi_3,pi_4,pi_5,pi_6
+connect ci_1,pi_1
+connect pi_1,pu_1
+connect pu_1,pi_2
+connect pi_2,pu_2
+connect pu_1,pi_3
+connect pi_3,pu_3
+connect pu_3,pi_6
+connect pi_6,pu_2
+connect pu_3,pi_4
+connect pi_4,so_1
+connect pu_2,pi_5
+connect pi_5,so_2
+saboteur s_1,ci_1
+step s_1,pi_1
+step s_1,pu_1
+step s_1,pi_2
 damage s_1
-step s_1, pi_5
-action s_1 stick
-step s_1, pu_2 
+step s_1,pi_5
+action s_1,stick
+step s_1,pu_2
 break pu_1
-mechanic m_1, pu_3
-step m_1, pi_3
-step m_1, pu_1
+mechanic m_1,pu_3
+step m_1,pi_3
+step m_1,pu_1
 repair m_1
-step m_1, pi_2
+step m_1,pi_2
 repair m_1
-step m_1, pu_2
-step m_1, pi_5
+step m_1,pu_2
+step m_1,pi_5
 stat ci_1
 stat pu_1
 stat pu_2

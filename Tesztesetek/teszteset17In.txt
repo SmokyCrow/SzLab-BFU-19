@@ -4,7 +4,7 @@ connect ci_1,pi_1
 connect pi_2,ci_1
 connect pu_1,pi_2
 mechanic m_1,ci_1
-pipeTamper m_1
+pipeTamper m_1,pi_2
 stat m_1
 stat pi_1
 stat pi_2

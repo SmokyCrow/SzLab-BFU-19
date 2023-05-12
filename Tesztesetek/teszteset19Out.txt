@@ -1,4 +1,4 @@
 stat pu_1
-pipes: pi_1
+pipes:
 waterInside: 0
 broken: true

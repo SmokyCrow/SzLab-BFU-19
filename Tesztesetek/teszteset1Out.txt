@@ -20,6 +20,7 @@ protectTime: 0
 waterInside: 0
 stat ci_1
 pipes: pi_2
+waterInside: 1
 stat m_1
 pos: pi_2
 stuck: false

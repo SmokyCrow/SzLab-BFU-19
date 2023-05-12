@@ -1,17 +1,17 @@
 stat ci_1
 pipes: pi_1
-waterInside: 1
+waterInside: 0
 stat pu_1
 pipes: pi_1, pi_2, pi_3
-waterInside: 1
+waterInside: 0
 broken: false
 stat pu_2
 pipes: pi_6, pi_5, pi_2
-waterInside: 1
+waterInside: 0
 broken: false
 stat pu_3
 pipes: pi_3, pi_6, pi_4
-waterInside: 1
+waterInside: 0
 broken: false
 stat so_1
 pipes: pi_4
@@ -23,35 +23,35 @@ leaking: false
 stickTime: 0
 slipTime: 0
 protectTime: 0
-waterInside: 1
+waterInside: 0
 stat pi_2
 ends: pu_2, pu_1
 leaking: false
-stickTime: 0
+stickTime: 10
 slipTime: 0
-protectTime: 0
-waterInside: 1
+protectTime: 10
+waterInside: 0
 stat pi_3
 ends: pu_3, pu_1
 leaking: false
 stickTime: 0
 slipTime: 0
 protectTime: 0
-waterInside: 1
+waterInside: 0
 stat pi_4
 ends: pu_3, so_1
 leaking: false
 stickTime: 0
 slipTime: 0
 protectTime: 0
-waterInside: 1
+waterInside: 0
 stat pi_5
 ends: pu_2, so_2
 leaking: false
 stickTime: 0
 slipTime: 0
 protectTime: 0
-waterInside: 1
+waterInside: 0
 stat pi_6
 ends: pu_2, pu_3
 leaking: false
@@ -60,7 +60,7 @@ slipTime: 0
 protectTime: 0
 waterInside: 0
 stat m_1
-pos: pi_5
+pos: pi_2
 stuck: true
 hasPipe: false
 hasPump: false

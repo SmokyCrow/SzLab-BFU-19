@@ -9,10 +9,11 @@ leaking: false
 stickTime: 0
 slipTime: 0
 protectTime: 0
+waterInside: 0
 stat pu_1
-pipes: pi_1,pi_2
-waterInside: 1
+pipes: pi_1
+waterInside: 0
 broken: false
 stat ci_1
-pipes: pi_2
-waterInside: 1
+pipes: pi_1
+waterInside: 0
