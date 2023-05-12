@@ -1,3 +1,5 @@
+import java.io.IOException;
+import java.io.RandomAccessFile;
 import java.util.ArrayList;
 
 public class Game {
@@ -185,7 +187,7 @@ public class Game {
         ((Pump) pu).breakRandom();
     }
 
-    public void listMap(String id){
+    public void listMap(String id, RandomAccessFile out) throws IOException {
         Element e = null;
         Player p = null;
         for (Element element : elements){
@@ -194,52 +196,80 @@ public class Game {
         }
 
         if(e != null){
-            System.out.println("stat " + id);
+            //System.out.println("stat " + id);
+            out.writeBytes("stat " + id+"\r\n");
             if(e.toString().startsWith("pi")){
-                if(((PassiveElement)e).getE1() != null && ((PassiveElement)e).getE2() != null)
-                    System.out.println("\tends: " + ((PassiveElement)e).getE1() + "," + ((PassiveElement)e).getE2());
+                if(((PassiveElement)e).getE1() != null && ((PassiveElement)e).getE2() != null){
+                    //System.out.println("\tends: " + ((PassiveElement)e).getE1() + "," + ((PassiveElement)e).getE2());
+                    out.writeBytes("ends: " + ((PassiveElement)e).getE1() + "," + ((PassiveElement)e).getE2()+"\r\n");
+                }
                 else if(((PassiveElement)e).getE1() == null && ((PassiveElement)e).getE2() != null)
-                    System.out.println("\tends: " + ((PassiveElement)e).getE2());
+                    //System.out.println("\tends: " + ((PassiveElement)e).getE2());
+                    out.writeBytes("ends: " + ((PassiveElement)e).getE2()+"\r\n");
                 else if(((PassiveElement)e).getE1() != null && ((PassiveElement)e).getE2() == null)
-                    System.out.println("\tends: " + ((PassiveElement)e).getE1());
+                    //System.out.println("\tends: " + ((PassiveElement)e).getE1());
+                    out.writeBytes("ends: " + ((PassiveElement)e).getE1()+"\r\n");
                 else
-                    System.out.println("\tends:");
-                System.out.println("\tleaking: " + e.broken);
-                System.out.println("\tstickTime: " + ((PassiveElement)e).getStickTime());
-                System.out.println("\tslipTime: " + ((PassiveElement)e).getSlipTime());
-                System.out.println("\tprotectTime: " + ((PassiveElement)e).getProtectTime());
-                System.out.println("\twaterInside: " + ((PassiveElement)e).getLoad());
+                    //System.out.println("\tends:");
+                    out.writeBytes("ends:\r\n");
+                //System.out.println("\tleaking: " + e.broken);
+                out.writeBytes("leaking: " + e.broken+"\r\n");
+                //System.out.println("\tstickTime: " + ((PassiveElement)e).getStickTime());
+                out.writeBytes("stickTime: " + ((PassiveElement)e).getStickTime()+"\r\n");
+                //System.out.println("\tslipTime: " + ((PassiveElement)e).getSlipTime());
+                out.writeBytes("slipTime: " + ((PassiveElement)e).getSlipTime()+"\r\n");
+                //System.out.println("\tprotectTime: " + ((PassiveElement)e).getProtectTime());
+                out.writeBytes("protectTime: " + ((PassiveElement)e).getProtectTime()+"\r\n");
+                //System.out.println("\twaterInside: " + ((PassiveElement)e).getLoad());
+                out.writeBytes("waterInside: " + ((PassiveElement)e).getLoad()+"\r\n");
             }
 
             if(e.toString().startsWith("pu")){
-                System.out.print("\tpipes: ");
+                //System.out.print("\tpipes: ");
+                out.writeBytes("pipes: ");
                 for(int i = 0; i < ((Pump)e).getPipes().size() - 1; i++){
-                    System.out.print(((Pump)e).getPipes().get(i) + ",");
+                    //System.out.print(((Pump)e).getPipes().get(i) + ",");
+                    out.writeBytes(((Pump)e).getPipes().get(i) + ",");
                 }
                 if(((Pump)e).getPipes().size() > 0)
-                    System.out.print(((Pump)e).getPipes().get(((Pump)e).getPipes().size() - 1));
-                System.out.println("\n\tinPipe: " + ((Pump)e).getInPipe());
-                System.out.println("\toutPipe: " + ((Pump)e).getOutPipe());
-                System.out.println("\twaterInside: " + ((Pump)e).getWaterInside());
-                System.out.println("\tbroken: " + e.broken);
+                    //System.out.print(((Pump)e).getPipes().get(((Pump)e).getPipes().size() - 1));
+                    out.writeBytes(((Pump)e).getPipes().get(((Pump)e).getPipes().size() - 1)+"");
+                out.writeBytes("\r\n");
+                //System.out.println("\n\tinPipe: " + ((Pump)e).getInPipe());
+                out.writeBytes("inPipe: " + ((Pump)e).getInPipe()+"\r\n");
+                //System.out.println("\toutPipe: " + ((Pump)e).getOutPipe());
+                out.writeBytes("outPipe: " + ((Pump)e).getOutPipe()+"\r\n");
+                //System.out.println("\twaterInside: " + ((Pump)e).getWaterInside());
+                out.writeBytes("waterInside: " + ((Pump)e).getWaterInside()+"\r\n");
+                //System.out.println("\tbroken: " + e.broken);
+                out.writeBytes("broken: " + e.broken+"\r\n");
             }
 
             if(e.toString().startsWith("ci")){
-                System.out.print("\tpipes: ");
+                //System.out.print("\tpipes: ");
+                out.writeBytes("pipes: ");
                 for(int i = 0; i < ((Cistern)e).getPipes().size() - 1; i++){
-                    System.out.print(((Cistern)e).getPipes().get(i) + ",");
+                    //System.out.print(((Cistern)e).getPipes().get(i) + ",");
+                    out.writeBytes(((Cistern)e).getPipes().get(i) + ",");
                 }
-                System.out.print(((Cistern)e).getPipes().get(((Cistern)e).getPipes().size() - 1));
-                System.out.println("\n\twaterInside: " + ((Cistern)e).getWaterInside());
+                //System.out.print(((Cistern)e).getPipes().get(((Cistern)e).getPipes().size() - 1));
+                out.writeBytes(((Cistern)e).getPipes().get(((Cistern)e).getPipes().size() - 1)+"");
+                out.writeBytes("\r\n");
+                //System.out.println("\n\twaterInside: " + ((Cistern)e).getWaterInside());
+                out.writeBytes("waterInside: " + ((Cistern)e).getWaterInside()+"\r\n");
             }
 
             if(e.toString().startsWith("so")){
-                System.out.print("\tpipes: ");
+                //System.out.print("\tpipes: ");
+                out.writeBytes("pipes: ");
                 for(int i = 0; i < ((Source)e).getPipes().size() - 1; i++){
-                    System.out.print(((Source)e).getPipes().get(i) + ",");
+                    //System.out.print(((Source)e).getPipes().get(i) + ",");
+                    out.writeBytes(((Source)e).getPipes().get(i) + ",");
                 }
-                System.out.print(((Source)e).getPipes().get(((Source)e).getPipes().size() - 1));
-                System.out.print("\n");
+                //System.out.print(((Source)e).getPipes().get(((Source)e).getPipes().size() - 1));
+                out.writeBytes(((Source)e).getPipes().get(((Source)e).getPipes().size() - 1)+"");
+                out.writeBytes("\r\n");
+                //System.out.print("\n");
             }
         }
 
@@ -249,17 +279,24 @@ public class Game {
                 p = player;
         }
         if(p != null){
-            System.out.println("stat " + id);
+            //System.out.println("stat " + id);
+            out.writeBytes("stat " + id +"\r\n");
             if(p.toString().startsWith("s")){
-                System.out.println("\tpos: " + p.element);
-                System.out.println("\tstuck: " + p.getStuck());
+                //System.out.println("\tpos: " + p.element);
+                out.writeBytes("pos: " + p.element+"\r\n");
+                //System.out.println("\tstuck: " + p.getStuck());
+                out.writeBytes("stuck: " + p.getStuck()+"\r\n");
             }
 
             if(p.toString().startsWith("m")){
-                System.out.println("\tpos: " + p.element);
-                System.out.println("\tstuck: " + p.getStuck());
-                System.out.println("\thasPipe: " + (((Mechanic)p).getNewPipe() != null));
-                System.out.println("\thasPump: " + (((Mechanic)p).getNewPump() != null));
+                //System.out.println("\tpos: " + p.element);
+                out.writeBytes("pos: " + p.element+"\r\n");
+                //System.out.println("\tstuck: " + p.getStuck());
+                out.writeBytes("stuck: " + p.getStuck()+"\r\n");
+                //System.out.println("\thasPipe: " + (((Mechanic)p).getNewPipe() != null));
+                out.writeBytes("hasPipe: " + (((Mechanic)p).getNewPipe() != null)+"\r\n");
+                //System.out.println("\thasPump: " + (((Mechanic)p).getNewPump() != null));
+                out.writeBytes("hasPump: " + (((Mechanic)p).getNewPump() != null)+"\r\n");
             }
         }
 

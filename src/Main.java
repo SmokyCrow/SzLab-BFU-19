@@ -1,6 +1,4 @@
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,12 +12,18 @@ public class Main {
      */
     public static void main(String[] args) throws Exception {
         Game game = new Game();
+        RandomAccessFile rafInput = new RandomAccessFile("../"+args[0], "r");
+        String testName = rafInput.readLine();
         List<String> allCommands = new ArrayList<>();
-        BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
         String s;
-        while ((s = input.readLine()) != null) {
+        while ((s = rafInput.readLine()) != null) {
             allCommands.add(s);
         }
+        rafInput.seek(0);
+        rafInput.close();
+        RandomAccessFile rafOutput = new RandomAccessFile("..\\ActualOutputs\\"+testName+".txt", "rw");
+        rafOutput.setLength(0);
+
 
         for(int i = 0; i < allCommands.size(); i++){
             String command;
@@ -77,11 +81,11 @@ public class Main {
                     break;
 
                 case "stat":
-                    game.listMap(paramArray[0]);
+                    game.listMap(paramArray[0], rafOutput);
                     break;
             }
         }
-
+        rafOutput.close();
     }
 
     //    private static void m_control_pump() {

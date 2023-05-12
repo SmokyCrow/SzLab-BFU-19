@@ -4,8 +4,9 @@ param (
 )
 
 [int]$errorCounter = 0
-[int]$failedTestsCounter = 0
-$failedTestsName = @()
+$global:failedTestsCounter
+$global:failedTestsName = @()
+$global:numberofTests
 function CompareTwoFiles
 {
 	param (
@@ -13,16 +14,18 @@ function CompareTwoFiles
 	)
 	[string]$testcase_Out_Path = "Outputs\" + $path
 	$testcase_Out = Get-Content $testcase_Out_Path
-	"java src\Main.java Inputs\$path" | CMD
+	"cd src & javac Main.java & java Main.java \Inputs\$path"
 	$testcase_ActualOut_Path = "ActualOutputs\" + $path
 	$testcase_ActualOut = Get-Content $testcase_ActualOut_Path
 	
 	if ($testcase_Out.Length -ne $testcase_ActualOut.Length)
 	{
-		Write-Host "Hossz nem egyezik meg!" -ForeGroundColor Red
-		return
-	}
-	Write-Host "TESTING THE TEST CASE NAMED: $($path.substring(0, $path.Length - 4))"
+		Write-Host "`nTESTING THE TEST CASE NAMED: $($path.substring(0, $path.Length - 4))"
+		Write-Host "Mar a hossz sem egyezik kekw!" -ForeGroundColor Red
+		$global:failedTestsCounter++
+		$global:failedTestsName += $($path.substring(0, $path.Length - 4))
+	}else{
+	Write-Host "`nTESTING THE TEST CASE NAMED: $($path.substring(0, $path.Length - 4))"
 	for ($i = 0; $i -lt $testcase_Out.Length; $i++)
 	{
 		if ($testcase_Out[$i] -ne $testcase_ActualOut[$i])
@@ -38,19 +41,19 @@ function CompareTwoFiles
 			Write-Host "GOT: $($testcase_ActualOut[$i])" -ForegroundColor Green
 		}
 	}
-	if ($errorCounter -gt 0)
-	{
-		Write-Host ""
-		Write-Host "RESULT: " -ForegroundColor Red
-		Write-Host "Test: $($path.substring(0, $path.Length - 4)) FAILED!" -ForegroundColor Red
-		$failedTests++
-		$failedTestsName += $($path.substring(0, $path.Length - 4))
-	}
-	else
-	{
-		Write-Host ""
-		Write-Host "RESULT: " -ForegroundColor Green
-		Write-Host "Test: $($path.substring(0, $path.Length - 4)) SUCCEEDED!" -ForegroundColor Green
+		if ($errorCounter -gt 0)
+		{
+			$global:failedTestsCounter++
+			$global:failedTestsName += $($path.substring(0, $path.Length - 4))
+			Write-Host "`nRESULT: " -ForegroundColor Red
+			Write-Host "Test: $($path.substring(0, $path.Length - 4)) FAILED!" -ForegroundColor Red
+			
+		}
+		else
+		{
+			Write-Host "`nRESULT: " -ForegroundColor Green
+			Write-Host "Test: $($path.substring(0, $path.Length - 4)) SUCCEEDED!" -ForegroundColor Green
+		}
 	}
 	
 }
@@ -62,24 +65,24 @@ if ($FilePath1 -ne "all")
 else
 {
 	$tests = Get-ChildItem "Inputs\"
-	[int]$numberofTests = $test.Count
+	$global:numberofTests = $tests.Count
 	foreach ($t in $tests)
 	{
 		$testinput_Name = $t.Name
 		CompareTwoFiles "$testinput_Name"
 	}
-	if ($failedTestsCounter -gt 0)
+	if ($global:failedTestsCounter -gt 0)
 	{
-		Write-Host "THE FOLLOWING TESTS FAILED: " -ForeGroundColor Red
-		foreach ($actual in $failedTestsName)
+		Write-Host "`nTHE FOLLOWING TESTS FAILED: " -ForeGroundColor Red
+		foreach ($actual in $global:failedTestsName)
 		{
 			Write-Host "Test: $actual FAILED!" -ForeGroundColor Red
 		}
-		Write-Host "$failedTestsCounter\$numberofTests have failed" -ForeGroundColor Red
+		Write-Host "$global:failedTestsCounter\$global:numberofTests have failed :((((" -ForeGroundColor Red
 	}
 	else
 	{
-		Write-Host "All tests passed! :)" -ForeGroundColor Green
+		Write-Host "`nAll tests have passed! :)" -ForeGroundColor Green
 	}
 }
 

@@ -1,0 +1,18 @@
+teszteset21
+initmap pu_1,pi_1,pi_2,pi_3,so_1,ci_1,ci_2
+connect pu_1,pi_1
+connect pu_1,pi_2
+connect pu_1,pi_3
+connect pi_1,ci_1
+connect pi_2,so_1
+connect pi_3,ci_2
+mechanic m_1,pu_1
+set m_1,pi_2,pi_3
+stat pu_1
+stat pi_1
+stat pi_2
+stat pi_3
+stat m_1
+stat ci_1
+stat ci_2
+stat so_1

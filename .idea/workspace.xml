@@ -5,49 +5,88 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="caa5c14f-448e-4f6e-bcf5-a7d508c49328" name="Changes" comment="Final changes, exception handling">
+      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_05_2023_11_08__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_05_2023_11_08__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_05_2023_21_01__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_05_2023_21_01__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tesztesetek/teszteset17In.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Tesztesetek/teszteset17In.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tesztesetek/teszteset17Out.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Tesztesetek/teszteset17Out.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tesztesetek/teszteset20Out.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Tesztesetek/teszteset20Out.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tesztesetek/teszteset21In.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Tesztesetek/teszteset21In.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tesztesetek/teszteset21Out.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Tesztesetek/teszteset21Out.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tesztesetek/teszteset22In.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Tesztesetek/teszteset22In.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tesztesetek/teszteset22Out.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Tesztesetek/teszteset22Out.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tesztesetek/teszteset23Out.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Tesztesetek/teszteset23Out.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tesztesetek/teszteset24In.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Tesztesetek/teszteset24In.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tesztesetek/teszteset24Out.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Tesztesetek/teszteset24Out.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tesztesetek/teszteset25In.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Tesztesetek/teszteset25In.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tesztesetek/teszteset25Out.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Tesztesetek/teszteset25Out.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tesztesetek/teszteset26In.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Tesztesetek/teszteset26In.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tesztesetek/teszteset26Out.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Tesztesetek/teszteset26Out.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tesztesetek/teszteset27In.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Tesztesetek/teszteset27In.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tesztesetek/teszteset27Out.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Tesztesetek/teszteset27Out.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tesztesetek/teszteset28In.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Tesztesetek/teszteset28In.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tesztesetek/teszteset28Out.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Tesztesetek/teszteset28Out.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tesztesetek/teszteset29In.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Tesztesetek/teszteset29In.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tesztesetek/teszteset29Out.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Tesztesetek/teszteset29Out.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tesztesetek/teszteset30In.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Tesztesetek/teszteset30In.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tesztesetek/teszteset30Out.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Tesztesetek/teszteset30Out.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tesztesetek/teszteset31In.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Tesztesetek/teszteset31In.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tesztesetek/teszteset31Out.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Tesztesetek/teszteset31Out.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tesztesetek/teszteset32In.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Tesztesetek/teszteset32In.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tesztesetek/teszteset32Out.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Tesztesetek/teszteset32Out.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tesztesetek/teszteset33In.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Tesztesetek/teszteset33In.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tesztesetek/teszteset33Out.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Tesztesetek/teszteset33Out.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tesztesetek/teszteset34In.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Tesztesetek/teszteset34In.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tesztesetek/teszteset34Out.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Tesztesetek/teszteset34Out.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tesztesetek/teszteset35In.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Tesztesetek/teszteset35In.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tesztesetek/teszteset35Out.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Tesztesetek/teszteset35Out.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tesztesetek/teszteset36In.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Tesztesetek/teszteset36In.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tesztesetek/teszteset37In.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Tesztesetek/teszteset37In.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Cistern.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Cistern.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tesztesetek/teszteset10In.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tesztesetek/teszteset10Out.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tesztesetek/teszteset11In.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tesztesetek/teszteset11Out.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tesztesetek/teszteset12In.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tesztesetek/teszteset12Out.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tesztesetek/teszteset13In.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tesztesetek/teszteset13Out.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tesztesetek/teszteset14In.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tesztesetek/teszteset14Out.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tesztesetek/teszteset15In.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tesztesetek/teszteset15Out.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tesztesetek/teszteset16In.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tesztesetek/teszteset16Out.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tesztesetek/teszteset17In.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tesztesetek/teszteset17Out.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tesztesetek/teszteset18In.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tesztesetek/teszteset18Out.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tesztesetek/teszteset19In.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tesztesetek/teszteset19Out.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tesztesetek/teszteset1In.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tesztesetek/teszteset1Out.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tesztesetek/teszteset20In.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tesztesetek/teszteset20Out.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tesztesetek/teszteset21In.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tesztesetek/teszteset21Out.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tesztesetek/teszteset22In.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tesztesetek/teszteset22Out.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tesztesetek/teszteset23In.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tesztesetek/teszteset23Out.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tesztesetek/teszteset24In.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tesztesetek/teszteset24Out.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tesztesetek/teszteset25In.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tesztesetek/teszteset25Out.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tesztesetek/teszteset26In.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tesztesetek/teszteset26Out.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tesztesetek/teszteset27In.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tesztesetek/teszteset27Out.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tesztesetek/teszteset28In.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tesztesetek/teszteset28Out.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tesztesetek/teszteset29In.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tesztesetek/teszteset29Out.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tesztesetek/teszteset2In.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tesztesetek/teszteset2Out.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tesztesetek/teszteset30In.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tesztesetek/teszteset30Out.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tesztesetek/teszteset31In.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tesztesetek/teszteset31Out.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tesztesetek/teszteset32In.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tesztesetek/teszteset32Out.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tesztesetek/teszteset33In.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tesztesetek/teszteset33Out.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tesztesetek/teszteset34In.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tesztesetek/teszteset34Out.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tesztesetek/teszteset35In.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tesztesetek/teszteset35Out.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tesztesetek/teszteset36In.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tesztesetek/teszteset36Out.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tesztesetek/teszteset37In.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tesztesetek/teszteset37Out.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tesztesetek/teszteset3In.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tesztesetek/teszteset3Out.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tesztesetek/teszteset4In.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tesztesetek/teszteset4Out.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tesztesetek/teszteset5In.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tesztesetek/teszteset5Out.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tesztesetek/teszteset6In.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tesztesetek/teszteset6Out.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tesztesetek/teszteset7In.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tesztesetek/teszteset7Out.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tesztesetek/teszteset8In.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tesztesetek/teszteset8Out.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tesztesetek/teszteset9In.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tesztesetek/teszteset9Out.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/script.ps1" beforeDir="false" afterPath="$PROJECT_DIR$/script.ps1" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Mechanic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Mechanic.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PassiveElement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PassiveElement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Player.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,21 +114,10 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/PB/egyetem/4. felev/szoplab/szkeleton&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
-  }
-}</component>
+  <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+  </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
@@ -122,6 +150,7 @@
       <workItem from="1681675472466" duration="2549000" />
       <workItem from="1681722427750" duration="67000" />
       <workItem from="1681722977852" duration="1200000" />
+      <workItem from="1683918787077" duration="6010000" />
     </task>
     <task id="LOCAL-00001" summary="Start">
       <created>1681373982884</created>
@@ -195,6 +224,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Start" />
