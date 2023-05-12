@@ -6,6 +6,9 @@ import java.util.ArrayList;
  */
 public abstract class Element {
 
+    public Element(Game _game){
+        game = _game;
+    }
     /**
      * Attribútumok:
      * -Player players: A játékmező tárolja a rajta álló játékosokat.

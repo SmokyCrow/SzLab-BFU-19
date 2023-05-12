@@ -35,6 +35,8 @@ public class Mechanic extends Player{
      */
     public void repair() {
         element.repairElement();
+        if(element.toString().startsWith("pi"))
+            ((PassiveElement)element).setProtectTime(10);
     }
 
     /**
@@ -82,5 +84,13 @@ public class Mechanic extends Player{
                 newPump = null;
             }
         }
+    }
+
+    public PassiveElement getNewPipe(){
+        return newPipe;
+    }
+
+    public Pump getNewPump(){
+        return newPump;
     }
 }

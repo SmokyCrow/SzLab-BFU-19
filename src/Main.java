@@ -1,6 +1,8 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A Main osztály
@@ -12,14 +14,17 @@ public class Main {
      */
     public static void main(String[] args) throws IOException {
         Game game = new Game();
-        while (true) {
+        List<String> allCommands = new ArrayList<>();
+        BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
+        String s;
+        while ((s = input.readLine()) != null) {
+            allCommands.add(s);
+        }
 
-
-            BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
-            String s = input.readLine();
+        for(int i = 0; i < allCommands.size(); i++){
             String command;
             String[] paramArray;
-            String[] commands = s.split(" ");
+            String[] commands = allCommands.get(i).split(" ");
             command = commands[0];
             String params = commands[1];
             paramArray = params.split(",");
@@ -55,18 +60,28 @@ public class Main {
                     game.setPump(paramArray[0], paramArray[1], paramArray[2]);
                     break;
 
-                case "PipeTamper":
+                case "pipeTamper":
                     game.pickUpPipe(paramArray[0], paramArray[1]);
                     break;
 
-                case "PumpTamper":
+                case "pumpTamper":
                     game.pumpUpOrDown(paramArray[0]);
                     break;
+
+                case "action":
+                    game.makeAction(paramArray[0], paramArray[1]);
+                    break;
+
+                case "break":
+                    game.randomBreak(paramArray[0]);
+                    break;
+
+                case "stat":
+                    game.listMap(paramArray[0]);
+                    break;
             }
-
-            game.listMap();
-
         }
+
     }
 
     //    private static void m_control_pump() {

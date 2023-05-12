@@ -3,7 +3,8 @@ import java.nio.channels.Pipe;
 public class Cistern extends ActiveElement{
     private int id;
 
-    public Cistern(int _id){
+    public Cistern(int _id, Game _game){
+        super(_game);
         id = _id;
     }
 
@@ -15,8 +16,9 @@ public class Cistern extends ActiveElement{
     }
 
     public Element giveElement(){
-        //return new Pump(game.getPumpList().size() + 1);
-        return null;
+        String id = game.getNewPumpId();
+        game.addElement(id);
+        return game.getPump(id);
     }
 
 
@@ -33,6 +35,7 @@ public class Cistern extends ActiveElement{
      * @param e az ellenőrizendő mező
      */
     public boolean giveElementEnd(Element e){
+        pipes.remove(e);
         return true;
     }
 
@@ -42,9 +45,9 @@ public class Cistern extends ActiveElement{
      * @return mindig true a skeletonbaqn.
      */
     public boolean connectElement(Element e){
-        for(int i = 0; i < pipes.size(); i++){
-            if(pipes.get(i).getId() == ((PassiveElement)e).getId())
-                return true;
+        if(!isNeighbour(e)){
+            pipes.add((PassiveElement) e);
+            return true;
         }
         return false;
     }

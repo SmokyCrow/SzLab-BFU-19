@@ -18,7 +18,8 @@ public class PassiveElement extends Element{
     /**
      * A cső konstruktora
      */
-    public PassiveElement(int _id){
+    public PassiveElement(int _id, Game _game){
+        super(_game);
         id = _id;
     }
 
@@ -56,12 +57,12 @@ public class PassiveElement extends Element{
      * @return true vagy false, attol fuggoen, hogy siikerult-e a pumpa lerakasa
      */
     public boolean placeElement(Element e){
-//        removeConnection(e1);
-//        int pid = game.getPipeNumber();
-//        game.addPipe(pid);
-//        game.getPipe(pid).setConnection((ActiveElement) e);
-//        game.getPipe(pid).setConnection(e1);
-//        setConnection((ActiveElement) e);
+        removeConnection(e1);
+        String pid = game.getNewPipeId();
+        game.addElement(pid);
+        game.getPipe(pid).setConnection((ActiveElement) e);
+        game.getPipe(pid).setConnection(e1);
+        setConnection((ActiveElement) e);
         return true;
     }
 
@@ -149,6 +150,10 @@ public class PassiveElement extends Element{
         slipTime = n;
     }
 
+    public void setProtectTime(int n){
+        protectTime = n;
+    }
+
 
     public void slip(Player p){
         Element e = this.randomEnd();
@@ -167,6 +172,26 @@ public class PassiveElement extends Element{
             return e1;
         else
             return e2;
+    }
+
+    public ActiveElement getE1(){
+        return e1;
+    }
+
+    public ActiveElement getE2(){
+        return e2;
+    }
+
+    public int getStickTime(){
+        return stickTime;
+    }
+
+    public int getSlipTime(){
+        return slipTime;
+    }
+
+    public int getProtectTime(){
+        return protectTime;
     }
 
     /** A Skeleton teszt programhoz keszitett override-olt toString metodus

@@ -62,6 +62,10 @@ public abstract class Player {
         stuck = b;
     }
 
+    public boolean getStuck(){
+        return stuck;
+    }
+
     public void setElement(Element e){
         element = e;
     }

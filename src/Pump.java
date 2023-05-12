@@ -7,7 +7,8 @@ public class Pump extends ActiveElement{
     private PassiveElement inPipe;
     private PassiveElement outPipe;
 
-    public Pump(int _id){
+    public Pump(int _id, Game _game){
+        super(_game);
         id = _id;
     }
 
@@ -28,7 +29,7 @@ public class Pump extends ActiveElement{
                 break;
             }
         }
-        if(n && p.getId() != outPipe.getId())
+        if(n && (outPipe == null || p.getId() != outPipe.getId()))
             inPipe = p;
     }
 
@@ -103,6 +104,14 @@ public class Pump extends ActiveElement{
 
     public void breakRandom(){
         broken = true;
+    }
+
+    public PassiveElement getInPipe(){
+        return inPipe;
+    }
+
+    public PassiveElement getOutPipe(){
+        return outPipe;
     }
 
 }

@@ -8,7 +8,12 @@ import java.util.List;
 
 public class ActiveElement extends Element{
     protected int waterInside;
-    protected List<PassiveElement> pipes = new ArrayList<>();
+    protected ArrayList<PassiveElement> pipes = new ArrayList<>();
+
+    public ActiveElement(Game _game) {
+        super(_game);
+    }
+
 
     public void breakRandom(){ }
 
@@ -39,6 +44,11 @@ public class ActiveElement extends Element{
     public void setWaterInside(int n){
         waterInside = n;
     }
+
+    public ArrayList<PassiveElement> getPipes(){
+        return pipes;
+    }
+
 
 
     /**

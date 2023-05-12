@@ -5,7 +5,8 @@
 public class Source extends ActiveElement{
     private int id;
 
-    public Source(int _id){
+    public Source(int _id, Game _game){
+        super(_game);
         id = _id;
     }
 
@@ -14,6 +15,14 @@ public class Source extends ActiveElement{
         if(outP.getLoad() == 0){
             outP.addWater(1);
         }
+    }
+
+    public boolean connectElement(Element e){
+        if(!isNeighbour(e)){
+            pipes.add((PassiveElement) e);
+            return true;
+        }
+        return false;
     }
 
     @Override
