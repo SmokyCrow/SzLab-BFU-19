@@ -7,6 +7,7 @@ param (
 $global:failedTestsCounter
 $global:failedTestsName = @()
 $global:numberofTests
+$global:indent = "     "
 function CompareTwoFiles
 {
 	param (
@@ -14,32 +15,31 @@ function CompareTwoFiles
 	)
 	[string]$testcase_Out_Path = "Outputs\" + $path
 	$testcase_Out = Get-Content $testcase_Out_Path
-	Write-Host "\Inputs\$path"
 	"cd src && javac Main.java && java Main.java Inputs\$path" | CMD
 	$testcase_ActualOut_Path = "ActualOutputs\" + $path
 	$testcase_ActualOut = Get-Content $testcase_ActualOut_Path
 	
 	if ($testcase_Out.Length -ne $testcase_ActualOut.Length)
 	{
-		Write-Host "`nTESTING THE TEST CASE NAMED: $($path.substring(0, $path.Length - 4))"
+		Write-Host "`nTESTING THE TEST CASE NAMED: $($path.substring(0, $path.Length - 4))" -ForegroundColor Yellow
 		Write-Host "Mar a hossz sem egyezik kekw!" -ForeGroundColor Red
 		$global:failedTestsCounter++
 		$global:failedTestsName += $($path.substring(0, $path.Length - 4))
 	}else{
-	Write-Host "`nTESTING THE TEST CASE NAMED: $($path.substring(0, $path.Length - 4))"
+		Write-Host "`nTESTING THE TEST CASE NAMED: $($path.substring(0, $path.Length - 4))" -ForegroundColor Yellow
 	for ($i = 0; $i -lt $testcase_Out.Length; $i++)
 	{
 		if ($testcase_Out[$i] -ne $testcase_ActualOut[$i])
 		{
 			Write-Host "*** LINE FAILED BELOW ***" -ForegroundColor Red
 			Write-Host "EXPECTED: $($testcase_Out[$i])" -ForegroundColor Red
-			Write-Host "GOT: $($testcase_ActualOut[$i])" -ForegroundColor Red
+				Write-Host "GOT: $global:indent$($testcase_ActualOut[$i])" -ForegroundColor Red
 			$errorCounter++
 		}
 		else
 		{
 			Write-Host "EXPECTED: $($testcase_Out[$i])" -ForegroundColor Green
-			Write-Host "GOT: $($testcase_ActualOut[$i])" -ForegroundColor Green
+			Write-Host "GOT: $global:indent$($testcase_ActualOut[$i])" -ForegroundColor Green
 		}
 	}
 		if ($errorCounter -gt 0)
@@ -83,7 +83,7 @@ else
 	}
 	else
 	{
-		Write-Host "`nAll tests have passed! :)" -ForeGroundColor Green
+		Write-Host "`nALL TEST HAVE PASSED :)" -ForeGroundColor Green
 	}
 }
 
