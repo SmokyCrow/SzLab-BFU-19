@@ -14,7 +14,8 @@ function CompareTwoFiles
 	)
 	[string]$testcase_Out_Path = "Outputs\" + $path
 	$testcase_Out = Get-Content $testcase_Out_Path
-	"cd src & javac Main.java & java Main.java \Inputs\$path"
+	Write-Host "\Inputs\$path"
+	"cd src && javac Main.java && java Main.java Inputs\$path" | CMD
 	$testcase_ActualOut_Path = "ActualOutputs\" + $path
 	$testcase_ActualOut = Get-Content $testcase_ActualOut_Path
 	
