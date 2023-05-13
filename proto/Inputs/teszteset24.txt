@@ -1,0 +1,27 @@
+teszteset24
+initmap so_1,pu_1,pu_2,ci_1,pi_1,pi_2,pi_3,pi_4
+connect so_1,pi_1
+connect so_1,pi_2
+connect pu_1,pi_2
+connect pu_1,pi_3
+connect pu_1,pi_4
+connect pu_2,pi_1
+connect pu_2,pi_4
+connect ci_1,pi_3
+mechanic m_1,pu_1
+saboteur s_1,pi_4
+damage s_1
+step s_1,pu_1
+step m_1,pi_4
+repair m_1
+set s_1,pi_4,pi_2
+stat pi_1
+stat pi_2
+stat pi_3
+stat pi_4
+stat pu_1
+stat pu_2
+stat ci_1
+stat so_1
+stat m_1
+stat s_1

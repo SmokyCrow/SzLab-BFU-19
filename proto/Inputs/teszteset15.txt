@@ -1,0 +1,16 @@
+teszteset15
+initmap pi_1,pu_1,so_1
+connect pi_1,pu_1
+connect so_1,pi_1
+mechanic m_1,pi_1
+saboteur s_1,pu_1
+break pu_1
+step m_1,pu_1
+step s_1,pi_1
+step s_1,so_1
+repair m_1
+stat so_1
+stat pi_1
+stat pu_1
+stat m_1
+stat s_1
