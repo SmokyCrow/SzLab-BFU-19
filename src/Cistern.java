@@ -8,6 +8,10 @@ public class Cistern extends ActiveElement{
         id = _id;
     }
 
+    /**
+     * A víz áramlását szimulálja az összes csőelemen keresztül,
+     * és meghívja a megfelelő metódust a mechanikus pontszám frissítéséhez.
+     */
     public void moveWater(){
         for(int i = 0; i < pipes.size(); i++){
             int points = pipes.get(i).removeWater();
@@ -15,6 +19,10 @@ public class Cistern extends ActiveElement{
         }
     }
 
+    /**
+     * Új pumpát hoz létre, hozzáadja a játékhoz és visszaadja az új elemet.
+     * @return a létrehozott pumpa elem
+     */
     public Element giveElement(){
         String id = game.getNewPumpId();
         game.addElement(id);

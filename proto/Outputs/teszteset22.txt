@@ -1,6 +1,0 @@
-stat pu_1
-pipes: pi_1,pi_2
-inpipe: pi_2
-outpipe: pi_1
-waterInside: 0
-broken: false

@@ -56,18 +56,33 @@ public abstract class Player {
         ((Pump)element).setOutPipe(p2);
     }
 
+    /**
+     * A metódus a játékos ragasztózását végzi el, azaz beállítja a játékos tapadási idejét.
+     */
     public void makeSticky(){
         ((PassiveElement)element).setStickTime(10);
     }
+    /**
 
+     * A metódus beállítja a játékos ragadásának állapotát.
+     * @param b a ragadás állapotát jelző boolean érték
+     */
     public void setStuck(boolean b){
         stuck = b;
     }
+    /**
 
+     * A metódus visszaadja a játékos ragadásának állapotát.
+     * @return a ragadás állapotát jelző boolean érték
+     */
     public boolean getStuck(){
         return stuck;
     }
+    /**
 
+     * A metódus beállítja a játékos elemét.
+     * @param e a játékos elemét reprezentáló Element objektum
+     */
     public void setElement(Element e){
         element = e;
     }

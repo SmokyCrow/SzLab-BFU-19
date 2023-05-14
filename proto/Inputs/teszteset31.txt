@@ -1,7 +1,0 @@
-teszteset31
-initmap pi_1,pu_1,pu_2
-connect pi_1,pu_1
-connect pi_1,pu_2
-saboteur s_1,pi_1
-action s_1,stick
-stat pi_1

@@ -1,6 +1,0 @@
-stat pu_1
-pipes: 
-inPipe: null
-outPipe: null
-waterInside: 0
-broken: true

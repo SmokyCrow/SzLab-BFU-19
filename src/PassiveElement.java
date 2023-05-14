@@ -113,21 +113,40 @@ public class PassiveElement extends Element{
         }
     }
 
+    /**
+
+     Visszaadja az elem jelenlegi terhelését.
+     @return az elem jelenlegi terhelése
+     */
     public int getLoad(){
         return load;
     }
+    /**
 
+     Meghatározza, hogy az elemhez csatlakozik-e két aktív elem.
+     @return true, ha mindkét oldalán van aktív elem, false egyébként
+     */
     public boolean connected(){
         return e1 != null && e2 != null;
     }
+    /**
 
+     Az elemet megjavítja, ha az tönkrement.
+     Ha az elem tönkrement, akkor az ismételten működőképessé válik, és 10 másodperces védettséget kap.
+     */
     public void repairElement(){
         if(broken) {
             broken = false;
             protectTime = 10;
         }
     }
+    /**
 
+     Az elemhez csatlakozó játékost elfogadja.
+     Ha az elemen csúszás van, akkor áthelyezi a játékost a véletlenszerűen választott elem másik végére.
+     Ha az elemen ragacs van, akkor a játékos ragadós lesz.
+     @param p az elfogadandó játékos
+     */
     public void acceptPlayer(Player p){
         if(slipTime > 0){
             slip(p);
@@ -139,34 +158,60 @@ public class PassiveElement extends Element{
         p.setElement(this);
         players.add(p);
     }
+    /**
 
+     * Visszaadja az elem egyedi azonosítóját.
+     * @return az elem egyedi azonosítója
+     */
     public int getId(){
         return id;
     }
+    /**
 
+     * Beállítja az elemre vonatkozó ragadás időtartamát.
+     * @param n a beállítandó ragadás időtartama
+     */
     public void setStickTime(int n){
         stickTime = n;
     }
+    /**
 
+     * Beállítja az elemre vonatkozó csúszás időtartamát.
+     * @param n a beállítandó csúszás időtartama
+     */
     public void setSlipTime(int n){
         slipTime = n;
     }
+    /**
 
+     * Beállítja az elem védettségi idejét.
+     * @param n a beállítandó védettségi időtartam
+     */
     public void setProtectTime(int n){
         protectTime = n;
     }
+    /**
 
-
+     * Áthelyezi a játékost az elem másik végére.
+     * @param p a csúszni kívánó játékos
+     */
     public void slip(Player p){
         Element e = this.randomEnd();
         e.acceptPlayer(p);
         p.setElement(e);
     }
-
+    /**
+     * A játékost ragadóssá teszi az elemen.
+     * @param p a ragadóssá tenni kívánt játékos
+     */
     public void stick(Player p){
         p.setStuck(true);
     }
+    /**
 
+     * Visszaadja a cső két végpontja közül véletlenszerűen az egyiket.
+     * @return a cső véletlenszerűen kiválasztott egyik végpontja
+     */
     public Element randomEnd(){
         Random r = new Random();
         int end = r.nextInt(0, 1);
@@ -175,23 +220,43 @@ public class PassiveElement extends Element{
         else
             return e2;
     }
+    /**
 
+     * Visszaadja az elem egyik végpontját.
+     * @return az elem egyik végpontja
+     */
     public ActiveElement getE1(){
         return e1;
     }
+    /**
 
+     * Visszaadja az elem másik végpontját.
+     * @return az elem másik végpontja
+     */
     public ActiveElement getE2(){
         return e2;
     }
+    /**
 
+     * Visszaadja az időt, amíg a játékos ragadós anyaggal lett bevonva.
+     * @return az idő, amíg a játékos ragadós anyaggal lett bevonva
+     */
     public int getStickTime(){
         return stickTime;
     }
+    /**
 
+     * Visszaadja az időt, amíg a játékos csúszós anyaggal lett bevonva.
+     * @return az idő, amíg a játékos csúszós anyaggal lett bevonva
+     */
     public int getSlipTime(){
         return slipTime;
     }
+    /**
 
+     * Visszaadja az időt, amíg az elem védve van.
+     * @return az idő, amíg az elem védve van
+     */
     public int getProtectTime(){
         return protectTime;
     }

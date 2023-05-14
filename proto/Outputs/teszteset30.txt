@@ -1,7 +1,0 @@
-stat pi_1
-ends: pu_1,pu_2
-leaking: false
-stickTime: 0
-slipTime: 10
-protectTime: 0
-waterInside: 0
