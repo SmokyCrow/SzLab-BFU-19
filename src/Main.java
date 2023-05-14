@@ -17,6 +17,10 @@ public class Main {
      */
     public static void main(String[] args) throws Exception {
         Game game = new Game();
+        if(args.length == 0){
+            System.out.println("Run a test using PowerShell");
+            return;
+        }
         RandomAccessFile rafInput = new RandomAccessFile("../" + args[0], "r");
         String testName = rafInput.readLine();
         List<String> allCommands = new ArrayList<>();

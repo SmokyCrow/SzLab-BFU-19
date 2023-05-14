@@ -79,6 +79,10 @@ public class PassiveElement extends Element{
         return false;
     }
 
+    /**
+     * Kiveszi a csőben lévő vizet
+     * @return a csőben lévő viz
+     */
     public int removeWater(){
         leak();
         int temp = load;
@@ -86,11 +90,18 @@ public class PassiveElement extends Element{
         return load;
     }
 
+    /**
+     * beleteszi a csőbe a vizet
+     * @param i a mennyiség, amit beletesz
+     */
     public void addWater(int i){
         leak();
         load += i;
     }
 
+    /**
+     * megvizsgálja, hogy a csőből kifolyik-e a víz
+     */
     public void leak() {
         if(e1 == null || e2 == null || broken){
             int points = load;
@@ -99,6 +110,10 @@ public class PassiveElement extends Element{
         }
     }
 
+    /**
+     * megvizsgálja, hogy fdoglalt-e a cső
+     * @return
+     */
     public boolean occupied(){
         return players.size() == 0;
     }
@@ -114,7 +129,6 @@ public class PassiveElement extends Element{
     }
 
     /**
-
      Visszaadja az elem jelenlegi terhelését.
      @return az elem jelenlegi terhelése
      */

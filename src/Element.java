@@ -6,6 +6,10 @@ import java.util.ArrayList;
  */
 public abstract class Element {
 
+    /**
+     * Konstrukto
+     * @param _game a játé referenciája
+     */
     public Element(Game _game){
         game = _game;
     }
@@ -90,6 +94,9 @@ public abstract class Element {
      */
     public abstract boolean isNeighbour(Element e);
 
+    /**
+     * A víz mozgatásáért felelős metódus
+     */
     public void moveWater(){ }
 
     /**
@@ -98,6 +105,10 @@ public abstract class Element {
      */
     public abstract String toString();
 
+    /**
+     * Visszaadja a mező azonosítóját
+     * @return -1
+     */
     public int getId(){
         return -1;
     }
