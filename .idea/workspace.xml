@@ -4,106 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="caa5c14f-448e-4f6e-bcf5-a7d508c49328" name="Changes" comment="All methods added, not all implemented yet">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_05_2023_11_08__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_05_2023_11_08__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_05_2023_21_01__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_05_2023_21_01__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_13_05_2023_11_00__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_13_05_2023_11_00__Changes_.xml" afterDir="false" />
+    <list default="true" id="caa5c14f-448e-4f6e-bcf5-a7d508c49328" name="Changes" comment="GRAFIKA :(">
+      <change afterPath="$PROJECT_DIR$/src/GMechanic.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/GSaboteur.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/proto/Inputs/teszteset1.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/proto/Inputs/teszteset10.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/proto/Inputs/teszteset11.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/proto/Inputs/teszteset12.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/proto/Inputs/teszteset13.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/proto/Inputs/teszteset14.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/proto/Inputs/teszteset15.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/proto/Inputs/teszteset16.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/proto/Inputs/teszteset17.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/proto/Inputs/teszteset18.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/proto/Inputs/teszteset19.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/proto/Inputs/teszteset2.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/proto/Inputs/teszteset20.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/proto/Inputs/teszteset21.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/proto/Inputs/teszteset22.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/proto/Inputs/teszteset23.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/proto/Inputs/teszteset24.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/proto/Inputs/teszteset25.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/proto/Inputs/teszteset26.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/proto/Inputs/teszteset27.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/proto/Inputs/teszteset28.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/proto/Inputs/teszteset29.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/proto/Inputs/teszteset3.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/proto/Inputs/teszteset30.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/proto/Inputs/teszteset31.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/proto/Inputs/teszteset32.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/proto/Inputs/teszteset33.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/proto/Inputs/teszteset34.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/proto/Inputs/teszteset35.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/proto/Inputs/teszteset36.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/proto/Inputs/teszteset37.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/proto/Inputs/teszteset4.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/proto/Inputs/teszteset5.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/proto/Inputs/teszteset6.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/proto/Inputs/teszteset7.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/proto/Inputs/teszteset8.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/proto/Inputs/teszteset9.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/proto/Outputs/teszteset1.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/proto/Outputs/teszteset10.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/proto/Outputs/teszteset11.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/proto/Outputs/teszteset12.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/proto/Outputs/teszteset13.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/proto/Outputs/teszteset14.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/proto/Outputs/teszteset15.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/proto/Outputs/teszteset16.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/proto/Outputs/teszteset17.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/proto/Outputs/teszteset18.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/proto/Outputs/teszteset19.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/proto/Outputs/teszteset2.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/proto/Outputs/teszteset20.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/proto/Outputs/teszteset21.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/proto/Outputs/teszteset22.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/proto/Outputs/teszteset23.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/proto/Outputs/teszteset24.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/proto/Outputs/teszteset25.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/proto/Outputs/teszteset26.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/proto/Outputs/teszteset27.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/proto/Outputs/teszteset28.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/proto/Outputs/teszteset29.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/proto/Outputs/teszteset3.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/proto/Outputs/teszteset30.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/proto/Outputs/teszteset31.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/proto/Outputs/teszteset32.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/proto/Outputs/teszteset33.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/proto/Outputs/teszteset34.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/proto/Outputs/teszteset35.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/proto/Outputs/teszteset36.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/proto/Outputs/teszteset37.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/proto/Outputs/teszteset4.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/proto/Outputs/teszteset5.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/proto/Outputs/teszteset6.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/proto/Outputs/teszteset7.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/proto/Outputs/teszteset8.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/proto/Outputs/teszteset9.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/proto/script.ps1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/proto/src/ActiveElement.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/proto/src/Cistern.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/proto/src/Controller.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/proto/src/Element.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/proto/src/Game.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/proto/src/Main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/proto/src/Mechanic.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/proto/src/PassiveElement.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/proto/src/Player.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/proto/src/Pump.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/proto/src/Saboteur.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/proto/src/Source.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/proto/src/Timer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ActiveElement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ActiveElement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Cistern.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Cistern.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Images/Basic_Pipe.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Images/Slippery_Pipe.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Images/Sticky_Pipe.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GameFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GamePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GamePanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PassiveElement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PassiveElement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Player.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -131,13 +41,11 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="node.js.detected.package.eslint" value="true" />
-    <property name="node.js.detected.package.tslint" value="true" />
-    <property name="node.js.selected.package.eslint" value="(autodetect)" />
-    <property name="node.js.selected.package.tslint" value="(autodetect)" />
-  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "node.js.selected.package.tslint": "(autodetect)"
+  }
+}]]></component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
@@ -261,7 +169,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683809417867</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="GRAFIKA :(">
+      <created>1684922146122</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1684922146122</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -286,7 +201,8 @@
     <MESSAGE value="Final changes, exception handling" />
     <MESSAGE value="Menu changed" />
     <MESSAGE value="All methods added, not all implemented yet" />
-    <option name="LAST_COMMIT_MESSAGE" value="All methods added, not all implemented yet" />
+    <MESSAGE value="GRAFIKA :(" />
+    <option name="LAST_COMMIT_MESSAGE" value="GRAFIKA :(" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/szkeleton$Main.ic" NAME="Main Coverage Results" MODIFIED="1681670561842" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />

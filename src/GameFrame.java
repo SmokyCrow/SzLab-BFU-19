@@ -21,4 +21,8 @@ public class GameFrame extends JFrame {
         game = _game;
         gamePanel = new GamePanel(this.game);
     }
+
+    public void update(){
+        gamePanel.update();
+    }
 }
