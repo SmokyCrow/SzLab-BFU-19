@@ -19,16 +19,16 @@ public class Game {
     public void addElement(String id){
         int elementId = Integer.parseInt(id.replaceAll("[^0-9]", ""));
         if(id.startsWith("pi"))
-            elements.add(new PassiveElement(elementId, this));
+            elements.add(new PassiveElement(elementId, this,20,20));
 
         if(id.startsWith("pu"))
-            elements.add(new Pump(elementId, this));
+            elements.add(new Pump(elementId, this,20,20));
 
         if(id.startsWith("ci"))
-            elements.add(new Cistern(elementId, this));
+            elements.add(new Cistern(elementId, this,20,20));
 
         if(id.startsWith("so"))
-            elements.add(new Source(elementId, this));
+            elements.add(new Source(elementId, this,20,20));
     }
 
     /**
@@ -39,10 +39,10 @@ public class Game {
     public void addPlayer(String playerId, String elementId){
         int id = Integer.parseInt(playerId.replaceAll("[^0-9]", ""));
         if(playerId.startsWith("s"))
-            players.add(new Saboteur(id));
+            players.add(new Saboteur(id,20,20));
 
         if(playerId.startsWith("m"))
-            players.add(new Mechanic(id));
+            players.add(new Mechanic(id,20,20));
 
         Player p = players.get(players.size() - 1);
         Element e = null;

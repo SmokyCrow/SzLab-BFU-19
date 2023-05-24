@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * A nem cső (PassiveElement) típusú játékmezőket modellező ősosztály, leszármazottai a Source,

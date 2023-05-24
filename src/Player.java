@@ -13,7 +13,10 @@ public abstract class Player {
      */
     protected Element element;
     private boolean stuck = false;
+    private int x, y;
 
+    Player(){
+    }
     /**
      * Az objektumok típusának kiírásához használt felüldefiniált föggvény
      * @return az objektum típusa
