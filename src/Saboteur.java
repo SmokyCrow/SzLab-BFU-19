@@ -5,10 +5,17 @@ public class Saboteur extends Player{
 
     private final int id;
 
+    /**
+     * konstruktor
+     * @param _id a játékos azonosítója
+     */
     public Saboteur(int _id){
         id = _id;
     }
 
+    /**
+     * a játékos egy csövet csúszóssá tesz
+     */
     public void makeSlippery(){
         ((PassiveElement)element).setSlipTime(10);
     }

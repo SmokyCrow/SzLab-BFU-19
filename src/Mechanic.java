@@ -8,6 +8,10 @@ import java.io.InputStreamReader;
 public class Mechanic extends Player{
     private final int id;
 
+    /**
+     * Konstruktor
+     * @param _id a mező azonosítója
+     */
     public Mechanic(int _id){
         id = _id;
     }
@@ -86,10 +90,18 @@ public class Mechanic extends Player{
         }
     }
 
+    /**
+     * Visszaadja a játékosnál lévő csövet
+     * @return a játékosnál lévő cső
+     */
     public PassiveElement getNewPipe(){
         return newPipe;
     }
 
+    /**
+     * Visszaadja a játékosnál lévő pumpát
+     * @return a játékosnál lévő pumpa
+     */
     public Pump getNewPump(){
         return newPump;
     }

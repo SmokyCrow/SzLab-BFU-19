@@ -1,8 +1,17 @@
 import java.nio.channels.Pipe;
 
+/**
+ * A Ciszterna típusú játékmezőt modellező osztály. A ciszternába vezet a csőhálózat, méri a
+ * befolyt vizet, itt készülnek új pumpák és csövek is.
+ */
 public class Cistern extends ActiveElement{
     private int id;
 
+    /**
+     * A ciszterna konstruktora
+     * @param _id az elem azonosítója
+     * @param _game a játék referenciája
+     */
     public Cistern(int _id, Game _game){
         super(_game);
         id = _id;
@@ -61,10 +70,18 @@ public class Cistern extends ActiveElement{
         return false;
     }
 
+    /**
+     * Lecsatol egy csövet a ciszternáról
+     * @param p a cső, amelyet le szeretnénk kapcsolni
+     */
     public void disconnectPipe(PassiveElement p) {
         pipes.remove(p);
     }
 
+    /**
+     * becsatol egy csövet a ciszternához
+     * @param p a becsatolni kívánt cső
+     */
     public void addPipe(PassiveElement p){
         pipes.add(p);
     }

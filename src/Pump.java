@@ -102,14 +102,25 @@ public class Pump extends ActiveElement{
         return false;
     }
 
+    /**
+     * elront egy pumpát
+     */
     public void breakRandom(){
         broken = true;
     }
 
+    /**
+     * visszaadja a bemeneti csövet
+     * @return bemeneti cső
+     */
     public PassiveElement getInPipe(){
         return inPipe;
     }
 
+    /**
+     * visszaadja a kimeneti csövet
+     * @return kimeneti cső
+     */
     public PassiveElement getOutPipe(){
         return outPipe;
     }

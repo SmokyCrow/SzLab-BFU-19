@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 /**
- * A nem cső (PassiveElement) típusú játékmezőket modellező ősosztály, leszármazottai a Source,
+ * A nem cső típusú játékmezőket modellező ősosztály, leszármazottai a Source,
  * Cistern, Pump osztályok.
  */
 public class ActiveElement extends Element{
