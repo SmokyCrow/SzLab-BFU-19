@@ -16,4 +16,14 @@ public class GMechanic extends Mechanic implements IViewable{
     public void Draw(GamePanel gamePanel) {
         gamePanel.drawMechanic(x, y);
     }
+
+    @Override
+    public int getX() {
+        return x;
+    }
+
+    @Override
+    public int getY() {
+        return y;
+    }
 }
