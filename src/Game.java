@@ -52,11 +52,17 @@ public class Game {
      */
     public void addPlayer(String playerId, String elementId){
         int id = Integer.parseInt(playerId.replaceAll("[^0-9]", ""));
-        if(playerId.startsWith("s"))
-            players.add(new Saboteur(id));
+        if(playerId.startsWith("s")) {
+            GSaboteur gs = new GSaboteur(id);
+            players.add(gs);
+            graphicList.add(gs);
+        }
 
-        if(playerId.startsWith("m"))
-            players.add(new Mechanic(id));
+        if(playerId.startsWith("m")) {
+            GMechanic gm = new GMechanic(id);
+            players.add(gm);
+            graphicList.add(gm);
+        }
 
         Player p = players.get(players.size() - 1);
         Element e = null;

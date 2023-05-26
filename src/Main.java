@@ -28,6 +28,7 @@ public class Main {
         game.addElement("pi_2", 0, 0);
         game.connect("pu_1", "pi_2");
         game.connect("ci_1", "pi_2");
+        game.addPlayer("s_1", "pi_1");
         gameFrame.update();
 //        RandomAccessFile rafInput = new RandomAccessFile("../" + args[0], "r");
 //        String testName = rafInput.readLine();

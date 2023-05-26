@@ -6,25 +6,22 @@ public class GSaboteur extends Saboteur implements IViewable{
      *
      * @param _id a játékos azonosítója
      */
-    int x,y;
-    public GSaboteur(int _id, int _x, int _y) {
+    public GSaboteur(int _id) {
         super(_id);
-        x = _x;
-        y = _y;
     }
 
     @Override
     public void Draw(GamePanel gamePanel, Graphics g) {
-        gamePanel.drawSaboteur(x,y, g);
+        gamePanel.drawSaboteur(((IViewable) element).getX(), ((IViewable) element).getY(), g);
     }
 
     @Override
     public int getX() {
-        return x;
+        return 0;
     }
 
     @Override
     public int getY() {
-        return y;
+        return 0;
     }
 }

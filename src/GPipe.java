@@ -20,11 +20,11 @@ public class GPipe extends PassiveElement implements IViewable{
 
     @Override
     public int getX() {
-        return 0;
+        return Math.abs(((IViewable) e1).getX() + ((IViewable) e2).getX()) / 2;
     }
 
     @Override
     public int getY() {
-        return 0;
+        return Math.abs(((IViewable) e1).getY() + ((IViewable) e2).getY()) / 2;
     }
 }
