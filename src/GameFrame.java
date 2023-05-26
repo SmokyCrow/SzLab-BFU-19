@@ -11,7 +11,6 @@ public class GameFrame extends JFrame {
         setResizable(false);
         setTitle("Sivatagi Csohalozat");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setLocationRelativeTo(null);
         add(gamePanel);
         pack();
 
@@ -24,10 +23,6 @@ public class GameFrame extends JFrame {
     }
 
     public void update(){
-
-    }
-
-    public void paintComponent(Graphics g){
-
+        update(this.getGraphics());
     }
 }

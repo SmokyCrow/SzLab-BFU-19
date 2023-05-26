@@ -24,6 +24,11 @@ public class Main {
         game.connect("so_1", "pi_1");
         game.connect("pu_1", "pi_1");
         gameFrame.update();
+        game.addElement("ci_1", 256, 128);
+        game.addElement("pi_2", 0, 0);
+        game.connect("pu_1", "pi_2");
+        game.connect("ci_1", "pi_2");
+        gameFrame.update();
 //        RandomAccessFile rafInput = new RandomAccessFile("../" + args[0], "r");
 //        String testName = rafInput.readLine();
 //        List<String> allCommands = new ArrayList<>();
