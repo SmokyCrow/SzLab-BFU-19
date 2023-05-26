@@ -8,8 +8,8 @@ public class PassiveElement extends Element{
     private int id;
     private int capacity;
     private int load;
-    private ActiveElement e1;
-    private ActiveElement e2;
+    protected ActiveElement e1;
+    protected ActiveElement e2;
     private int protectTime;
     private int slipTime;
     private int stickTime;

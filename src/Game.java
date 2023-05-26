@@ -83,9 +83,9 @@ public class Game {
                 e2 = element;
         }
         if(e1.toString().startsWith("pi"))
-            ((GPipe) e1).setEnd((IViewable) e2);
+            ((PassiveElement) e1).setConnection((ActiveElement) e2);
         else if(e2.toString().startsWith("pi"))
-            ((GPipe) e2).setEnd((IViewable) e1);
+            ((PassiveElement) e2).setConnection((ActiveElement) e1);
     }
     /**
      * Játékos mozgatása adott elemre.
