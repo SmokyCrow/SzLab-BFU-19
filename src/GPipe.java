@@ -1,3 +1,5 @@
+import java.awt.*;
+
 public class GPipe extends PassiveElement implements IViewable{
     /**
      * A cső konstruktora
@@ -23,8 +25,8 @@ public class GPipe extends PassiveElement implements IViewable{
     }
 
     @Override
-    public void Draw(GamePanel gamePanel) {
-        gamePanel.drawPipe(end1, end2);
+    public void Draw(GamePanel gamePanel, Graphics g) {
+        gamePanel.drawPipe(end1, end2, g);
     }
 
     @Override

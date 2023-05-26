@@ -1,3 +1,5 @@
+import java.awt.*;
+
 public class GMechanic extends Mechanic implements IViewable{
 
     int x, y;
@@ -13,8 +15,8 @@ public class GMechanic extends Mechanic implements IViewable{
     }
 
     @Override
-    public void Draw(GamePanel gamePanel) {
-        gamePanel.drawMechanic(x, y);
+    public void Draw(GamePanel gamePanel, Graphics g) {
+        gamePanel.drawMechanic(x, y, g);
     }
 
     @Override

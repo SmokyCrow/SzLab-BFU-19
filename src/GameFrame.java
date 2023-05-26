@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.awt.*;
 
 public class GameFrame extends JFrame {
     private static final long serialVersionUID = 1L;
@@ -23,6 +24,10 @@ public class GameFrame extends JFrame {
     }
 
     public void update(){
-        gamePanel.update();
+
+    }
+
+    public void paintComponent(Graphics g){
+
     }
 }

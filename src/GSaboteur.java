@@ -1,3 +1,5 @@
+import java.awt.*;
+
 public class GSaboteur extends Saboteur implements IViewable{
     /**
      * konstruktor
@@ -12,8 +14,8 @@ public class GSaboteur extends Saboteur implements IViewable{
     }
 
     @Override
-    public void Draw(GamePanel gamePanel) {
-        gamePanel.drawSaboteur(x,y);
+    public void Draw(GamePanel gamePanel, Graphics g) {
+        gamePanel.drawSaboteur(x,y, g);
     }
 
     @Override

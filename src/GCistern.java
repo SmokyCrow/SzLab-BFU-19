@@ -1,3 +1,5 @@
+import java.awt.*;
+
 public class GCistern extends Cistern implements IViewable{
     /**
      * A ciszterna konstruktora
@@ -14,8 +16,8 @@ public class GCistern extends Cistern implements IViewable{
     }
 
     @Override
-    public void Draw(GamePanel gamePanel) {
-        gamePanel.drawCistern(x, y);
+    public void Draw(GamePanel gamePanel, Graphics g) {
+        gamePanel.drawCistern(x, y, g);
     }
 
     @Override

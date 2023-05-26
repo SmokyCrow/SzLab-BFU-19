@@ -4,7 +4,6 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
 
 public class GamePanel extends JPanel {
     private static final long serialVersionUID = 1L;
@@ -30,63 +29,41 @@ public class GamePanel extends JPanel {
         images[7] = getImage("Broken.png");
     }
 
-    public void update(){
-        //setBackground(new Color(233, 168, 102));
-//        GCistern gc1 = new GCistern(1, this.game,256, 128);
-//        GPump gp1 = new GPump(1, this.game, 128, 128);
-//        GSource gs1 = new GSource(1, this.game, 32, 32);
-//        GPipe gpi1 = new GPipe(1, this.game);
-//        GPipe gpi2 = new GPipe(2, this.game);
-//        gpi1.setEnd(gs1);
-//        gpi1.setEnd(gp1);
-//        gpi2.setEnd(gp1);
-//        gpi2.setEnd(gc1);
-        drawBackGround();
-//        gc1.Draw(this);
-//        gp1.Draw(this);
-//        gs1.Draw(this);
-//        gpi1.Draw(this);
-//        gpi2.Draw(this);
+    public void update(Graphics g){
+        drawBackGround(g);
         for (IViewable e: game.getGraphicList()) {
-            e.Draw(this);
+            e.Draw(this, g);
         }
     }
 
-    public void drawBackGround(){
-        Graphics g = super.getGraphics();
+    public void drawBackGround(Graphics g){
         g.setColor(new Color(233, 168, 102));
         g.fillRect(0,0, size.width, size.height - 200);
         g.setColor(new Color(204, 102, 0));
         g.fillRect(0,size.height - 200, size.width, size.height - (size.height - 200));
     }
 
-    public void drawMechanic(int x, int y){
-        Graphics g = super.getGraphics();
+    public void drawMechanic(int x, int y, Graphics g){
         g.drawImage(images[1], x, y, null);
     }
 
-    public void drawSaboteur(int x, int y){
-        Graphics g = super.getGraphics();
+    public void drawSaboteur(int x, int y, Graphics g){
         g.drawImage(images[0], x, y, null);
     }
 
-    public void drawPump(int x, int y){
-        Graphics g = super.getGraphics();
+    public void drawPump(int x, int y, Graphics g){
         g.drawImage(images[2], x, y, null);
     }
 
-    public void drawCistern(int x, int y){
-        Graphics g = super.getGraphics();
+    public void drawCistern(int x, int y, Graphics g){
         g.drawImage(images[3], x, y, null);
     }
 
-    public void drawSource(int x, int y){
-        Graphics g = super.getGraphics();
+    public void drawSource(int x, int y, Graphics g){
         g.drawImage(images[4], x, y, null);
     }
 
-    public void drawPipe(IViewable e1, IViewable e2){
-        Graphics g = super.getGraphics();
+    public void drawPipe(IViewable e1, IViewable e2, Graphics g){
         g.setColor(new Color(0,51,102));
         int thickness = 8;
         int offset = 16;
@@ -141,7 +118,7 @@ public class GamePanel extends JPanel {
 
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-        update();
+        update(g);
     }
 
 }

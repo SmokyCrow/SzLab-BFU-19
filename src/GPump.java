@@ -1,3 +1,5 @@
+import java.awt.*;
+
 public class GPump extends Pump implements IViewable{
 
     int x, y;
@@ -8,8 +10,8 @@ public class GPump extends Pump implements IViewable{
     }
 
     @Override
-    public void Draw(GamePanel gamePanel) {
-        gamePanel.drawPump(x, y);
+    public void Draw(GamePanel gamePanel, Graphics g) {
+        gamePanel.drawPump(x, y, g);
     }
 
     @Override
