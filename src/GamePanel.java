@@ -31,30 +31,33 @@ public class GamePanel extends JPanel {
     }
 
     public void update(){
-//        GMechanic gm = new GMechanic(1, 32, 32);
-//        GSaboteur gs = new GSaboteur(1, 64, 64);
-//        gm.Draw(this);
-//        gs.Draw(this);
-        GCistern gc1 = new GCistern(1, this.game,256, 128);
-        GPump gp1 = new GPump(1, this.game, 128, 128);
-        GSource gs1 = new GSource(1, this.game, 32, 32);
-        GPipe gpi1 = new GPipe(1, this.game);
-        GPipe gpi2 = new GPipe(2, this.game);
-        gpi1.setEnd(gs1);
-        gpi1.setEnd(gp1);
-        gpi2.setEnd(gp1);
-        gpi2.setEnd(gc1);
-        gc1.Draw(this);
-        gp1.Draw(this);
-        gs1.Draw(this);
-        gpi1.Draw(this);
-        gpi2.Draw(this);
+        //setBackground(new Color(233, 168, 102));
+//        GCistern gc1 = new GCistern(1, this.game,256, 128);
+//        GPump gp1 = new GPump(1, this.game, 128, 128);
+//        GSource gs1 = new GSource(1, this.game, 32, 32);
+//        GPipe gpi1 = new GPipe(1, this.game);
+//        GPipe gpi2 = new GPipe(2, this.game);
+//        gpi1.setEnd(gs1);
+//        gpi1.setEnd(gp1);
+//        gpi2.setEnd(gp1);
+//        gpi2.setEnd(gc1);
+        drawBackGround();
+//        gc1.Draw(this);
+//        gp1.Draw(this);
+//        gs1.Draw(this);
+//        gpi1.Draw(this);
+//        gpi2.Draw(this);
+        for (IViewable e: game.getGraphicList()) {
+            e.Draw(this);
+        }
     }
 
     public void drawBackGround(){
         Graphics g = super.getGraphics();
         g.setColor(new Color(233, 168, 102));
-        g.fillRect(0,0, size.width, size.height);
+        g.fillRect(0,0, size.width, size.height - 200);
+        g.setColor(new Color(204, 102, 0));
+        g.fillRect(0,size.height - 200, size.width, size.height - (size.height - 200));
     }
 
     public void drawMechanic(int x, int y){
@@ -138,7 +141,7 @@ public class GamePanel extends JPanel {
 
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-        drawBackGround();
+        update();
     }
 
 }

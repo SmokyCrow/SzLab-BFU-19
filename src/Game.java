@@ -8,6 +8,8 @@ import java.util.ArrayList;
 public class Game {
     private ArrayList<Element> elements = new ArrayList<>();
     private ArrayList<Player> players = new ArrayList<>();
+
+    private ArrayList<IViewable> graphicList = new ArrayList<>();
     private int mechanicPoints = 0;
     private int saboteurPoints = 0;
     private int time = 300;
@@ -16,19 +18,31 @@ public class Game {
      * Az addElement metódus létrehoz egy új elemet az id paraméter alapján és hozzáadja az elements listához.
      * @param id az új elem azonosítója
      */
-    public void addElement(String id){
+    public void addElement(String id, int x, int y){
         int elementId = Integer.parseInt(id.replaceAll("[^0-9]", ""));
-        if(id.startsWith("pi"))
-            elements.add(new PassiveElement(elementId, this));
+        if(id.startsWith("pi")) {
+            GPipe gp = new GPipe(elementId, this);
+            elements.add(gp);
+            graphicList.add(gp);
+        }
 
-        if(id.startsWith("pu"))
-            elements.add(new Pump(elementId, this));
+        if(id.startsWith("pu")) {
+            GPump gp = new GPump(elementId, this, x, y);
+            elements.add(gp);
+            graphicList.add(gp);
+        }
 
-        if(id.startsWith("ci"))
-            elements.add(new Cistern(elementId, this));
+        if(id.startsWith("ci")) {
+            GCistern gc = new GCistern(elementId, this, x, y);
+            elements.add(gc);
+            graphicList.add(gc);
+        }
 
-        if(id.startsWith("so"))
-            elements.add(new Source(elementId, this));
+        if(id.startsWith("so")) {
+            GSource gs = new GSource(elementId, this, x, y);
+            elements.add(gs);
+            graphicList.add(gs);
+        }
     }
 
     /**
@@ -69,9 +83,9 @@ public class Game {
                 e2 = element;
         }
         if(e1.toString().startsWith("pi"))
-            ((PassiveElement) e1).setConnection((ActiveElement) e2);
+            ((GPipe) e1).setEnd((IViewable) e2);
         else if(e2.toString().startsWith("pi"))
-            ((PassiveElement) e2).setConnection((ActiveElement) e1);
+            ((GPipe) e2).setEnd((IViewable) e1);
     }
     /**
      * Játékos mozgatása adott elemre.
@@ -422,6 +436,8 @@ public class Game {
      * Az azonosítóban "pi" előtag szerepel, majd egy sorszám következik.
      *  @return az új csőelem azonosítója
      */
+
+    public ArrayList<IViewable> getGraphicList(){return graphicList;}
     public String getNewPipeId(){
         int ctr = 1;
         for (Element e: elements) {

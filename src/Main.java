@@ -18,9 +18,12 @@ public class Main {
     public static void main(String[] args) throws Exception {
         Game game = new Game();
         GameFrame gameFrame = new GameFrame(game);
-        while(true){
-            gameFrame.update();
-        }
+        game.addElement("so_1", 32, 32);
+        game.addElement("pu_1", 128, 128);
+        game.addElement("pi_1", 0, 0);
+        game.connect("so_1", "pi_1");
+        game.connect("pu_1", "pi_1");
+        gameFrame.update();
 //        RandomAccessFile rafInput = new RandomAccessFile("../" + args[0], "r");
 //        String testName = rafInput.readLine();
 //        List<String> allCommands = new ArrayList<>();

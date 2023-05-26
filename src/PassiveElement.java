@@ -60,7 +60,7 @@ public class PassiveElement extends Element{
         ActiveElement temp = e1;
         removeConnection(e1);
         String pid = game.getNewPipeId();
-        game.addElement(pid);
+        game.addElement(pid, 0, 0);
         game.getPipe(pid).setConnection((ActiveElement) e);
         game.getPipe(pid).setConnection(temp);
         setConnection((ActiveElement) e);

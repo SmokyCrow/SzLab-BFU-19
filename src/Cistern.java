@@ -34,7 +34,7 @@ public class Cistern extends ActiveElement{
      */
     public Element giveElement(){
         String id = game.getNewPumpId();
-        game.addElement(id);
+        game.addElement(id, 0, 0);
         return game.getPump(id);
     }
 

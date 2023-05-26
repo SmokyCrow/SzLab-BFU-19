@@ -4,17 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="caa5c14f-448e-4f6e-bcf5-a7d508c49328" name="Changes" comment="GRAFIKA2 :(">
-      <change afterPath="$PROJECT_DIR$/src/GCistern.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/GPipe.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/GPump.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/GSource.java" afterDir="false" />
+    <list default="true" id="caa5c14f-448e-4f6e-bcf5-a7d508c49328" name="Changes" comment="GRAFIKA3 :(">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GMechanic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GMechanic.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GSaboteur.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GSaboteur.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Cistern.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Cistern.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GamePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GamePanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/IViewable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/IViewable.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PassiveElement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PassiveElement.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -96,7 +92,7 @@
       <workItem from="1683975361027" duration="828000" />
       <workItem from="1683993606182" duration="1042000" />
       <workItem from="1683999142435" duration="4613000" />
-      <workItem from="1685123988281" duration="3815000" />
+      <workItem from="1685123988281" duration="6432000" />
     </task>
     <task id="LOCAL-00001" summary="Start">
       <created>1681373982884</created>
@@ -189,7 +185,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684924622504</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="GRAFIKA3 :(">
+      <created>1685127939289</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1685127939289</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -216,7 +219,8 @@
     <MESSAGE value="All methods added, not all implemented yet" />
     <MESSAGE value="GRAFIKA :(" />
     <MESSAGE value="GRAFIKA2 :(" />
-    <option name="LAST_COMMIT_MESSAGE" value="GRAFIKA2 :(" />
+    <MESSAGE value="GRAFIKA3 :(" />
+    <option name="LAST_COMMIT_MESSAGE" value="GRAFIKA3 :(" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/szkeleton$Main.ic" NAME="Main Coverage Results" MODIFIED="1681670561842" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
