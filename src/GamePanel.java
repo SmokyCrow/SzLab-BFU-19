@@ -1,6 +1,8 @@
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -8,14 +10,65 @@ import java.io.IOException;
 public class GamePanel extends JPanel {
     private static final long serialVersionUID = 1L;
     private Game game;
+    private Graphics graphics;
     private Dimension size;
     private BufferedImage[] images;
 
-    public GamePanel(Game game) {
+    JButton bMove, bStick, bSlip, bPipeTamper, bPumpTamper, bSet, bRepair, bLeak;
+
+
+    public GamePanel(Game game, Graphics _g) {
         this.game = game;
+        graphics = _g;
         initImages();
         setPanelSize();
+        this.setLayout(null);
+        initButtons();
     }
+
+    private void initButtons(){
+        bMove = new JButton("Move");
+        bMove.setBounds(25, 420, 90, 30);
+        add(bMove);
+
+        bStick = new JButton("Sticky");
+        bStick.setBounds(25, 460, 90, 30);
+        bStick.addActionListener(makeSticky);
+        add(bStick);
+
+
+
+        bSet = new JButton("Set");
+        bSet.setBounds(25, 500, 90, 30);
+        add(bSet);
+
+        bLeak = new JButton("Damage");
+        bLeak.setBounds(25, 540, 90, 30);
+        add(bLeak);
+
+        bSlip = new JButton("Slippery");
+        bSlip.setBounds(130, 420, 90, 30);
+        add(bSlip);
+
+        bPipeTamper = new JButton("Pipe");
+        bPipeTamper.setBounds(130, 460, 90, 30);
+        add(bPipeTamper);
+
+        bPumpTamper = new JButton("Pump");
+        bPumpTamper.setBounds(130, 500, 90, 30);
+        add(bPumpTamper);
+
+        bRepair = new JButton("Repair");
+        bRepair.setBounds(130, 540, 90, 30);
+        add(bRepair);
+    }
+
+    ActionListener makeSticky = new ActionListener() {
+        public void actionPerformed(ActionEvent event) {
+            game.makeAction("s_1", "stick");
+            //update(graphics);
+        }
+    };
 
     private void initImages(){
         this.images = new BufferedImage[8];
@@ -133,5 +186,7 @@ public class GamePanel extends JPanel {
         super.paintComponent(g);
         update(g);
     }
+
+
 
 }

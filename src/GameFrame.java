@@ -19,7 +19,7 @@ public class GameFrame extends JFrame {
 
     public void init(Game _game){
         game = _game;
-        gamePanel = new GamePanel(this.game);
+        gamePanel = new GamePanel(this.game, this.getGraphics());
     }
 
     public void update(){

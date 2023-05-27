@@ -29,8 +29,8 @@ public class Main {
         game.connect("pu_1", "pi_2");
         game.connect("ci_1", "pi_2");
         game.addPlayer("s_1", "pi_1");
-        game.makeAction("s_1", "slip");
-        game.movePlayer("s_1", "pu_1");
+        //game.makeAction("s_1", "slip");
+        //game.movePlayer("s_1", "pu_1");
         game.randomBreak("pu_1");
         gameFrame.update();
 //        RandomAccessFile rafInput = new RandomAccessFile("../" + args[0], "r");
