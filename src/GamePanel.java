@@ -66,7 +66,7 @@ public class GamePanel extends JPanel {
     ActionListener makeSticky = new ActionListener() {
         public void actionPerformed(ActionEvent event) {
             game.makeAction("s_1", "stick");
-            //update(graphics);
+            update(graphics);
         }
     };
 
@@ -83,6 +83,9 @@ public class GamePanel extends JPanel {
     }
 
     public void update(Graphics g){
+        if(graphics == null && g != null){
+            graphics = g;
+        }
         drawBackGround(g);
         for (IViewable e: game.getGraphicList()) {
             e.Draw(this, g);
