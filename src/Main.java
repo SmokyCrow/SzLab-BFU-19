@@ -33,6 +33,12 @@ public class Main {
         //game.movePlayer("s_1", "pu_1");
         game.randomBreak("pu_1");
         gameFrame.update();
+        while (true){
+            if(gameFrame.getGamePanel().updateNeeded){
+                gameFrame.update();
+                gameFrame.getGamePanel().updateNeeded = false;
+            }
+        }
 //        RandomAccessFile rafInput = new RandomAccessFile("../" + args[0], "r");
 //        String testName = rafInput.readLine();
 //        List<String> allCommands = new ArrayList<>();

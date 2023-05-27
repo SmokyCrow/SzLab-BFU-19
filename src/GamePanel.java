@@ -10,16 +10,16 @@ import java.io.IOException;
 public class GamePanel extends JPanel {
     private static final long serialVersionUID = 1L;
     private Game game;
-    private Graphics graphics;
     private Dimension size;
     private BufferedImage[] images;
+
+    public boolean updateNeeded = false;
 
     JButton bMove, bStick, bSlip, bPipeTamper, bPumpTamper, bSet, bRepair, bLeak;
 
 
-    public GamePanel(Game game, Graphics _g) {
+    public GamePanel(Game game) {
         this.game = game;
-        graphics = _g;
         initImages();
         setPanelSize();
         this.setLayout(null);
@@ -66,7 +66,7 @@ public class GamePanel extends JPanel {
     ActionListener makeSticky = new ActionListener() {
         public void actionPerformed(ActionEvent event) {
             game.makeAction("s_1", "stick");
-            update(graphics);
+            updateNeeded = true;
         }
     };
 
@@ -83,9 +83,6 @@ public class GamePanel extends JPanel {
     }
 
     public void update(Graphics g){
-        if(graphics == null && g != null){
-            graphics = g;
-        }
         drawBackGround(g);
         for (IViewable e: game.getGraphicList()) {
             e.Draw(this, g);
