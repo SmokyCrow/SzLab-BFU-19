@@ -57,6 +57,10 @@ public class PassiveElement extends Element{
      * @return true vagy false, attol fuggoen, hogy siikerult-e a pumpa lerakasa
      */
     public boolean placeElement(Element e){
+        ((GPump)e).setX(((IViewable) this).getX());
+        ((GPump)e).setY(((IViewable) this).getY());
+        game.getElements().add(e);
+        game.getGraphicList().add((IViewable) e);
         ActiveElement temp = e1;
         removeConnection(e1);
         String pid = game.getNewPipeId();
@@ -72,9 +76,9 @@ public class PassiveElement extends Element{
      * @return true vagy false, attol fuggoen, hogy szomszedja-e vagy sem
      */
     public boolean isNeighbour(Element e) {
-        if(e1.getId() == e.getId())
+        if(e1.equals(e))
             return true;
-        if(e2.getId() == e.getId())
+        if(e2.equals(e))
             return true;
         return false;
     }
@@ -115,7 +119,7 @@ public class PassiveElement extends Element{
      * @return
      */
     public boolean occupied(){
-        return players.size() == 0;
+        return players.size() != 0;
     }
 
     /** A csovet viz befogadasara alkalmatlanna teszi

@@ -89,4 +89,8 @@ public abstract class Player {
     public void setElement(Element e){
         element = e;
     }
+
+    public Element getElement(){
+        return element;
+    }
 }

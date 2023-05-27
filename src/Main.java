@@ -17,21 +17,24 @@ public class Main {
      */
     public static void main(String[] args) throws Exception {
         Game game = new Game();
-        GameFrame gameFrame = new GameFrame(game);
+
         game.addElement("so_1", 32, 32);
         game.addElement("pu_1", 128, 128);
         game.addElement("pi_1", 0, 0);
         game.connect("so_1", "pi_1");
         game.connect("pu_1", "pi_1");
-        gameFrame.update();
+
         game.addElement("ci_1", 256, 128);
         game.addElement("pi_2", 0, 0);
         game.connect("pu_1", "pi_2");
         game.connect("ci_1", "pi_2");
         game.addPlayer("s_1", "pi_1");
+        game.addPlayer("m_1", "pu_1");
         //game.makeAction("s_1", "slip");
         //game.movePlayer("s_1", "pu_1");
         game.randomBreak("pu_1");
+
+        GameFrame gameFrame = new GameFrame(game);
         gameFrame.update();
         while (true){
             if(gameFrame.getGamePanel().updateNeeded){

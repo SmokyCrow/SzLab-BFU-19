@@ -60,6 +60,7 @@ public class Game {
 
         if(playerId.startsWith("m")) {
             GMechanic gm = new GMechanic(id);
+            gm.setNewPump(new GPump(2, this, 0, 0));
             players.add(gm);
             graphicList.add(gm);
         }
@@ -212,6 +213,7 @@ public class Game {
         if(p != null){
             if (p.element.toString().contains("pi")){
                 ((Mechanic) p).placePump();
+
             }
             else if(p.element.toString().contains("ci")){
                 ((Mechanic) p).getPump();

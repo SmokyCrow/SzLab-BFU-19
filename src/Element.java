@@ -84,7 +84,7 @@ public abstract class Element {
      * mezőt elhagyó játékost a players-ből.
      * @param p a mezőről eltávolíandó játékos
      */
-    public void removePlayer(Player p){ }
+    public void removePlayer(Player p){ players.remove(p); }
 
     /**
      * Megnézi, hogy a paraméterben kapott mező

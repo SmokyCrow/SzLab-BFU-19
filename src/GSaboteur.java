@@ -17,11 +17,11 @@ public class GSaboteur extends Saboteur implements IViewable{
 
     @Override
     public int getX() {
-        return 0;
+        return ((IViewable) element).getX();
     }
 
     @Override
     public int getY() {
-        return 0;
+        return ((IViewable) element).getY();
     }
 }
