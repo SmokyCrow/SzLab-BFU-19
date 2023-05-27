@@ -11,7 +11,7 @@ public class GPump extends Pump implements IViewable{
 
     @Override
     public void Draw(GamePanel gamePanel, Graphics g) {
-        gamePanel.drawPump(x, y, g);
+        gamePanel.drawPump(x, y, g, broken);
     }
 
     @Override

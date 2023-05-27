@@ -51,8 +51,11 @@ public class GamePanel extends JPanel {
         g.drawImage(images[0], x, y, null);
     }
 
-    public void drawPump(int x, int y, Graphics g){
+    public void drawPump(int x, int y, Graphics g, boolean broken){
         g.drawImage(images[2], x, y, null);
+        if(broken){
+            g.drawImage(images[7], x, y, null);
+        }
     }
 
     public void drawCistern(int x, int y, Graphics g){
@@ -63,8 +66,15 @@ public class GamePanel extends JPanel {
         g.drawImage(images[4], x, y, null);
     }
 
-    public void drawPipe(IViewable e1, IViewable e2, Graphics g){
-        g.setColor(new Color(0,51,102));
+    public void drawPipe(GPipe gp, IViewable e1, IViewable e2, Graphics g, boolean broken, boolean sticky, boolean slippery){
+        if(sticky) {
+            g.setColor(new Color(0, 133, 0));
+        }
+        else if(slippery){
+            g.setColor(new Color(0, 255, 255));
+        }
+        else
+            g.setColor(new Color(0, 51, 102));
         int thickness = 8;
         int offset = 16;
 
@@ -98,6 +108,9 @@ public class GamePanel extends JPanel {
         xPoints[3] = x2 + dx; yPoints[3] = y2 + dy;
 
         g.fillPolygon(xPoints, yPoints, 4);
+        if(broken){
+            g.drawImage(images[7], gp.getX(), gp.getY(), null);
+        }
     }
     private BufferedImage getImage(String name){
         BufferedImage img = null;

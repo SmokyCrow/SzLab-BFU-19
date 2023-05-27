@@ -4,12 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="caa5c14f-448e-4f6e-bcf5-a7d508c49328" name="Changes" comment="casting :(">
+    <list default="true" id="caa5c14f-448e-4f6e-bcf5-a7d508c49328" name="Changes" comment="MEchanic and Player graphic casting">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GMechanic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GMechanic.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GPipe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GPipe.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GSaboteur.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GSaboteur.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GPump.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GPump.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GamePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GamePanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -92,7 +91,7 @@
       <workItem from="1683975361027" duration="828000" />
       <workItem from="1683993606182" duration="1042000" />
       <workItem from="1683999142435" duration="4613000" />
-      <workItem from="1685123988281" duration="9246000" />
+      <workItem from="1685123988281" duration="10868000" />
     </task>
     <task id="LOCAL-00001" summary="Start">
       <created>1681373982884</created>
@@ -220,7 +219,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685133900085</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="MEchanic and Player graphic casting">
+      <created>1685134695408</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1685134695408</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -251,7 +257,8 @@
     <MESSAGE value="Game-ben grafikus elementeket adunk mar hozza" />
     <MESSAGE value="Graphics g" />
     <MESSAGE value="casting :(" />
-    <option name="LAST_COMMIT_MESSAGE" value="casting :(" />
+    <MESSAGE value="MEchanic and Player graphic casting" />
+    <option name="LAST_COMMIT_MESSAGE" value="MEchanic and Player graphic casting" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/szkeleton$Main.ic" NAME="Main Coverage Results" MODIFIED="1681670561842" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
