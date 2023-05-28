@@ -33,6 +33,7 @@ public class Main {
         //game.makeAction("s_1", "slip");
         //game.movePlayer("s_1", "pu_1");
         game.randomBreak("pu_1");
+        game.setPump("m_1", "pi_1", "pi_2");
 
         GameFrame gameFrame = new GameFrame(game);
         gameFrame.update();

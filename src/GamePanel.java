@@ -7,6 +7,7 @@ import java.io.File;
 import java.io.IOException;
 
 import static java.lang.Math.abs;
+import static java.lang.Math.sqrt;
 
 public class GamePanel extends JPanel {
     private static final long serialVersionUID = 1L;
@@ -202,7 +203,7 @@ public class GamePanel extends JPanel {
 
 
     private void initImages(){
-        this.images = new BufferedImage[8];
+        this.images = new BufferedImage[9];
         images[0] = getImage("Saboteur.png");
         images[1] = getImage("Mechanic.png");
         images[2] = getImage("Pump.png");
@@ -211,12 +212,42 @@ public class GamePanel extends JPanel {
         images[5] = getImage("Input.png");
         images[6] = getImage("Output.png");
         images[7] = getImage("Broken.png");
+        images[8] = getImage("Selected_Player.png");
     }
 
     public void update(Graphics g){
         drawBackGround(g);
         for (IViewable e: game.getGraphicList()) {
             e.Draw(this, g);
+        }
+        drawSelectedPlayer(g);
+    }
+
+    private void drawSelectedPlayer(Graphics g) {
+        g.setColor(new Color(255, 204, 153));
+        g.fillRect(400, 410, 150, 180);
+        g.setColor(Color.black);
+        g.drawRect(400, 410, 150, 180);
+        int offset = 25;
+        if(selectedPlayer != null) {
+            g.drawImage(images[8], ((IViewable) selectedPlayer).getX(), ((IViewable) selectedPlayer).getY(), null);
+            g.setFont(new Font(Font.DIALOG,  Font.BOLD, 15));
+            g.drawString(selectedPlayer.toString(), 405, 430);
+            g.drawString("Position: " + selectedPlayer.getElement().toString(), 405, 430 + offset);
+            if(selectedPlayer.getStuck())
+                g.drawString("Stuck: true", 405, 430 + 2 * offset);
+            else
+                g.drawString("Stuck: false", 405, 430 + 2 * offset);
+            if(selectedPlayer.toString().contains("m")){
+                if(((Mechanic) selectedPlayer).getNewPipe() != null)
+                    g.drawString("Has Pipe: true", 405, 430 + 3 * offset);
+                else
+                    g.drawString("Has Pipe: false", 405, 430 + 3 * offset);
+                if(((Mechanic) selectedPlayer).getNewPump() != null)
+                    g.drawString("Has Pump: true", 405, 430 + 4 * offset);
+                else
+                    g.drawString("Has Pump: false", 405, 430 + 4 * offset);
+            }
         }
     }
 
@@ -309,7 +340,7 @@ public class GamePanel extends JPanel {
     }
 
     private void setPanelSize() {
-        size = new Dimension(640, 600);
+        size = new Dimension(840, 600);
         setMinimumSize(size);
         setPreferredSize(size);
         setMaximumSize(size);
@@ -318,5 +349,22 @@ public class GamePanel extends JPanel {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         update(g);
+    }
+
+    public static BufferedImage rotate(BufferedImage img, double degree)
+    {
+        int width = img.getWidth();
+        int height = img.getHeight();
+
+        BufferedImage newImage = new BufferedImage(
+                img.getWidth(), img.getHeight(), img.getType());
+
+        Graphics2D g2 = newImage.createGraphics();
+
+        g2.rotate(Math.toRadians(degree), width / 2,
+                height / 2);
+        g2.drawImage(img, null, 0, 0);
+
+        return newImage;
     }
 }
