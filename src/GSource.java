@@ -17,7 +17,7 @@ public class GSource extends Source implements IViewable{
 
     @Override
     public void Draw(GamePanel gamePanel, Graphics g) {
-        gamePanel.drawSource(x, y, g);
+        gamePanel.drawSource(this, x, y, g);
     }
 
     @Override

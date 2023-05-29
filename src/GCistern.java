@@ -17,7 +17,7 @@ public class GCistern extends Cistern implements IViewable{
 
     @Override
     public void Draw(GamePanel gamePanel, Graphics g) {
-        gamePanel.drawCistern(x, y, g);
+        gamePanel.drawCistern(this, x, y, g);
     }
 
     @Override

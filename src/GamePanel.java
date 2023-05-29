@@ -203,7 +203,7 @@ public class GamePanel extends JPanel {
 
 
     private void initImages(){
-        this.images = new BufferedImage[9];
+        this.images = new BufferedImage[10];
         images[0] = getImage("Saboteur.png");
         images[1] = getImage("Mechanic.png");
         images[2] = getImage("Pump.png");
@@ -213,6 +213,7 @@ public class GamePanel extends JPanel {
         images[6] = getImage("Output.png");
         images[7] = getImage("Broken.png");
         images[8] = getImage("Selected_Player.png");
+        images[9] = getImage("Selected_Active.png");
     }
 
     public void update(Graphics g){
@@ -226,27 +227,54 @@ public class GamePanel extends JPanel {
     private void drawSelectedPlayer(Graphics g) {
         g.setColor(new Color(255, 204, 153));
         g.fillRect(400, 410, 150, 180);
+        g.fillRect(590, 410, 230, 180);
         g.setColor(Color.black);
         g.drawRect(400, 410, 150, 180);
+        g.drawRect(590, 410, 230, 180);
+        g.setFont(new Font(Font.DIALOG,  Font.BOLD, 15));
+        g.drawString("Player:", 405, 430);
+        g.drawString("Players element: ", 595, 430);
         int offset = 25;
         if(selectedPlayer != null) {
+            //Player info
             g.drawImage(images[8], ((IViewable) selectedPlayer).getX(), ((IViewable) selectedPlayer).getY(), null);
-            g.setFont(new Font(Font.DIALOG,  Font.BOLD, 15));
-            g.drawString(selectedPlayer.toString(), 405, 430);
-            g.drawString("Position: " + selectedPlayer.getElement().toString(), 405, 430 + offset);
+            g.drawString(selectedPlayer.toString(), 405, 430 + offset);
+            g.drawString("Position: " + selectedPlayer.getElement().toString(), 405, 430 + 2 * offset);
             if(selectedPlayer.getStuck())
-                g.drawString("Stuck: true", 405, 430 + 2 * offset);
+                g.drawString("Stuck: true", 405, 430 + 3 * offset);
             else
-                g.drawString("Stuck: false", 405, 430 + 2 * offset);
+                g.drawString("Stuck: false", 405, 430 + 3 * offset);
             if(selectedPlayer.toString().contains("m")){
                 if(((Mechanic) selectedPlayer).getNewPipe() != null)
-                    g.drawString("Has Pipe: true", 405, 430 + 3 * offset);
+                    g.drawString("Has Pipe: true", 405, 430 + 4 * offset);
                 else
-                    g.drawString("Has Pipe: false", 405, 430 + 3 * offset);
+                    g.drawString("Has Pipe: false", 405, 430 + 4 * offset);
                 if(((Mechanic) selectedPlayer).getNewPump() != null)
-                    g.drawString("Has Pump: true", 405, 430 + 4 * offset);
+                    g.drawString("Has Pump: true", 405, 430 + 5 * offset);
                 else
-                    g.drawString("Has Pump: false", 405, 430 + 4 * offset);
+                    g.drawString("Has Pump: false", 405, 430 + 5 * offset);
+            }
+            //Element info
+            g.drawString(selectedPlayer.getElement().toString(), 720, 430);
+            if(selectedPlayer.getElement().toString().contains("pi")){
+                g.drawString("Ends: " + ((PassiveElement) selectedPlayer.getElement()).getE1().toString() +
+                        " " + ((PassiveElement) selectedPlayer.getElement()).getE2().toString(), 595, 430 + offset);
+                g.drawString("Leaking: " + String.valueOf(selectedPlayer.getElement().broken), 595, 430 + 2 * offset);
+                g.drawString("Stick time: " + String.valueOf(((PassiveElement) selectedPlayer.getElement()).getStickTime()), 595, 430 + 3 * offset);
+                g.drawString("Slip time: " + String.valueOf(((PassiveElement) selectedPlayer.getElement()).getSlipTime()), 595, 430 + 4 * offset);
+                g.drawString("Protect time: " + String.valueOf(((PassiveElement) selectedPlayer.getElement()).getProtectTime()), 595, 430 + 5 * offset);
+                g.drawString("Water inside: " + String.valueOf(((PassiveElement) selectedPlayer.getElement()).getLoad()), 595, 430 + 6 * offset);
+            }
+            else {
+                g.drawString("Pipes: ", 595, 430 + offset);
+                int i = 0;
+                for (PassiveElement p: ((ActiveElement) selectedPlayer.getElement()).getPipes()) {
+                    g.drawString(p.toString(), 645 + i * 35, 430 + offset);
+                    i++;
+                }
+                if (selectedPlayer.getElement().toString().contains("pu")) {
+
+                }
             }
         }
     }
@@ -266,19 +294,25 @@ public class GamePanel extends JPanel {
         g.drawImage(images[0], x, y, null);
     }
 
-    public void drawPump(int x, int y, Graphics g, boolean broken){
+    public void drawPump(GPump gp, int x, int y, Graphics g, boolean broken){
         g.drawImage(images[2], x, y, null);
         if(broken){
             g.drawImage(images[7], x, y, null);
         }
+        if(selectedPlayer != null && selectedPlayer.getElement().toString().equals(gp.toString()))
+            g.drawImage(images[9], x, y, null);
     }
 
-    public void drawCistern(int x, int y, Graphics g){
+    public void drawCistern(GCistern gc, int x, int y, Graphics g){
         g.drawImage(images[3], x, y, null);
+        if(selectedPlayer != null && selectedPlayer.getElement().toString().equals(gc.toString()))
+            g.drawImage(images[9], x, y, null);
     }
 
-    public void drawSource(int x, int y, Graphics g){
+    public void drawSource(GSource gs, int x, int y, Graphics g){
         g.drawImage(images[4], x, y, null);
+        if(selectedPlayer != null && selectedPlayer.getElement().toString().equals(gs.toString()))
+            g.drawImage(images[9], x, y, null);
     }
 
     public void drawPipe(GPipe gp, IViewable e1, IViewable e2, Graphics g, boolean broken, boolean sticky, boolean slippery){
@@ -287,6 +321,9 @@ public class GamePanel extends JPanel {
         }
         else if(slippery){
             g.setColor(new Color(0, 255, 255));
+        }
+        else if(selectedPlayer != null && selectedPlayer.getElement().toString().equals(gp.toString())){
+            g.setColor(Color.red);
         }
         else
             g.setColor(new Color(0, 51, 102));
