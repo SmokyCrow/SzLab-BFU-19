@@ -64,6 +64,7 @@ public class GamePanel extends JPanel {
     private MouseListener playerSelected = new MouseAdapter() {
         public void mousePressed(MouseEvent me) {
             neighbours.clear();
+            selectedElement = null;
             selectedPlayer = playerList.getSelectedValue();
             for(int i = 0; i < game.getElements().size(); i++){
                 if(selectedPlayer.getElement().isNeighbour(game.getElements().get(i))){
@@ -82,6 +83,7 @@ public class GamePanel extends JPanel {
     private MouseListener elementSelected = new MouseAdapter() {
         public void mousePressed(MouseEvent me) {
             selectedElement = elementList.getSelectedValue();
+            updateNeeded = true;
         }
     };
 
@@ -135,6 +137,8 @@ public class GamePanel extends JPanel {
     private ActionListener makeSticky = new ActionListener() {
         public void actionPerformed(ActionEvent event) {
             game.makeAction(selectedPlayer.toString(), "stick");
+            selectedElement = null;
+            selectedPlayer = null;
             updateNeeded = true;
         }
     };
@@ -142,6 +146,8 @@ public class GamePanel extends JPanel {
     private ActionListener makeSlippery = new ActionListener() {
         public void actionPerformed(ActionEvent event) {
             game.makeAction(selectedPlayer.toString(), "slip");
+            selectedElement = null;
+            selectedPlayer = null;
             updateNeeded = true;
         }
     };
@@ -149,6 +155,8 @@ public class GamePanel extends JPanel {
     private ActionListener damage = new ActionListener() {
         public void actionPerformed(ActionEvent event) {
             game.damage(selectedPlayer.toString());
+            selectedElement = null;
+            selectedPlayer = null;
             updateNeeded = true;
         }
     };
@@ -156,6 +164,8 @@ public class GamePanel extends JPanel {
     private ActionListener repair = new ActionListener() {
         public void actionPerformed(ActionEvent event) {
             game.repair(selectedPlayer.toString());
+            selectedElement = null;
+            selectedPlayer = null;
             updateNeeded = true;
         }
     };
@@ -168,6 +178,8 @@ public class GamePanel extends JPanel {
                 throw new RuntimeException(e);
             }
             neighbours.clear();
+            selectedElement = null;
+            selectedPlayer = null;
             updateNeeded = true;
 
         }
@@ -176,6 +188,8 @@ public class GamePanel extends JPanel {
     private ActionListener pipe = new ActionListener() {
         public void actionPerformed(ActionEvent event) {
             game.pipeUpOrDown(selectedPlayer.toString(), selectedElement.toString());
+            selectedElement = null;
+            selectedPlayer = null;
             updateNeeded = true;
         }
     };
@@ -183,6 +197,9 @@ public class GamePanel extends JPanel {
     private ActionListener setIn = new ActionListener() {
         public void actionPerformed(ActionEvent event) {
             inPipe = (PassiveElement) elementList.getSelectedValue();
+            selectedElement = null;
+            selectedPlayer = null;
+            updateNeeded = true;
         }
     };
 
@@ -190,12 +207,17 @@ public class GamePanel extends JPanel {
         public void actionPerformed(ActionEvent event) {
             outPipe = (PassiveElement) elementList.getSelectedValue();
             game.setPump(selectedPlayer.toString(), inPipe.toString(), outPipe.toString());
+            selectedElement = null;
+            selectedPlayer = null;
+            updateNeeded = true;
         }
     };
 
     private ActionListener pump = new ActionListener() {
         public void actionPerformed(ActionEvent event) {
             game.pumpUpOrDown(selectedPlayer.toString());
+            selectedElement = null;
+            selectedPlayer = null;
             updateNeeded = true;
         }
     };
@@ -273,7 +295,13 @@ public class GamePanel extends JPanel {
                     i++;
                 }
                 if (selectedPlayer.getElement().toString().contains("pu")) {
-
+                    g.drawString("Input: " + ((Pump) selectedPlayer.getElement()).getInPipe().toString(), 595, 430 + 2 * offset);
+                    g.drawString("Output: " + ((Pump) selectedPlayer.getElement()).getOutPipe().toString(), 595, 430 + 3 * offset);
+                    g.drawString("Water Inside: " + String.valueOf(((Pump) selectedPlayer.getElement()).getWaterInside()), 595, 430 + 4 * offset);
+                    g.drawString("Broken: " + String.valueOf(((Pump) selectedPlayer.getElement()).broken), 595, 430 + 5 * offset);
+                }
+                else if (selectedPlayer.getElement().toString().contains("ci")) {
+                    g.drawString("Water Inside: " + String.valueOf(((Cistern) selectedPlayer.getElement()).getWaterInside()), 595, 430 + 2 * offset);
                 }
             }
         }
@@ -299,19 +327,19 @@ public class GamePanel extends JPanel {
         if(broken){
             g.drawImage(images[7], x, y, null);
         }
-        if(selectedPlayer != null && selectedPlayer.getElement().toString().equals(gp.toString()))
+        if(selectedElement != null && selectedElement.toString().equals(gp.toString()))
             g.drawImage(images[9], x, y, null);
     }
 
     public void drawCistern(GCistern gc, int x, int y, Graphics g){
         g.drawImage(images[3], x, y, null);
-        if(selectedPlayer != null && selectedPlayer.getElement().toString().equals(gc.toString()))
+        if(selectedElement != null && selectedElement.toString().equals(gc.toString()))
             g.drawImage(images[9], x, y, null);
     }
 
     public void drawSource(GSource gs, int x, int y, Graphics g){
         g.drawImage(images[4], x, y, null);
-        if(selectedPlayer != null && selectedPlayer.getElement().toString().equals(gs.toString()))
+        if(selectedElement != null && selectedElement.toString().equals(gs.toString()))
             g.drawImage(images[9], x, y, null);
     }
 
@@ -322,7 +350,7 @@ public class GamePanel extends JPanel {
         else if(slippery){
             g.setColor(new Color(0, 255, 255));
         }
-        else if(selectedPlayer != null && selectedPlayer.getElement().toString().equals(gp.toString())){
+        else if(selectedElement != null && selectedElement.toString().equals(gp.toString())){
             g.setColor(Color.red);
         }
         else
