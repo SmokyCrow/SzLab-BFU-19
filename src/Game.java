@@ -347,8 +347,8 @@ public class Game {
     }
 
     /** Ez a metódus ellenőrzi, hogy a játék véget ért-e. */
-    public void GameOverCheck(){
-
+    public boolean GameOverCheck(){
+        return time <= 0;
     }
 
     /**

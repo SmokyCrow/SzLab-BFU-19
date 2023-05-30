@@ -301,6 +301,10 @@ public class GamePanel extends JPanel {
      * @param g the <code>Graphics</code> context in which to paint
      */
     public void update(Graphics g){
+        if(game.GameOverCheck()){
+            drawGameOver(g);
+            return;
+        }
         drawBackGround(g);
         for (IViewable e: game.getGraphicList()) {
             if(e.toString().contains("pi"))
@@ -538,6 +542,31 @@ public class GamePanel extends JPanel {
         if(broken){
             g.drawImage(images[7], gp.getX(), gp.getY(), null);
         }
+    }
+
+    public void drawGameOver(Graphics g){
+        bLeak.hide();
+        bMove.hide();
+        bRepair.hide();
+        bPipeTamper.hide();
+        bSetIn.hide();
+        bPumpTamper.hide();
+        bSetOut.hide();
+        bSlip.hide();
+        bStick.hide();
+        elementList.hide();
+        playerList.hide();
+        g.setColor(Color.lightGray);
+        g.fillRect(0,0, size.width, size.height);
+        g.setColor(Color.red);
+        g.setFont(new Font(Font.DIALOG,  Font.BOLD, 30));
+        g.drawString("Game Over!", size.width / 2 - 70, size.width / 2 - 70);
+        if(game.getSaboteurPoints()>game.getMechanicPoints())
+            g.drawString("Saboteurs won!", size.width / 2 - 95, size.width / 2 - 30);
+        else if(game.getMechanicPoints()>game.getSaboteurPoints())
+            g.drawString("Mechanics won!", size.width / 2 - 95, size.width / 2 - 30);
+        else
+            g.drawString("Draw!", size.width / 2 - 30, size.width / 2 - 30);
     }
 
     /**

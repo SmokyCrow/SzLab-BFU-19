@@ -4,22 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="caa5c14f-448e-4f6e-bcf5-a7d508c49328" name="Changes" comment="Elvileg kész, kommentelés kell">
+    <list default="true" id="caa5c14f-448e-4f6e-bcf5-a7d508c49328" name="Changes" comment="Almost done2">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GCistern.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GCistern.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GMechanic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GMechanic.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GPipe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GPipe.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GPump.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GPump.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GSaboteur.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GSaboteur.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GSource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GSource.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GameFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GamePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GamePanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/IViewable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/IViewable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Mechanic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Mechanic.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PassiveElement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PassiveElement.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,16 +35,15 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
@@ -280,14 +267,7 @@
       <option name="project" value="LOCAL" />
       <updated>1685465670204</updated>
     </task>
-    <task id="LOCAL-00026" summary="Elvileg kész, kommentelés kell">
-      <created>1685473825180</created>
-      <option name="number" value="00026" />
-      <option name="presentableId" value="LOCAL-00026" />
-      <option name="project" value="LOCAL" />
-      <updated>1685473825180</updated>
-    </task>
-    <option name="localTasksCounter" value="27" />
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -325,25 +305,29 @@
     <MESSAGE value="Selection xd" />
     <MESSAGE value="Almost done" />
     <MESSAGE value="Almost done2" />
-    <MESSAGE value="Elvileg kész, kommentelés kell" />
-    <option name="LAST_COMMIT_MESSAGE" value="Elvileg kész, kommentelés kell" />
+    <option name="LAST_COMMIT_MESSAGE" value="Almost done2" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Pump.java</url>
-          <line>58</line>
+          <line>63</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Pump.java</url>
-          <line>59</line>
+          <line>64</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/PassiveElement.java</url>
+          <line>89</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Pump.java</url>
-          <line>60</line>
+          <line>65</line>
           <option name="timeStamp" value="5" />
         </line-breakpoint>
       </breakpoints>
