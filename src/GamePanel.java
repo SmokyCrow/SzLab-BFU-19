@@ -238,8 +238,6 @@ public class GamePanel extends JPanel {
         images[2] = getImage("Pump.png");
         images[3] = getImage("Cistern.png");
         images[4] = getImage("Source.png");
-        images[5] = getImage("Input.png");
-        images[6] = getImage("Output.png");
         images[7] = getImage("Broken.png");
         images[8] = getImage("Selected_Player.png");
         images[9] = getImage("Selected_Active.png");
@@ -248,7 +246,16 @@ public class GamePanel extends JPanel {
     public void update(Graphics g){
         drawBackGround(g);
         for (IViewable e: game.getGraphicList()) {
-            e.Draw(this, g);
+            if(e.toString().contains("pi"))
+                e.Draw(this, g);
+        }
+        for (IViewable e: game.getGraphicList()) {
+            if(e.toString().contains("ci") || e.toString().contains("pu") || e.toString().contains("so"))
+                e.Draw(this, g);
+        }
+        for (IViewable e: game.getGraphicList()) {
+            if(e.toString().contains("m_") || e.toString().contains("s_"))
+                e.Draw(this, g);
         }
         drawSelectedPlayer(g);
     }
