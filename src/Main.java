@@ -49,6 +49,7 @@ public class Main {
         game.setPump("m_1", "pi_1", "pi_2");
         game.movePlayer("m_1", "pi_2");
         game.movePlayer("m_1", "ci_1");
-
+        game.setMechanicPoints(0);
+        game.setSaboteurPoints(0);
     }
 }

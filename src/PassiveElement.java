@@ -91,7 +91,7 @@ public class PassiveElement extends Element{
         leak();
         int temp = load;
         load = 0;
-        return load;
+        return temp;
     }
 
     /**

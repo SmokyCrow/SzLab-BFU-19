@@ -94,7 +94,6 @@ public class Game {
             ((PassiveElement) e1).setConnection((ActiveElement) e2);
         else if(e2.toString().startsWith("pi"))
             ((PassiveElement) e2).setConnection((ActiveElement) e1);
-        tick();
     }
     /**
      * Játékos mozgatása adott elemre.
@@ -117,7 +116,6 @@ public class Game {
 
         if(p != null) {
             p.move(e);
-            tick();
         }
     }
 
@@ -134,7 +132,6 @@ public class Game {
 
         if(m != null){
             ((Mechanic)m).repair();
-            tick();
         }
     }
     /**
@@ -150,7 +147,6 @@ public class Game {
 
         if(p != null){
             p.punchHole();
-            tick();
         }
     }
     /**
@@ -176,7 +172,6 @@ public class Game {
 
         if(p != null && pi1 != null && pi2 != null){
             p.controlPump((PassiveElement) pi1, (PassiveElement) pi2);
-            tick();
         }
     }
     /**
@@ -198,12 +193,10 @@ public class Game {
         }
 
         if(p != null && pi != null){
-            System.out.println(pi + " " + ((PassiveElement)pi).e1 + " " + ((PassiveElement)pi).e2);
             if(((Mechanic) p).getNewPipe() == null)
                 ((Mechanic) p).pickUpPipe((PassiveElement) pi);
             else
                 ((Mechanic) p).placePipe();
-            tick();
         }
     }
     /**
@@ -226,7 +219,6 @@ public class Game {
             else if(p.element.toString().contains("ci")){
                 ((Mechanic) p).getPump();
             }
-            tick();
         }
     }
     /**
@@ -248,9 +240,6 @@ public class Game {
         if(action.equals("slip") && p.toString().startsWith("s")){
             ((Saboteur)p).makeSlippery();
         }
-
-        tick();
-
     }
     /**
      * Ez a metódus egy elem pumpájának véletlenszerű meghibásodását okozza.
@@ -402,9 +391,21 @@ public class Game {
                     if(((PassiveElement) element).getStickTime() != 0)
                         ((PassiveElement) element).setStickTime(((PassiveElement) element).getStickTime() - 1);
                 }
+                if(element.toString().contains("ci")){
+                    element.moveWater();
+                }
 
             }
-            System.out.println(time);
+            for (Element e : elements) {
+                if(e.toString().contains("pu")){
+                    e.moveWater();
+                }
+            }
+            for (Element e : elements) {
+                if(e.toString().contains("so")){
+                    e.moveWater();
+                }
+            }
         }
         if(time % 10 == 0) {
             randomBreak(randomPump().toString());
@@ -417,8 +418,6 @@ public class Game {
             if(elements.get(i).toString().startsWith("ci")){
                 GPipe pi = new GPipe(Integer.parseInt(getNewPipeId().replaceAll("[^0-9]", "")), this);
                 pi.setConnection((Cistern) elements.get(i));
-
-                System.out.println(pi + " " + pi.e1 + " "  + pi.e2);
                 String id = getNewPipeId();
                 addElement(id, ((IViewable)elements.get(i)).getX(), ((IViewable)elements.get(i)).getY());
                 connect(id, elements.get(i).toString());
@@ -546,5 +545,24 @@ public class Game {
                 e = element;
         }
         return (Pump) e;
+    }
+
+    public int getTime(){
+        return time;
+    }
+
+    public int getMechanicPoints(){
+        return mechanicPoints;
+    }
+
+    public int getSaboteurPoints(){
+        return saboteurPoints;
+    }
+    public void setMechanicPoints(int a){
+        mechanicPoints = a;
+    }
+
+    public void setSaboteurPoints(int a){
+        saboteurPoints = a;
     }
 }

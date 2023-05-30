@@ -59,11 +59,15 @@ public class Pump extends ActiveElement{
         if(!broken && inPipe != null) {
             int a = inPipe.removeWater();
             waterInside += a;
-            if(outPipe.getLoad() == 0){
+            if(outPipe.getLoad() == 0 && waterInside > 0){
                 outPipe.addWater(1);
                 if(waterInside > 0)
                     waterInside -= 1;
             }
+        }
+        else if(inPipe != null && outPipe != null) {
+            inPipe.leak();
+            outPipe.leak();
         }
     }
 

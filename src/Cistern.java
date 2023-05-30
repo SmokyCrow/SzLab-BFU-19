@@ -24,6 +24,7 @@ public class Cistern extends ActiveElement{
     public void moveWater(){
         for(int i = 0; i < pipes.size(); i++){
             int points = pipes.get(i).removeWater();
+            waterInside += points;
             game.incrementMechanicPoints(points);
         }
     }

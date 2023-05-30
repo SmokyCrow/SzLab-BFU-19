@@ -44,7 +44,7 @@ public class GamePanel extends JPanel {
         JScrollPane scPlayer = new JScrollPane();
         scPlayer.setViewportView(playerList);
         playerList.setLayoutOrientation(JList.VERTICAL);
-        scPlayer.setBounds(245, 420, 60, 25);
+        scPlayer.setBounds(245, 520, 60, 25);
         playerList.addMouseListener(playerSelected);
         add(scPlayer);
     }
@@ -55,7 +55,7 @@ public class GamePanel extends JPanel {
         JScrollPane scNeighbour = new JScrollPane();
         scNeighbour.setViewportView(elementList);
         elementList.setLayoutOrientation(JList.VERTICAL);
-        scNeighbour.setBounds(245, 460, 60, 25);
+        scNeighbour.setBounds(245, 560, 60, 25);
         elementList.addMouseListener(elementSelected);
         add(scNeighbour);
         updateNeeded = true;
@@ -89,47 +89,47 @@ public class GamePanel extends JPanel {
 
     private void initButtons(){
         bMove = new JButton("Move");
-        bMove.setBounds(25, 420, 90, 30);
+        bMove.setBounds(25, 520, 90, 30);
         bMove.addActionListener(move);
         add(bMove);
 
         bStick = new JButton("Sticky");
-        bStick.setBounds(25, 460, 90, 30);
+        bStick.setBounds(25, 560, 90, 30);
         bStick.addActionListener(makeSticky);
         add(bStick);
 
         bRepair = new JButton("Repair");
-        bRepair.setBounds(25, 500, 90, 30);
+        bRepair.setBounds(25, 600, 90, 30);
         bRepair.addActionListener(repair);
         add(bRepair);
 
         bLeak = new JButton("Damage");
-        bLeak.setBounds(25, 540, 90, 30);
+        bLeak.setBounds(25, 640, 90, 30);
         bLeak.addActionListener(damage);
         add(bLeak);
 
         bSlip = new JButton("Slippery");
-        bSlip.setBounds(130, 420, 90, 30);
+        bSlip.setBounds(130, 520, 90, 30);
         bSlip.addActionListener(makeSlippery);
         add(bSlip);
 
         bPipeTamper = new JButton("Pipe");
-        bPipeTamper.setBounds(130, 460, 90, 30);
+        bPipeTamper.setBounds(130, 560, 90, 30);
         bPipeTamper.addActionListener(pipe);
         add(bPipeTamper);
 
         bPumpTamper = new JButton("Pump");
-        bPumpTamper.setBounds(130, 500, 90, 30);
+        bPumpTamper.setBounds(130, 600, 90, 30);
         bPumpTamper.addActionListener(pump);
         add(bPumpTamper);
 
         bSetIn = new JButton("Set in");
-        bSetIn.setBounds(130, 540, 90, 30);
+        bSetIn.setBounds(130, 640, 90, 30);
         bSetIn.addActionListener(setIn);
         add(bSetIn);
 
         bSetOut = new JButton("Set out");
-        bSetOut.setBounds(235, 540, 90, 30);
+        bSetOut.setBounds(235, 640, 90, 30);
         bSetOut.addActionListener(setOut);
         add(bSetOut);
     }
@@ -140,6 +140,7 @@ public class GamePanel extends JPanel {
             selectedElement = null;
             selectedPlayer = null;
             updateNeeded = true;
+            game.tick();
         }
     };
 
@@ -149,6 +150,7 @@ public class GamePanel extends JPanel {
             selectedElement = null;
             selectedPlayer = null;
             updateNeeded = true;
+            game.tick();
         }
     };
 
@@ -158,6 +160,7 @@ public class GamePanel extends JPanel {
             selectedElement = null;
             selectedPlayer = null;
             updateNeeded = true;
+            game.tick();
         }
     };
 
@@ -167,6 +170,7 @@ public class GamePanel extends JPanel {
             selectedElement = null;
             selectedPlayer = null;
             updateNeeded = true;
+            game.tick();
         }
     };
 
@@ -181,6 +185,7 @@ public class GamePanel extends JPanel {
             selectedElement = null;
             selectedPlayer = null;
             updateNeeded = true;
+            game.tick();
         }
     };
 
@@ -190,6 +195,7 @@ public class GamePanel extends JPanel {
             selectedElement = null;
             selectedPlayer = null;
             updateNeeded = true;
+            game.tick();
         }
     };
 
@@ -209,6 +215,7 @@ public class GamePanel extends JPanel {
             selectedElement = null;
             selectedPlayer = null;
             updateNeeded = true;
+            game.tick();
         }
     };
 
@@ -218,6 +225,7 @@ public class GamePanel extends JPanel {
             selectedElement = null;
             selectedPlayer = null;
             updateNeeded = true;
+            game.tick();
         }
     };
 
@@ -247,66 +255,66 @@ public class GamePanel extends JPanel {
 
     private void drawSelectedPlayer(Graphics g) {
         g.setColor(new Color(255, 204, 153));
-        g.fillRect(400, 410, 150, 180);
-        g.fillRect(590, 410, 230, 180);
+        g.fillRect(400, 510, 150, 180);
+        g.fillRect(590, 510, 230, 180);
         g.setColor(Color.black);
-        g.drawRect(400, 410, 150, 180);
-        g.drawRect(590, 410, 230, 180);
+        g.drawRect(400, 510, 150, 180);
+        g.drawRect(590, 510, 230, 180);
         g.setFont(new Font(Font.DIALOG,  Font.BOLD, 15));
-        g.drawString("Player:", 405, 430);
-        g.drawString("Players element: ", 595, 430);
+        g.drawString("Player:", 405, 530);
+        g.drawString("Players element: ", 595, 530);
         int offset = 25;
         if(selectedPlayer != null) {
             //Player info
             g.drawImage(images[8], ((IViewable) selectedPlayer).getX(), ((IViewable) selectedPlayer).getY(), null);
-            g.drawString(selectedPlayer.toString(), 405, 430 + offset);
-            g.drawString("Position: " + selectedPlayer.getElement().toString(), 405, 430 + 2 * offset);
+            g.drawString(selectedPlayer.toString(), 405, 530 + offset);
+            g.drawString("Position: " + selectedPlayer.getElement().toString(), 405, 530 + 2 * offset);
             if(selectedPlayer.getStuck())
-                g.drawString("Stuck: true", 405, 430 + 3 * offset);
+                g.drawString("Stuck: true", 405, 530 + 3 * offset);
             else
-                g.drawString("Stuck: false", 405, 430 + 3 * offset);
+                g.drawString("Stuck: false", 405, 530 + 3 * offset);
             if(selectedPlayer.toString().contains("m")){
                 if(((Mechanic) selectedPlayer).getNewPipe() != null)
-                    g.drawString("Has Pipe: true", 405, 430 + 4 * offset);
+                    g.drawString("Has Pipe: true", 405, 530 + 4 * offset);
                 else
-                    g.drawString("Has Pipe: false", 405, 430 + 4 * offset);
+                    g.drawString("Has Pipe: false", 405, 530 + 4 * offset);
                 if(((Mechanic) selectedPlayer).getNewPump() != null)
-                    g.drawString("Has Pump: true", 405, 430 + 5 * offset);
+                    g.drawString("Has Pump: true", 405, 530 + 5 * offset);
                 else
-                    g.drawString("Has Pump: false", 405, 430 + 5 * offset);
+                    g.drawString("Has Pump: false", 405, 530 + 5 * offset);
             }
             //Element info
-            g.drawString(selectedPlayer.getElement().toString(), 720, 430);
+            g.drawString(selectedPlayer.getElement().toString(), 720, 530);
             if(selectedPlayer.getElement().toString().contains("pi")){
                 g.drawString("Ends: " + ((PassiveElement) selectedPlayer.getElement()).getE1().toString() +
-                        " " + ((PassiveElement) selectedPlayer.getElement()).getE2().toString(), 595, 430 + offset);
-                g.drawString("Leaking: " + String.valueOf(selectedPlayer.getElement().broken), 595, 430 + 2 * offset);
-                g.drawString("Stick time: " + String.valueOf(((PassiveElement) selectedPlayer.getElement()).getStickTime()), 595, 430 + 3 * offset);
-                g.drawString("Slip time: " + String.valueOf(((PassiveElement) selectedPlayer.getElement()).getSlipTime()), 595, 430 + 4 * offset);
-                g.drawString("Protect time: " + String.valueOf(((PassiveElement) selectedPlayer.getElement()).getProtectTime()), 595, 430 + 5 * offset);
-                g.drawString("Water inside: " + String.valueOf(((PassiveElement) selectedPlayer.getElement()).getLoad()), 595, 430 + 6 * offset);
+                        " " + ((PassiveElement) selectedPlayer.getElement()).getE2().toString(), 595, 530 + offset);
+                g.drawString("Leaking: " + String.valueOf(selectedPlayer.getElement().broken), 595, 530 + 2 * offset);
+                g.drawString("Stick time: " + String.valueOf(((PassiveElement) selectedPlayer.getElement()).getStickTime()), 595, 530 + 3 * offset);
+                g.drawString("Slip time: " + String.valueOf(((PassiveElement) selectedPlayer.getElement()).getSlipTime()), 595, 530 + 4 * offset);
+                g.drawString("Protect time: " + String.valueOf(((PassiveElement) selectedPlayer.getElement()).getProtectTime()), 595, 530 + 5 * offset);
+                g.drawString("Water inside: " + String.valueOf(((PassiveElement) selectedPlayer.getElement()).getLoad()), 595, 530 + 6 * offset);
             }
             else {
-                g.drawString("Pipes: ", 595, 430 + offset);
+                g.drawString("Pipes: ", 595, 530 + offset);
                 int i = 0;
                 for (PassiveElement p: ((ActiveElement) selectedPlayer.getElement()).getPipes()) {
-                    g.drawString(p.toString(), 645 + i * 35, 430 + offset);
+                    g.drawString(p.toString(), 645 + i * 35, 530 + offset);
                     i++;
                 }
                 if (selectedPlayer.getElement().toString().contains("pu")) {
                     if(((Pump) selectedPlayer.getElement()).getInPipe() != null)
-                        g.drawString("Input: " + ((Pump) selectedPlayer.getElement()).getInPipe().toString(), 595, 430 + 2 * offset);
+                        g.drawString("Input: " + ((Pump) selectedPlayer.getElement()).getInPipe().toString(), 595, 530 + 2 * offset);
                     else if(((Pump) selectedPlayer.getElement()).getInPipe() == null)
-                        g.drawString("Input: " + "-", 595, 430 + 2 * offset);
+                        g.drawString("Input: " + "-", 595, 530 + 2 * offset);
                     if(((Pump) selectedPlayer.getElement()).getOutPipe() != null)
-                        g.drawString("Output: " + ((Pump) selectedPlayer.getElement()).getOutPipe().toString(), 595, 430 + 3 * offset);
+                        g.drawString("Output: " + ((Pump) selectedPlayer.getElement()).getOutPipe().toString(), 595, 530 + 3 * offset);
                     else if(((Pump) selectedPlayer.getElement()).getOutPipe() == null)
-                        g.drawString("Output: " + "-", 595, 430 + 3 * offset);
-                    g.drawString("Water Inside: " + String.valueOf(((Pump) selectedPlayer.getElement()).getWaterInside()), 595, 430 + 4 * offset);
-                    g.drawString("Broken: " + String.valueOf(((Pump) selectedPlayer.getElement()).broken), 595, 430 + 5 * offset);
+                        g.drawString("Output: " + "-", 595, 530 + 3 * offset);
+                    g.drawString("Water Inside: " + String.valueOf(((Pump) selectedPlayer.getElement()).getWaterInside()), 595, 530 + 4 * offset);
+                    g.drawString("Broken: " + String.valueOf(((Pump) selectedPlayer.getElement()).broken), 595, 530 + 5 * offset);
                 }
                 else if (selectedPlayer.getElement().toString().contains("ci")) {
-                    g.drawString("Water Inside: " + String.valueOf(((Cistern) selectedPlayer.getElement()).getWaterInside()), 595, 430 + 2 * offset);
+                    g.drawString("Water Inside: " + String.valueOf(((Cistern) selectedPlayer.getElement()).getWaterInside()), 595, 530 + 2 * offset);
                 }
             }
         }
@@ -316,7 +324,23 @@ public class GamePanel extends JPanel {
         g.setColor(new Color(233, 168, 102));
         g.fillRect(0,0, size.width, size.height - 200);
         g.setColor(new Color(204, 102, 0));
-        g.fillRect(0,size.height - 200, size.width, size.height - (size.height - 200));
+        g.fillRect(0,size.height - 300, size.width, size.height - (size.height - 300));
+
+        int offset = 35;
+        g.setColor(new Color(204, 255, 229));
+        g.fillRect(15, 410, 100, 30);
+        g.fillRect(15, 410 + offset, 160, 30);
+        g.fillRect(15, 410 + 2 * offset, 160, 30);
+
+        g.setColor(Color.BLACK);
+        g.drawRect(15, 410, 100, 30);
+        g.drawRect(15, 410 + offset, 160, 30);
+        g.drawRect(15, 410 + 2 * offset, 160, 30);
+
+        g.setFont(new Font(Font.DIALOG,  Font.BOLD, 15));
+        g.drawString("Time left: " + game.getTime(), 18, 431);
+        g.drawString("Mechanic points: " + game.getMechanicPoints(), 18, 431 + offset);
+        g.drawString("Saboteur points: " + game.getSaboteurPoints(), 18, 431 + 2 * offset);
     }
 
     public void drawMechanic(int x, int y, Graphics g){
@@ -410,7 +434,7 @@ public class GamePanel extends JPanel {
     }
 
     private void setPanelSize() {
-        size = new Dimension(840, 600);
+        size = new Dimension(840, 700);
         setMinimumSize(size);
         setPreferredSize(size);
         setMaximumSize(size);
