@@ -56,7 +56,7 @@ public class Pump extends ActiveElement{
      * Ha a kimeneti cső tele van akkor nem tud beletenni több vizet
      */
     public void moveWater(){
-        if(!broken) {
+        if(!broken && inPipe != null) {
             int a = inPipe.removeWater();
             waterInside += a;
             if(outPipe.getLoad() == 0){

@@ -1,6 +1,8 @@
 import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.util.ArrayList;
+import java.util.Random;
+import java.util.concurrent.TimeUnit;
 
 /**
  * A Game osztály reprezentálja a játékot
@@ -60,7 +62,6 @@ public class Game {
 
         if(playerId.startsWith("m")) {
             GMechanic gm = new GMechanic(id);
-            gm.setNewPump(new GPump(2, this, 0, 0));
             players.add(gm);
             graphicList.add(gm);
         }
@@ -93,12 +94,12 @@ public class Game {
             ((PassiveElement) e1).setConnection((ActiveElement) e2);
         else if(e2.toString().startsWith("pi"))
             ((PassiveElement) e2).setConnection((ActiveElement) e1);
+        tick();
     }
     /**
      * Játékos mozgatása adott elemre.
      * @param playerId A játékos azonosítója.
      * @param elementId Az elem azonosítója.
-     @throws Exception Ha nem található a játékos vagy az elem, vagy ha a mozgatás sikertelen.
      */
 
     public void movePlayer(String playerId, String elementId) throws Exception {
@@ -114,8 +115,10 @@ public class Game {
                 e = element;
         }
 
-        if(p != null)
+        if(p != null) {
             p.move(e);
+            tick();
+        }
     }
 
     /**
@@ -131,6 +134,7 @@ public class Game {
 
         if(m != null){
             ((Mechanic)m).repair();
+            tick();
         }
     }
     /**
@@ -146,6 +150,7 @@ public class Game {
 
         if(p != null){
             p.punchHole();
+            tick();
         }
     }
     /**
@@ -171,6 +176,7 @@ public class Game {
 
         if(p != null && pi1 != null && pi2 != null){
             p.controlPump((PassiveElement) pi1, (PassiveElement) pi2);
+            tick();
         }
     }
     /**
@@ -192,10 +198,12 @@ public class Game {
         }
 
         if(p != null && pi != null){
+            System.out.println(pi + " " + ((PassiveElement)pi).e1 + " " + ((PassiveElement)pi).e2);
             if(((Mechanic) p).getNewPipe() == null)
                 ((Mechanic) p).pickUpPipe((PassiveElement) pi);
             else
                 ((Mechanic) p).placePipe();
+            tick();
         }
     }
     /**
@@ -218,6 +226,7 @@ public class Game {
             else if(p.element.toString().contains("ci")){
                 ((Mechanic) p).getPump();
             }
+            tick();
         }
     }
     /**
@@ -240,6 +249,8 @@ public class Game {
             ((Saboteur)p).makeSlippery();
         }
 
+        tick();
+
     }
     /**
      * Ez a metódus egy elem pumpájának véletlenszerű meghibásodását okozza.
@@ -260,131 +271,171 @@ public class Game {
      * @param out a kimeneti fájl
      * @throws IOException ha valamilyen I/O hiba történik
      */
-    public void listMap(String id, RandomAccessFile out) throws IOException {
-        Element e = null;
-        Player p = null;
-        for (Element element : elements){
-            if (element.toString().equals(id))
-                e = element;
-        }
+//    public void listMap(String id, RandomAccessFile out) throws IOException {
+//        Element e = null;
+//        Player p = null;
+//        for (Element element : elements){
+//            if (element.toString().equals(id))
+//                e = element;
+//        }
+//
+//        if(e != null){
+//            //System.out.println("stat " + id);
+//            out.writeBytes("stat " + id+"\r\n");
+//            if(e.toString().startsWith("pi")){
+//                if(((PassiveElement)e).getE1() != null && ((PassiveElement)e).getE2() != null){
+//                    //System.out.println("\tends: " + ((PassiveElement)e).getE1() + "," + ((PassiveElement)e).getE2());
+//                    out.writeBytes("ends: " + ((PassiveElement)e).getE1() + "," + ((PassiveElement)e).getE2()+"\r\n");
+//                }
+//                else if(((PassiveElement)e).getE1() == null && ((PassiveElement)e).getE2() != null)
+//                    //System.out.println("\tends: " + ((PassiveElement)e).getE2());
+//                    out.writeBytes("ends: " + ((PassiveElement)e).getE2()+"\r\n");
+//                else if(((PassiveElement)e).getE1() != null && ((PassiveElement)e).getE2() == null)
+//                    //System.out.println("\tends: " + ((PassiveElement)e).getE1());
+//                    out.writeBytes("ends: " + ((PassiveElement)e).getE1()+"\r\n");
+//                else
+//                    //System.out.println("\tends:");
+//                    out.writeBytes("ends:\r\n");
+//                //System.out.println("\tleaking: " + e.broken);
+//                out.writeBytes("leaking: " + e.broken+"\r\n");
+//                //System.out.println("\tstickTime: " + ((PassiveElement)e).getStickTime());
+//                out.writeBytes("stickTime: " + ((PassiveElement)e).getStickTime()+"\r\n");
+//                //System.out.println("\tslipTime: " + ((PassiveElement)e).getSlipTime());
+//                out.writeBytes("slipTime: " + ((PassiveElement)e).getSlipTime()+"\r\n");
+//                //System.out.println("\tprotectTime: " + ((PassiveElement)e).getProtectTime());
+//                out.writeBytes("protectTime: " + ((PassiveElement)e).getProtectTime()+"\r\n");
+//                //System.out.println("\twaterInside: " + ((PassiveElement)e).getLoad());
+//                out.writeBytes("waterInside: " + ((PassiveElement)e).getLoad()+"\r\n");
+//            }
+//
+//            if(e.toString().startsWith("pu")){
+//                //System.out.print("\tpipes: ");
+//                out.writeBytes("pipes: ");
+//                for(int i = 0; i < ((Pump)e).getPipes().size() - 1; i++){
+//                    //System.out.print(((Pump)e).getPipes().get(i) + ",");
+//                    out.writeBytes(((Pump)e).getPipes().get(i) + ",");
+//                }
+//                if(((Pump)e).getPipes().size() > 0)
+//                    //System.out.print(((Pump)e).getPipes().get(((Pump)e).getPipes().size() - 1));
+//                    out.writeBytes(((Pump)e).getPipes().get(((Pump)e).getPipes().size() - 1)+"");
+//                out.writeBytes("\r\n");
+//                //System.out.println("\n\tinPipe: " + ((Pump)e).getInPipe());
+//                out.writeBytes("inPipe: " + ((Pump)e).getInPipe()+"\r\n");
+//                //System.out.println("\toutPipe: " + ((Pump)e).getOutPipe());
+//                out.writeBytes("outPipe: " + ((Pump)e).getOutPipe()+"\r\n");
+//                //System.out.println("\twaterInside: " + ((Pump)e).getWaterInside());
+//                out.writeBytes("waterInside: " + ((Pump)e).getWaterInside()+"\r\n");
+//                //System.out.println("\tbroken: " + e.broken);
+//                out.writeBytes("broken: " + e.broken+"\r\n");
+//            }
+//
+//            if(e.toString().startsWith("ci")){
+//                //System.out.print("\tpipes: ");
+//                out.writeBytes("pipes: ");
+//                for(int i = 0; i < ((Cistern)e).getPipes().size() - 1; i++){
+//                    //System.out.print(((Cistern)e).getPipes().get(i) + ",");
+//                    out.writeBytes(((Cistern)e).getPipes().get(i) + ",");
+//                }
+//                //System.out.print(((Cistern)e).getPipes().get(((Cistern)e).getPipes().size() - 1));
+//                out.writeBytes(((Cistern)e).getPipes().get(((Cistern)e).getPipes().size() - 1)+"");
+//                out.writeBytes("\r\n");
+//                //System.out.println("\n\twaterInside: " + ((Cistern)e).getWaterInside());
+//                out.writeBytes("waterInside: " + ((Cistern)e).getWaterInside()+"\r\n");
+//            }
+//
+//            if(e.toString().startsWith("so")){
+//                //System.out.print("\tpipes: ");
+//                out.writeBytes("pipes: ");
+//                for(int i = 0; i < ((Source)e).getPipes().size() - 1; i++){
+//                    //System.out.print(((Source)e).getPipes().get(i) + ",");
+//                    out.writeBytes(((Source)e).getPipes().get(i) + ",");
+//                }
+//                //System.out.print(((Source)e).getPipes().get(((Source)e).getPipes().size() - 1));
+//                out.writeBytes(((Source)e).getPipes().get(((Source)e).getPipes().size() - 1)+"");
+//                out.writeBytes("\r\n");
+//                //System.out.print("\n");
+//            }
+//        }
+//
+//
+//        for (Player player : players){
+//            if (player.toString().equals(id))
+//                p = player;
+//        }
+//        if(p != null){
+//            //System.out.println("stat " + id);
+//            out.writeBytes("stat " + id +"\r\n");
+//            if(p.toString().startsWith("s")){
+//                //System.out.println("\tpos: " + p.element);
+//                out.writeBytes("pos: " + p.element+"\r\n");
+//                //System.out.println("\tstuck: " + p.getStuck());
+//                out.writeBytes("stuck: " + p.getStuck()+"\r\n");
+//            }
+//
+//            if(p.toString().startsWith("m")){
+//                //System.out.println("\tpos: " + p.element);
+//                out.writeBytes("pos: " + p.element+"\r\n");
+//                //System.out.println("\tstuck: " + p.getStuck());
+//                out.writeBytes("stuck: " + p.getStuck()+"\r\n");
+//                //System.out.println("\thasPipe: " + (((Mechanic)p).getNewPipe() != null));
+//                out.writeBytes("hasPipe: " + (((Mechanic)p).getNewPipe() != null)+"\r\n");
+//                //System.out.println("\thasPump: " + (((Mechanic)p).getNewPump() != null));
+//                out.writeBytes("hasPump: " + (((Mechanic)p).getNewPump() != null)+"\r\n");
+//            }
+//        }
+//
+//
+//    }
 
-        if(e != null){
-            //System.out.println("stat " + id);
-            out.writeBytes("stat " + id+"\r\n");
-            if(e.toString().startsWith("pi")){
-                if(((PassiveElement)e).getE1() != null && ((PassiveElement)e).getE2() != null){
-                    //System.out.println("\tends: " + ((PassiveElement)e).getE1() + "," + ((PassiveElement)e).getE2());
-                    out.writeBytes("ends: " + ((PassiveElement)e).getE1() + "," + ((PassiveElement)e).getE2()+"\r\n");
-                }
-                else if(((PassiveElement)e).getE1() == null && ((PassiveElement)e).getE2() != null)
-                    //System.out.println("\tends: " + ((PassiveElement)e).getE2());
-                    out.writeBytes("ends: " + ((PassiveElement)e).getE2()+"\r\n");
-                else if(((PassiveElement)e).getE1() != null && ((PassiveElement)e).getE2() == null)
-                    //System.out.println("\tends: " + ((PassiveElement)e).getE1());
-                    out.writeBytes("ends: " + ((PassiveElement)e).getE1()+"\r\n");
-                else
-                    //System.out.println("\tends:");
-                    out.writeBytes("ends:\r\n");
-                //System.out.println("\tleaking: " + e.broken);
-                out.writeBytes("leaking: " + e.broken+"\r\n");
-                //System.out.println("\tstickTime: " + ((PassiveElement)e).getStickTime());
-                out.writeBytes("stickTime: " + ((PassiveElement)e).getStickTime()+"\r\n");
-                //System.out.println("\tslipTime: " + ((PassiveElement)e).getSlipTime());
-                out.writeBytes("slipTime: " + ((PassiveElement)e).getSlipTime()+"\r\n");
-                //System.out.println("\tprotectTime: " + ((PassiveElement)e).getProtectTime());
-                out.writeBytes("protectTime: " + ((PassiveElement)e).getProtectTime()+"\r\n");
-                //System.out.println("\twaterInside: " + ((PassiveElement)e).getLoad());
-                out.writeBytes("waterInside: " + ((PassiveElement)e).getLoad()+"\r\n");
-            }
-
-            if(e.toString().startsWith("pu")){
-                //System.out.print("\tpipes: ");
-                out.writeBytes("pipes: ");
-                for(int i = 0; i < ((Pump)e).getPipes().size() - 1; i++){
-                    //System.out.print(((Pump)e).getPipes().get(i) + ",");
-                    out.writeBytes(((Pump)e).getPipes().get(i) + ",");
-                }
-                if(((Pump)e).getPipes().size() > 0)
-                    //System.out.print(((Pump)e).getPipes().get(((Pump)e).getPipes().size() - 1));
-                    out.writeBytes(((Pump)e).getPipes().get(((Pump)e).getPipes().size() - 1)+"");
-                out.writeBytes("\r\n");
-                //System.out.println("\n\tinPipe: " + ((Pump)e).getInPipe());
-                out.writeBytes("inPipe: " + ((Pump)e).getInPipe()+"\r\n");
-                //System.out.println("\toutPipe: " + ((Pump)e).getOutPipe());
-                out.writeBytes("outPipe: " + ((Pump)e).getOutPipe()+"\r\n");
-                //System.out.println("\twaterInside: " + ((Pump)e).getWaterInside());
-                out.writeBytes("waterInside: " + ((Pump)e).getWaterInside()+"\r\n");
-                //System.out.println("\tbroken: " + e.broken);
-                out.writeBytes("broken: " + e.broken+"\r\n");
-            }
-
-            if(e.toString().startsWith("ci")){
-                //System.out.print("\tpipes: ");
-                out.writeBytes("pipes: ");
-                for(int i = 0; i < ((Cistern)e).getPipes().size() - 1; i++){
-                    //System.out.print(((Cistern)e).getPipes().get(i) + ",");
-                    out.writeBytes(((Cistern)e).getPipes().get(i) + ",");
-                }
-                //System.out.print(((Cistern)e).getPipes().get(((Cistern)e).getPipes().size() - 1));
-                out.writeBytes(((Cistern)e).getPipes().get(((Cistern)e).getPipes().size() - 1)+"");
-                out.writeBytes("\r\n");
-                //System.out.println("\n\twaterInside: " + ((Cistern)e).getWaterInside());
-                out.writeBytes("waterInside: " + ((Cistern)e).getWaterInside()+"\r\n");
-            }
-
-            if(e.toString().startsWith("so")){
-                //System.out.print("\tpipes: ");
-                out.writeBytes("pipes: ");
-                for(int i = 0; i < ((Source)e).getPipes().size() - 1; i++){
-                    //System.out.print(((Source)e).getPipes().get(i) + ",");
-                    out.writeBytes(((Source)e).getPipes().get(i) + ",");
-                }
-                //System.out.print(((Source)e).getPipes().get(((Source)e).getPipes().size() - 1));
-                out.writeBytes(((Source)e).getPipes().get(((Source)e).getPipes().size() - 1)+"");
-                out.writeBytes("\r\n");
-                //System.out.print("\n");
-            }
-        }
-
-
-        for (Player player : players){
-            if (player.toString().equals(id))
-                p = player;
-        }
-        if(p != null){
-            //System.out.println("stat " + id);
-            out.writeBytes("stat " + id +"\r\n");
-            if(p.toString().startsWith("s")){
-                //System.out.println("\tpos: " + p.element);
-                out.writeBytes("pos: " + p.element+"\r\n");
-                //System.out.println("\tstuck: " + p.getStuck());
-                out.writeBytes("stuck: " + p.getStuck()+"\r\n");
-            }
-
-            if(p.toString().startsWith("m")){
-                //System.out.println("\tpos: " + p.element);
-                out.writeBytes("pos: " + p.element+"\r\n");
-                //System.out.println("\tstuck: " + p.getStuck());
-                out.writeBytes("stuck: " + p.getStuck()+"\r\n");
-                //System.out.println("\thasPipe: " + (((Mechanic)p).getNewPipe() != null));
-                out.writeBytes("hasPipe: " + (((Mechanic)p).getNewPipe() != null)+"\r\n");
-                //System.out.println("\thasPump: " + (((Mechanic)p).getNewPump() != null));
-                out.writeBytes("hasPump: " + (((Mechanic)p).getNewPump() != null)+"\r\n");
-            }
-        }
-
-
-    }
 
     /**
      * Ez a metódus lecsökkenti az időt 1 másodperccel, amíg el nem éri a 0-t.
-     * @throws InterruptedException ha a szál várakozása megszakad
      * */
-    public void tick() throws InterruptedException {
-        while(time != 0){
+    public void tick() {
+        if(time != 0){
             time--;
-            wait(1000);
+            for (Element element : elements){
+                //element.moveWater();
+                if(element.toString().startsWith("pi")){
+                    if(((PassiveElement) element).getSlipTime() != 0)
+                        ((PassiveElement) element).setSlipTime(((PassiveElement) element).getSlipTime() - 1);
+                    if(((PassiveElement) element).getStickTime() != 0)
+                        ((PassiveElement) element).setStickTime(((PassiveElement) element).getStickTime() - 1);
+                }
+
+            }
+            System.out.println(time);
         }
+        if(time % 10 == 0) {
+            randomBreak(randomPump().toString());
+            makePipe();
+        }
+    }
+
+    public void makePipe(){
+        for(int i = 0; i < elements.size(); i++){
+            if(elements.get(i).toString().startsWith("ci")){
+                GPipe pi = new GPipe(Integer.parseInt(getNewPipeId().replaceAll("[^0-9]", "")), this);
+                pi.setConnection((Cistern) elements.get(i));
+
+                System.out.println(pi + " " + pi.e1 + " "  + pi.e2);
+                String id = getNewPipeId();
+                addElement(id, ((IViewable)elements.get(i)).getX(), ((IViewable)elements.get(i)).getY());
+                connect(id, elements.get(i).toString());
+            }
+        }
+    }
+
+    Pump randomPump(){
+        ArrayList<Pump> pumps = new ArrayList<>();
+        for (Element element : elements) {
+            if (element.toString().startsWith("pu"))
+                pumps.add((Pump) element);
+        }
+        Random rand = new Random();
+        int rand_int = rand.nextInt(0, pumps.size());
+        return pumps.get(rand_int);
+
     }
     /**
      * Ez a metódus megnöveli a szerelő pontjait a megadott értékkel.
@@ -496,5 +547,4 @@ public class Game {
         }
         return (Pump) e;
     }
-
 }

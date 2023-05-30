@@ -60,6 +60,7 @@ public class Mechanic extends Player{
      * @param p a felvenni kívánt cső
      */
     public void pickUpPipe(PassiveElement p) {
+
         if(newPipe == null){
            if(element.giveElementEnd(p))
                newPipe = p;

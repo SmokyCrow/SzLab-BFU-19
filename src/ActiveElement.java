@@ -56,7 +56,7 @@ public class ActiveElement extends Element{
      */
     public boolean isNeighbour(Element e){
         for (PassiveElement pipe : pipes) {
-            if (e.toString().startsWith("pi") && pipe.equals((PassiveElement)e) && !((PassiveElement)e).occupied())
+            if (e.toString().startsWith("pi") && pipe.toString().equals(e.toString()) && !((PassiveElement)e).occupied())
                 return true;
         }
         return false;

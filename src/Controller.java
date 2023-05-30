@@ -7,25 +7,40 @@ import java.util.Random;
  */
 
 public class Controller {
-    /** Tagvaltozo, a jatekban levo ciszternak listaja
-     */
-    private ArrayList<Cistern> cisterns;
+    Game game;
+    Controller(Game _game){
+        game = _game;
+        initElements();
+    }
+
+    private ArrayList<Cistern> cisterns = new ArrayList<>();
+
     /**
      * Tagvaltozo, a jatekban levo pumpak listaja
      */
-    private ArrayList<Pump> pumps;
+    private ArrayList<Pump> pumps = new ArrayList<>();
+
+    public void initElements(){
+        for(int i = 0; i < game.getElements().size(); i++){
+
+            if(game.getElements().toString().startsWith("pu"))
+
+                pumps.add((Pump) game.getElements().get(i));
+
+            if(game.getElements().toString().startsWith("ci"))
+                cisterns.add((Cistern) game.getElements().get(i));
+        }
+    }
 
     /** A parameterkent kapott pumpan meghívja a breakPump() metodust
-     * @param p Amin meghívja a breakPump() metodust
      */
-    public void breakPump(Pump p){
+    public void breakPump(){
         Random rand = new Random();
-        int rand_int = rand.nextInt(1, pumps.size() - 1);
+        int rand_int = rand.nextInt(0, pumps.size());
         int pumpId = 0;
         while(pumpId != rand_int)
             pumpId++;
         pumps.get(pumpId).breakRandom();
-
     }
 
     /** A ciszternanal bizonyos idokozonkent uj csovek letrehozasa
@@ -35,5 +50,9 @@ public class Controller {
 
 
         }
+    }
+
+    public void makePump(){
+
     }
 }

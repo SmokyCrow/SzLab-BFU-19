@@ -34,11 +34,9 @@ public class Cistern extends ActiveElement{
      */
     public Element giveElement(){
         String id = game.getNewPumpId();
-        game.addElement(id, 0, 0);
+        game.addElement(id, -100, -100);
         return game.getPump(id);
     }
-
-
 
     /**
      * Az objektumok típusának kiírásához használt felüldefiniált függvény

@@ -181,7 +181,6 @@ public class GamePanel extends JPanel {
             selectedElement = null;
             selectedPlayer = null;
             updateNeeded = true;
-
         }
     };
 
@@ -295,8 +294,14 @@ public class GamePanel extends JPanel {
                     i++;
                 }
                 if (selectedPlayer.getElement().toString().contains("pu")) {
-                    g.drawString("Input: " + ((Pump) selectedPlayer.getElement()).getInPipe().toString(), 595, 430 + 2 * offset);
-                    g.drawString("Output: " + ((Pump) selectedPlayer.getElement()).getOutPipe().toString(), 595, 430 + 3 * offset);
+                    if(((Pump) selectedPlayer.getElement()).getInPipe() != null)
+                        g.drawString("Input: " + ((Pump) selectedPlayer.getElement()).getInPipe().toString(), 595, 430 + 2 * offset);
+                    else if(((Pump) selectedPlayer.getElement()).getInPipe() == null)
+                        g.drawString("Input: " + "-", 595, 430 + 2 * offset);
+                    if(((Pump) selectedPlayer.getElement()).getOutPipe() != null)
+                        g.drawString("Output: " + ((Pump) selectedPlayer.getElement()).getOutPipe().toString(), 595, 430 + 3 * offset);
+                    else if(((Pump) selectedPlayer.getElement()).getOutPipe() == null)
+                        g.drawString("Output: " + "-", 595, 430 + 3 * offset);
                     g.drawString("Water Inside: " + String.valueOf(((Pump) selectedPlayer.getElement()).getWaterInside()), 595, 430 + 4 * offset);
                     g.drawString("Broken: " + String.valueOf(((Pump) selectedPlayer.getElement()).broken), 595, 430 + 5 * offset);
                 }
