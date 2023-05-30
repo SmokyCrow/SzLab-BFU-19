@@ -1,4 +1,0 @@
-teszteset19
-initmap pu_1
-break pu_1
-stat pu_1
