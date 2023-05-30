@@ -9,12 +9,10 @@ public class Main {
     static Game game = new Game();
 
     /**
-
-     A main metódus beolvassa a megadott fájlból az input parancsokat, lefuttatja a Game osztály megfelelő metódusait,
-     és a kimenetet egy fájlba írja.
-     A metódus egy string tömböt vesz át bemeneti argumentumként.
-     @param args Egy string tömb, amely tartalmazza az input fájl nevét.
-     @throws Exception ha hiba történik az input vagy output fájl olvasása vagy írása közben.
+     * A játék fő ciklusa
+     * Itt jön létrer a kezdő pálya itt jön létre a grafikus felület
+     @param args
+     @throws Exception
      */
     public static void main(String[] args) throws Exception {
 
@@ -30,6 +28,11 @@ public class Main {
         }
     }
 
+    /**
+     * a kezdeti pálya létrehozása
+     * @param game a játék referenciája
+     * @throws Exception
+     */
     static void gameInit(Game game) throws Exception {
         game.addElement("so_1", 0, 200);
         game.addElement("pu_1", 400, 100);

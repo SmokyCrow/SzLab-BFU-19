@@ -90,6 +90,10 @@ public abstract class Player {
         element = e;
     }
 
+    /**
+     * Visszaadja azt az elementet ,amin a játékos áll
+     * @return
+     */
     public Element getElement(){
         return element;
     }

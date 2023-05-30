@@ -17,7 +17,8 @@ public class Game {
     private int time = 300;
 
     /**
-     * Az addElement metódus létrehoz egy új elemet az id paraméter alapján és hozzáadja az elements listához.
+     * Az addElement metódus létrehoz egy új elemet az id paraméter alapján és hozzáadja az elements
+     * és a graphicsList listához.
      * @param id az új elem azonosítója
      */
     public void addElement(String id, int x, int y){
@@ -100,7 +101,6 @@ public class Game {
      * @param playerId A játékos azonosítója.
      * @param elementId Az elem azonosítója.
      */
-
     public void movePlayer(String playerId, String elementId) throws Exception {
         Player p = null;
         Element e = null;
@@ -120,7 +120,7 @@ public class Game {
     }
 
     /**
-     * Az adott játékos (mechanikus) megjavítja a járművet.
+     * Az adott játékos (mechanikus) megjavítja az elemenet.
      * @param playerId a játékos azonosítója
      */
     public void repair(String playerId){
@@ -134,8 +134,9 @@ public class Game {
             ((Mechanic)m).repair();
         }
     }
+
     /**
-     * Az adott játékos (aktív elem) kárt okoz a járműben.
+     * Az adott játékos kárt okoz a csőben.
      * @param playerId a játékos azonosítója
      */
     public void damage(String playerId){
@@ -149,6 +150,7 @@ public class Game {
             p.punchHole();
         }
     }
+
     /**
      Az adott játékos  vezérli a pumpát az adott két passzív elem (cső) között.
      * @param playerId a játékos azonosítója
@@ -174,6 +176,7 @@ public class Game {
             p.controlPump((PassiveElement) pi1, (PassiveElement) pi2);
         }
     }
+
     /**
      * Az adott játékos (mechanikus) fel- vagy leviszi az adott passzív elemet.
      * @param playerId a játékos azonosítója
@@ -199,6 +202,7 @@ public class Game {
                 ((Mechanic) p).placePipe();
         }
     }
+
     /**
      * Ez a metódus írja le a pumpa elhelyezést (csőnél), felvételt (ciszternánál).
      * @param playerId a játékos azonosítója
@@ -221,8 +225,9 @@ public class Game {
             }
         }
     }
+
     /**
-     * Ez a metódus egy játékos akcióját hajtja végre.
+     * Ez a metódus egy játékos akcióját hajtja végre (slip, stick).
      * @param playerId a játékos azonosítója
      * @param action az akció, amit a játékos végrehajt
      */
@@ -241,6 +246,7 @@ public class Game {
             ((Saboteur)p).makeSlippery();
         }
     }
+
     /**
      * Ez a metódus egy elem pumpájának véletlenszerű meghibásodását okozza.
      * @param elementId az elem azonosítója
@@ -253,132 +259,11 @@ public class Game {
         }
         ((Pump) pu).breakRandom();
     }
-    /**
-     * Kiírja az elemre vonatkozó adatokat a megadott RandomAccessFile-ba, ha az elem létezik.
-     * Az adatokat az elem típusa alapján határozza meg.
-     * @param id az elem azonosítója
-     * @param out a kimeneti fájl
-     * @throws IOException ha valamilyen I/O hiba történik
-     */
-//    public void listMap(String id, RandomAccessFile out) throws IOException {
-//        Element e = null;
-//        Player p = null;
-//        for (Element element : elements){
-//            if (element.toString().equals(id))
-//                e = element;
-//        }
-//
-//        if(e != null){
-//            //System.out.println("stat " + id);
-//            out.writeBytes("stat " + id+"\r\n");
-//            if(e.toString().startsWith("pi")){
-//                if(((PassiveElement)e).getE1() != null && ((PassiveElement)e).getE2() != null){
-//                    //System.out.println("\tends: " + ((PassiveElement)e).getE1() + "," + ((PassiveElement)e).getE2());
-//                    out.writeBytes("ends: " + ((PassiveElement)e).getE1() + "," + ((PassiveElement)e).getE2()+"\r\n");
-//                }
-//                else if(((PassiveElement)e).getE1() == null && ((PassiveElement)e).getE2() != null)
-//                    //System.out.println("\tends: " + ((PassiveElement)e).getE2());
-//                    out.writeBytes("ends: " + ((PassiveElement)e).getE2()+"\r\n");
-//                else if(((PassiveElement)e).getE1() != null && ((PassiveElement)e).getE2() == null)
-//                    //System.out.println("\tends: " + ((PassiveElement)e).getE1());
-//                    out.writeBytes("ends: " + ((PassiveElement)e).getE1()+"\r\n");
-//                else
-//                    //System.out.println("\tends:");
-//                    out.writeBytes("ends:\r\n");
-//                //System.out.println("\tleaking: " + e.broken);
-//                out.writeBytes("leaking: " + e.broken+"\r\n");
-//                //System.out.println("\tstickTime: " + ((PassiveElement)e).getStickTime());
-//                out.writeBytes("stickTime: " + ((PassiveElement)e).getStickTime()+"\r\n");
-//                //System.out.println("\tslipTime: " + ((PassiveElement)e).getSlipTime());
-//                out.writeBytes("slipTime: " + ((PassiveElement)e).getSlipTime()+"\r\n");
-//                //System.out.println("\tprotectTime: " + ((PassiveElement)e).getProtectTime());
-//                out.writeBytes("protectTime: " + ((PassiveElement)e).getProtectTime()+"\r\n");
-//                //System.out.println("\twaterInside: " + ((PassiveElement)e).getLoad());
-//                out.writeBytes("waterInside: " + ((PassiveElement)e).getLoad()+"\r\n");
-//            }
-//
-//            if(e.toString().startsWith("pu")){
-//                //System.out.print("\tpipes: ");
-//                out.writeBytes("pipes: ");
-//                for(int i = 0; i < ((Pump)e).getPipes().size() - 1; i++){
-//                    //System.out.print(((Pump)e).getPipes().get(i) + ",");
-//                    out.writeBytes(((Pump)e).getPipes().get(i) + ",");
-//                }
-//                if(((Pump)e).getPipes().size() > 0)
-//                    //System.out.print(((Pump)e).getPipes().get(((Pump)e).getPipes().size() - 1));
-//                    out.writeBytes(((Pump)e).getPipes().get(((Pump)e).getPipes().size() - 1)+"");
-//                out.writeBytes("\r\n");
-//                //System.out.println("\n\tinPipe: " + ((Pump)e).getInPipe());
-//                out.writeBytes("inPipe: " + ((Pump)e).getInPipe()+"\r\n");
-//                //System.out.println("\toutPipe: " + ((Pump)e).getOutPipe());
-//                out.writeBytes("outPipe: " + ((Pump)e).getOutPipe()+"\r\n");
-//                //System.out.println("\twaterInside: " + ((Pump)e).getWaterInside());
-//                out.writeBytes("waterInside: " + ((Pump)e).getWaterInside()+"\r\n");
-//                //System.out.println("\tbroken: " + e.broken);
-//                out.writeBytes("broken: " + e.broken+"\r\n");
-//            }
-//
-//            if(e.toString().startsWith("ci")){
-//                //System.out.print("\tpipes: ");
-//                out.writeBytes("pipes: ");
-//                for(int i = 0; i < ((Cistern)e).getPipes().size() - 1; i++){
-//                    //System.out.print(((Cistern)e).getPipes().get(i) + ",");
-//                    out.writeBytes(((Cistern)e).getPipes().get(i) + ",");
-//                }
-//                //System.out.print(((Cistern)e).getPipes().get(((Cistern)e).getPipes().size() - 1));
-//                out.writeBytes(((Cistern)e).getPipes().get(((Cistern)e).getPipes().size() - 1)+"");
-//                out.writeBytes("\r\n");
-//                //System.out.println("\n\twaterInside: " + ((Cistern)e).getWaterInside());
-//                out.writeBytes("waterInside: " + ((Cistern)e).getWaterInside()+"\r\n");
-//            }
-//
-//            if(e.toString().startsWith("so")){
-//                //System.out.print("\tpipes: ");
-//                out.writeBytes("pipes: ");
-//                for(int i = 0; i < ((Source)e).getPipes().size() - 1; i++){
-//                    //System.out.print(((Source)e).getPipes().get(i) + ",");
-//                    out.writeBytes(((Source)e).getPipes().get(i) + ",");
-//                }
-//                //System.out.print(((Source)e).getPipes().get(((Source)e).getPipes().size() - 1));
-//                out.writeBytes(((Source)e).getPipes().get(((Source)e).getPipes().size() - 1)+"");
-//                out.writeBytes("\r\n");
-//                //System.out.print("\n");
-//            }
-//        }
-//
-//
-//        for (Player player : players){
-//            if (player.toString().equals(id))
-//                p = player;
-//        }
-//        if(p != null){
-//            //System.out.println("stat " + id);
-//            out.writeBytes("stat " + id +"\r\n");
-//            if(p.toString().startsWith("s")){
-//                //System.out.println("\tpos: " + p.element);
-//                out.writeBytes("pos: " + p.element+"\r\n");
-//                //System.out.println("\tstuck: " + p.getStuck());
-//                out.writeBytes("stuck: " + p.getStuck()+"\r\n");
-//            }
-//
-//            if(p.toString().startsWith("m")){
-//                //System.out.println("\tpos: " + p.element);
-//                out.writeBytes("pos: " + p.element+"\r\n");
-//                //System.out.println("\tstuck: " + p.getStuck());
-//                out.writeBytes("stuck: " + p.getStuck()+"\r\n");
-//                //System.out.println("\thasPipe: " + (((Mechanic)p).getNewPipe() != null));
-//                out.writeBytes("hasPipe: " + (((Mechanic)p).getNewPipe() != null)+"\r\n");
-//                //System.out.println("\thasPump: " + (((Mechanic)p).getNewPump() != null));
-//                out.writeBytes("hasPump: " + (((Mechanic)p).getNewPump() != null)+"\r\n");
-//            }
-//        }
-//
-//
-//    }
-
 
     /**
-     * Ez a metódus lecsökkenti az időt 1 másodperccel, amíg el nem éri a 0-t.
+     * Ez a metódus lecsökkenti az időt minden játékos akciókor, amíg el nem éri a 0-t.
+     * itt hívódik meg a víz mozgatásáért felelős függvény, a ciszternánál keletkező csövek létrehozása és
+     * egy pumpa random elrontása is
      * */
     public void tick() {
         if(time != 0){
@@ -413,6 +298,9 @@ public class Game {
         }
     }
 
+    /**
+     * Létrehoz egy új csövet a ciszternában, amit majd fel tud venni a szerelő
+     */
     public void makePipe(){
         for(int i = 0; i < elements.size(); i++){
             if(elements.get(i).toString().startsWith("ci")){
@@ -425,6 +313,11 @@ public class Game {
         }
     }
 
+
+    /**
+     * Visszaad egy véletlenszerűen kiválasztott pumpát az elrontáshoz
+     * @return egy pumpa
+     */
     Pump randomPump(){
         ArrayList<Pump> pumps = new ArrayList<>();
         for (Element element : elements) {
@@ -436,6 +329,7 @@ public class Game {
         return pumps.get(rand_int);
 
     }
+
     /**
      * Ez a metódus megnöveli a szerelő pontjait a megadott értékkel.
      * @param n a növekmény értéke
@@ -451,30 +345,12 @@ public class Game {
     public void incrementSaboteurPoints(int n){
         saboteurPoints += n;
     }
+
     /** Ez a metódus ellenőrzi, hogy a játék véget ért-e. */
     public void GameOverCheck(){
 
     }
-    /**
-     * Ez a metódus inicializálja az elemeket a megadott szám alapján.
-     * @param n az inicializálandó elemek száma
-     * */
-    public void elementInit(int n){
 
-    }
-
-    /** Ez a metódus inicializálja a játékosokat a megadott két érték alapján.
-     */
-    public void playerInit(int s, int m){
-
-    }
-    /**
-     * Ez a metódus véletlenszerűen elhelyezi a megadott játékost a pályán.
-     * @param p a játékos, amelyet el kell helyezni
-     */
-    public void placePlayerRandom(Player p){
-
-    }
     /**
      * Ez a metódus visszaadja az összes elemet tartalmazó ArrayList-et.
      * @return az elemeket tartalmazó ArrayList
@@ -489,13 +365,18 @@ public class Game {
     public ArrayList<Player> getPlayers(){
         return players;
     }
+
+    /**
+     * Visszaadja a graphicList listát
+     * @return graphicList
+     */
+    public ArrayList<IViewable> getGraphicList(){return graphicList;}
+
     /**
      * Ez a metódus visszaad egy új csőelem azonosítót.
      * Az azonosítóban "pi" előtag szerepel, majd egy sorszám következik.
      *  @return az új csőelem azonosítója
      */
-
-    public ArrayList<IViewable> getGraphicList(){return graphicList;}
     public String getNewPipeId(){
         int ctr = 1;
         for (Element e: elements) {
@@ -504,6 +385,7 @@ public class Game {
         }
         return "pi_"+ctr;
     }
+
     /**
      *  Ez a metódus visszaad egy új pumpa azonosítót.
      * Az azonosítóban "pu" előtag szerepel, majd egy sorszám következik.
@@ -518,8 +400,6 @@ public class Game {
         return "pu_"+ctr;
     }
 
-
-
     /**
      * Visszaadja a megadott azonosítójú csövet.
      * @param id a cső azonosítója
@@ -533,6 +413,7 @@ public class Game {
         }
         return (PassiveElement) e;
     }
+
     /**
      * Visszaadja a megadott azonosítójú szivattyút.
      * @param id a szivattyú azonosítója
@@ -547,21 +428,42 @@ public class Game {
         return (Pump) e;
     }
 
+    /**
+     * Visszaadja az idő értékét
+     * @return aktuális idő
+     */
     public int getTime(){
         return time;
     }
 
+    /**
+     * visszaadja a szerelők pontjait
+     * @return szerelők pontja
+     */
     public int getMechanicPoints(){
         return mechanicPoints;
     }
 
+    /**
+     * visszaadja a szabotőrök pontjait
+     * @return szabotőrök pontja
+     */
     public int getSaboteurPoints(){
         return saboteurPoints;
     }
+
+    /**
+     * beállítja a szerelők pontját
+     * @param a a beállítandó érték
+     */
     public void setMechanicPoints(int a){
         mechanicPoints = a;
     }
 
+    /**
+     * beállítja a szabotőrök pontját
+     * @param a a beállítandó érték
+     */
     public void setSaboteurPoints(int a){
         saboteurPoints = a;
     }

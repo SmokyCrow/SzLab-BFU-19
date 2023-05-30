@@ -9,6 +9,10 @@ import java.io.IOException;
 import static java.lang.Math.abs;
 import static java.lang.Math.sqrt;
 
+/**
+ * A játékpanelt megvalósító osztály
+ * Itt rajzolódnak ki az objektumok
+ */
 public class GamePanel extends JPanel {
     private static final long serialVersionUID = 1L;
     private Game game;
@@ -18,13 +22,15 @@ public class GamePanel extends JPanel {
     private Element selectedElement;
     private PassiveElement inPipe, outPipe;
     DefaultListModel<Element> neighbours;
-
     public boolean updateNeeded = false;
-
     JButton bMove, bStick, bSlip, bPipeTamper, bPumpTamper, bSetIn, bSetOut, bRepair, bLeak;
     JList<Player> playerList;
     JList<Element> elementList;
 
+    /**
+     * Konstruktor, inicializálja a képeket, gombokat, a listákat
+     * @param game a játék referenciája
+     */
     public GamePanel(Game game) {
         this.game = game;
         initImages();
@@ -35,6 +41,9 @@ public class GamePanel extends JPanel {
         initElementList();
     }
 
+    /**
+     * Létrehozza a játékosokat tároló gördülő listát
+     */
     private void initPlayerList(){
         DefaultListModel<Player> players = new DefaultListModel<>();
         for (int i = 0; i < game.getPlayers().size(); i++){
@@ -49,6 +58,9 @@ public class GamePanel extends JPanel {
         add(scPlayer);
     }
 
+    /**
+     * Létrehozza az elementeket tartalmazó gördülő listát
+     */
     private void initElementList(){
         neighbours = new DefaultListModel<>();
         elementList = new JList<>(neighbours);
@@ -61,6 +73,11 @@ public class GamePanel extends JPanel {
         updateNeeded = true;
     }
 
+    /**
+     * Egy játékos kiválasztását figyelő eseménykezelő, a kiválasztott játékost
+     * beállítja a playerSelected attribútumba és beállítja a játékos elementjéhez tartozó szomszédokat
+     * a neighbours listába
+     */
     private MouseListener playerSelected = new MouseAdapter() {
         public void mousePressed(MouseEvent me) {
             neighbours.clear();
@@ -80,6 +97,10 @@ public class GamePanel extends JPanel {
         }
     };
 
+    /**
+     * Egy element kiválasztását figyelő eseménykezelő
+     * Beállítja az elementSelected változót a kiválasztott értékre
+     */
     private MouseListener elementSelected = new MouseAdapter() {
         public void mousePressed(MouseEvent me) {
             selectedElement = elementList.getSelectedValue();
@@ -87,6 +108,9 @@ public class GamePanel extends JPanel {
         }
     };
 
+    /**
+     * Létrehozza az akciók végrehajtásához szükséges gombokat
+     */
     private void initButtons(){
         bMove = new JButton("Move");
         bMove.setBounds(25, 520, 90, 30);
@@ -134,6 +158,9 @@ public class GamePanel extends JPanel {
         add(bSetOut);
     }
 
+    /**
+     * Eseménykezelő, a ragadóssá tevés eseményt figyeli
+     */
     private ActionListener makeSticky = new ActionListener() {
         public void actionPerformed(ActionEvent event) {
             game.makeAction(selectedPlayer.toString(), "stick");
@@ -144,6 +171,9 @@ public class GamePanel extends JPanel {
         }
     };
 
+    /**
+     * Eseménykezelő, a csúszóssá tevés eseményt figyeli
+     */
     private ActionListener makeSlippery = new ActionListener() {
         public void actionPerformed(ActionEvent event) {
             game.makeAction(selectedPlayer.toString(), "slip");
@@ -154,6 +184,9 @@ public class GamePanel extends JPanel {
         }
     };
 
+    /**
+     * Eseménykezelő, a kilyukasztás eseményt figyeli
+     */
     private ActionListener damage = new ActionListener() {
         public void actionPerformed(ActionEvent event) {
             game.damage(selectedPlayer.toString());
@@ -164,6 +197,9 @@ public class GamePanel extends JPanel {
         }
     };
 
+    /**
+     * Eseménykezelő, a javítás eseményt figyeli
+     */
     private ActionListener repair = new ActionListener() {
         public void actionPerformed(ActionEvent event) {
             game.repair(selectedPlayer.toString());
@@ -174,6 +210,9 @@ public class GamePanel extends JPanel {
         }
     };
 
+    /**
+     * Eseménykezelő, a mozgás eseményt figyeli
+     */
     private ActionListener move = new ActionListener() {
         public void actionPerformed(ActionEvent event) {
             try {
@@ -189,6 +228,9 @@ public class GamePanel extends JPanel {
         }
     };
 
+    /**
+     * Eseménykezelő, a pumpa felvételét/letevését eseményt figyeli
+     */
     private ActionListener pipe = new ActionListener() {
         public void actionPerformed(ActionEvent event) {
             game.pipeUpOrDown(selectedPlayer.toString(), selectedElement.toString());
@@ -199,6 +241,9 @@ public class GamePanel extends JPanel {
         }
     };
 
+    /**
+     * Eseménykezelő, a pumpa állításából a befelé vezető cső állítás eseményt figyeli
+     */
     private ActionListener setIn = new ActionListener() {
         public void actionPerformed(ActionEvent event) {
             inPipe = (PassiveElement) elementList.getSelectedValue();
@@ -208,6 +253,9 @@ public class GamePanel extends JPanel {
         }
     };
 
+    /**
+     * Eseménykezelő, a pumpa állításából a kifelé vezető cső állítás eseményt figyeli
+     */
     private ActionListener setOut = new ActionListener() {
         public void actionPerformed(ActionEvent event) {
             outPipe = (PassiveElement) elementList.getSelectedValue();
@@ -219,6 +267,9 @@ public class GamePanel extends JPanel {
         }
     };
 
+    /**
+     * Eseménykezelő, a pumpa lerakás/felvevés eseményt figyeli
+     */
     private ActionListener pump = new ActionListener() {
         public void actionPerformed(ActionEvent event) {
             game.pumpUpOrDown(selectedPlayer.toString());
@@ -230,7 +281,9 @@ public class GamePanel extends JPanel {
     };
 
 
-
+    /**
+     * Betölti a használt képeket
+     */
     private void initImages(){
         this.images = new BufferedImage[10];
         images[0] = getImage("Saboteur.png");
@@ -243,6 +296,10 @@ public class GamePanel extends JPanel {
         images[9] = getImage("Selected_Active.png");
     }
 
+    /**
+     * Újrarajzolja a játék felületét, az összes elemet
+     * @param g the <code>Graphics</code> context in which to paint
+     */
     public void update(Graphics g){
         drawBackGround(g);
         for (IViewable e: game.getGraphicList()) {
@@ -260,6 +317,10 @@ public class GamePanel extends JPanel {
         drawSelectedPlayer(g);
     }
 
+    /**
+     * Kirajzolja a kivélasztott játékost, valamint a hozzá tartozó tulajdonságokat
+     * @param g the <code>Graphics</code> context in which to paint
+     */
     private void drawSelectedPlayer(Graphics g) {
         g.setColor(new Color(255, 204, 153));
         g.fillRect(400, 510, 150, 180);
@@ -327,6 +388,10 @@ public class GamePanel extends JPanel {
         }
     }
 
+    /**
+     * Kirajzolja a játék hátterét
+     * @param g
+     */
     public void drawBackGround(Graphics g){
         g.setColor(new Color(233, 168, 102));
         g.fillRect(0,0, size.width, size.height - 200);
@@ -350,14 +415,34 @@ public class GamePanel extends JPanel {
         g.drawString("Saboteur points: " + game.getSaboteurPoints(), 18, 431 + 2 * offset);
     }
 
+    /**
+     * Kirajzolja a szerelőt
+     * @param x koordináta
+     * @param y koordináta
+     * @param g the <code>Graphics</code> context in which to paint
+     */
     public void drawMechanic(int x, int y, Graphics g){
         g.drawImage(images[1], x, y, null);
     }
 
+    /**
+     * Kirajzolja a szabotőrt
+     * @param x koordináta
+     * @param y koordináta
+     * @param g the <code>Graphics</code> context in which to paint
+     */
     public void drawSaboteur(int x, int y, Graphics g){
         g.drawImage(images[0], x, y, null);
     }
 
+    /**
+     * Kirajzolja a pumpát
+     * @param gp a grafikus pumpa
+     * @param x koordináta
+     * @param y koordináta
+     * @param g the <code>Graphics</code> context in which to paint
+     * @param broken működik-e a pumpa
+     */
     public void drawPump(GPump gp, int x, int y, Graphics g, boolean broken){
         g.drawImage(images[2], x, y, null);
         if(broken){
@@ -367,18 +452,42 @@ public class GamePanel extends JPanel {
             g.drawImage(images[9], x, y, null);
     }
 
+    /**
+     * Kirajzolja a ciszternát
+     * @param gc a grafikus ciszterna
+     * @param x koordináta
+     * @param y koordináta
+     * @param g the <code>Graphics</code> context in which to paint
+     */
     public void drawCistern(GCistern gc, int x, int y, Graphics g){
         g.drawImage(images[3], x, y, null);
         if(selectedElement != null && selectedElement.toString().equals(gc.toString()))
             g.drawImage(images[9], x, y, null);
     }
 
+    /**
+     * Kirajzolja a forrást
+     * @param gs a grafikus forrás
+     * @param x koordináta
+     * @param y koordináta
+     * @param g the <code>Graphics</code> context in which to paint
+     */
     public void drawSource(GSource gs, int x, int y, Graphics g){
         g.drawImage(images[4], x, y, null);
         if(selectedElement != null && selectedElement.toString().equals(gs.toString()))
             g.drawImage(images[9], x, y, null);
     }
 
+    /**
+     * Kirajzolja a csövet
+     * @param gp grafikus cső
+     * @param e1 egyik végén lévő objektum
+     * @param e2 másik végén lévő objektum
+     * @param g the <code>Graphics</code> context in which to paint
+     * @param broken lyukas-e a cső
+     * @param sticky ragadós-e a cső
+     * @param slippery csúszós-e a cső
+     */
     public void drawPipe(GPipe gp, IViewable e1, IViewable e2, Graphics g, boolean broken, boolean sticky, boolean slippery){
         if(selectedElement != null && selectedElement.toString().equals(gp.toString())){
             g.setColor(Color.red);
@@ -430,6 +539,12 @@ public class GamePanel extends JPanel {
             g.drawImage(images[7], gp.getX(), gp.getY(), null);
         }
     }
+
+    /**
+     * visszaadja a paraméterként átadott fájl nevű képet
+     * @param name a kép neve
+     * @return a kép
+     */
     private BufferedImage getImage(String name){
         BufferedImage img = null;
         try {
@@ -440,6 +555,9 @@ public class GamePanel extends JPanel {
         return img;
     }
 
+    /**
+     * beállítja a panel méretét
+     */
     private void setPanelSize() {
         size = new Dimension(840, 700);
         setMinimumSize(size);
@@ -447,25 +565,12 @@ public class GamePanel extends JPanel {
         setMaximumSize(size);
     }
 
+    /**
+     * meghívja az ősosztály paintComponent függvényét
+     * @param g the <code>Graphics</code> object to protect
+     */
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         update(g);
-    }
-
-    public static BufferedImage rotate(BufferedImage img, double degree)
-    {
-        int width = img.getWidth();
-        int height = img.getHeight();
-
-        BufferedImage newImage = new BufferedImage(
-                img.getWidth(), img.getHeight(), img.getType());
-
-        Graphics2D g2 = newImage.createGraphics();
-
-        g2.rotate(Math.toRadians(degree), width / 2,
-                height / 2);
-        g2.drawImage(img, null, 0, 0);
-
-        return newImage;
     }
 }

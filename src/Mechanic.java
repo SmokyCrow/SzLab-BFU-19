@@ -106,8 +106,4 @@ public class Mechanic extends Player{
     public Pump getNewPump(){
         return newPump;
     }
-
-    public void setNewPump(Pump p){
-        newPump = p;
-    }
 }

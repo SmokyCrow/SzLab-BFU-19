@@ -7,6 +7,11 @@ public class Pump extends ActiveElement{
     private PassiveElement inPipe;
     private PassiveElement outPipe;
 
+    /**
+     * konstruktor
+     * @param _id a pumpa azonosítója
+     * @param _game játék referencia
+     */
     public Pump(int _id, Game _game){
         super(_game);
         id = _id;
@@ -128,5 +133,4 @@ public class Pump extends ActiveElement{
     public PassiveElement getOutPipe(){
         return outPipe;
     }
-
 }

@@ -6,7 +6,6 @@ import java.util.Random;
  */
 public class PassiveElement extends Element{
     private int id;
-    private int capacity;
     private int load;
     protected ActiveElement e1;
     protected ActiveElement e2;
@@ -158,8 +157,8 @@ public class PassiveElement extends Element{
             protectTime = 10;
         }
     }
-    /**
 
+    /**
      Az elemhez csatlakozó játékost elfogadja.
      Ha az elemen csúszás van, akkor áthelyezi a játékost a véletlenszerűen választott elem másik végére.
      Ha az elemen ragacs van, akkor a játékos ragadós lesz.
@@ -176,16 +175,16 @@ public class PassiveElement extends Element{
         p.setElement(this);
         players.add(p);
     }
-    /**
 
+    /**
      * Visszaadja az elem egyedi azonosítóját.
      * @return az elem egyedi azonosítója
      */
     public int getId(){
         return id;
     }
-    /**
 
+    /**
      * Beállítja az elemre vonatkozó ragadás időtartamát.
      * @param n a beállítandó ragadás időtartama
      */
@@ -194,14 +193,15 @@ public class PassiveElement extends Element{
         if(stickTime <= 0 && !players.isEmpty())
             players.get(0).setStuck(false);
     }
-    /**
 
+    /**
      * Beállítja az elemre vonatkozó csúszás időtartamát.
      * @param n a beállítandó csúszás időtartama
      */
     public void setSlipTime(int n){
         slipTime = n;
     }
+
     /**
 
      * Beállítja az elem védettségi idejét.
@@ -210,9 +210,10 @@ public class PassiveElement extends Element{
     public void setProtectTime(int n){
         protectTime = n;
     }
+
     /**
 
-     * Áthelyezi a játékost az elem másik végére.
+     * Áthelyezi a játékost az elem egy random végére.
      * @param p a csúszni kívánó játékos
      */
     public void slip(Player p){
@@ -220,6 +221,7 @@ public class PassiveElement extends Element{
         e.acceptPlayer(p);
         p.setElement(e);
     }
+
     /**
      * A játékost ragadóssá teszi az elemen.
      * @param p a ragadóssá tenni kívánt játékos
@@ -240,6 +242,7 @@ public class PassiveElement extends Element{
         else
             return e2;
     }
+
     /**
 
      * Visszaadja az elem egyik végpontját.
