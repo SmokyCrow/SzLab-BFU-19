@@ -232,7 +232,7 @@ public class PassiveElement extends Element{
      */
     public Element randomEnd(){
         Random r = new Random();
-        int end = r.nextInt(0, 1);
+        int end = r.nextInt(0, 3);
         if(end == 0)
             return e1;
         else

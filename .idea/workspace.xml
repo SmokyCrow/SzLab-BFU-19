@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="caa5c14f-448e-4f6e-bcf5-a7d508c49328" name="Changes" comment="Almost done">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GamePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GamePanel.java" afterDir="false" />
+    <list default="true" id="caa5c14f-448e-4f6e-bcf5-a7d508c49328" name="Changes" comment="Almost done2">
+      <change beforePath="$PROJECT_DIR$/src/PassiveElement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PassiveElement.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -259,7 +258,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685464576306</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="Almost done2">
+      <created>1685465670204</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1685465670204</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -296,7 +302,8 @@
     <MESSAGE value="png xd" />
     <MESSAGE value="Selection xd" />
     <MESSAGE value="Almost done" />
-    <option name="LAST_COMMIT_MESSAGE" value="Almost done" />
+    <MESSAGE value="Almost done2" />
+    <option name="LAST_COMMIT_MESSAGE" value="Almost done2" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
