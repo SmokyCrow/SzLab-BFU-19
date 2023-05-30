@@ -191,6 +191,8 @@ public class PassiveElement extends Element{
      */
     public void setStickTime(int n){
         stickTime = n;
+        if(stickTime <= 0 && !players.isEmpty())
+            players.get(0).setStuck(false);
     }
     /**
 

@@ -45,9 +45,7 @@ public class ActiveElement extends Element{
      * Az aktív elemek nem kapcsolódnak le csövekkel.
      * @param p a cső, amelyet le szeretnénk kapcsolni
      */
-    public void disconnectPipe(PassiveElement p){
-
-    }
+    public void disconnectPipe(PassiveElement p){}
 
     /**
      * Ellenőrzi, hogy az adott elem szomszédja-e a jelenlegi elemnek.
@@ -85,8 +83,6 @@ public class ActiveElement extends Element{
     public ArrayList<PassiveElement> getPipes(){
         return pipes;
     }
-
-
 
     /**
      * Az objektumok típusának kiírásához használt felüldefiniált föggvény

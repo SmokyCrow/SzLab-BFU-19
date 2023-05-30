@@ -335,12 +335,12 @@ public class GamePanel extends JPanel {
 
         int offset = 35;
         g.setColor(new Color(204, 255, 229));
-        g.fillRect(15, 410, 100, 30);
+        g.fillRect(15, 410, 110, 30);
         g.fillRect(15, 410 + offset, 160, 30);
         g.fillRect(15, 410 + 2 * offset, 160, 30);
 
         g.setColor(Color.BLACK);
-        g.drawRect(15, 410, 100, 30);
+        g.drawRect(15, 410, 110, 30);
         g.drawRect(15, 410 + offset, 160, 30);
         g.drawRect(15, 410 + 2 * offset, 160, 30);
 
@@ -380,14 +380,14 @@ public class GamePanel extends JPanel {
     }
 
     public void drawPipe(GPipe gp, IViewable e1, IViewable e2, Graphics g, boolean broken, boolean sticky, boolean slippery){
-        if(sticky) {
-            g.setColor(new Color(0, 133, 0));
+        if(selectedElement != null && selectedElement.toString().equals(gp.toString())){
+            g.setColor(Color.red);
         }
         else if(slippery){
             g.setColor(new Color(0, 255, 255));
         }
-        else if(selectedElement != null && selectedElement.toString().equals(gp.toString())){
-            g.setColor(Color.red);
+        else if(sticky) {
+            g.setColor(new Color(0, 133, 0));
         }
         else
             g.setColor(new Color(0, 51, 102));

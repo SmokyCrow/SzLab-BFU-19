@@ -18,9 +18,10 @@ public class Source extends ActiveElement{
      * bocsát ki 1 egység vizet, ha az üres.
      */
     public void moveWater(){
-        PassiveElement outP = pipes.get(0);
-        if(outP.getLoad() == 0){
-            outP.addWater(1);
+        for(PassiveElement outP : pipes) {
+            if (outP.getLoad() == 0) {
+                outP.addWater(1);
+            }
         }
     }
     /**
