@@ -545,17 +545,17 @@ public class GamePanel extends JPanel {
     }
 
     public void drawGameOver(Graphics g){
-        bLeak.hide();
-        bMove.hide();
-        bRepair.hide();
-        bPipeTamper.hide();
-        bSetIn.hide();
-        bPumpTamper.hide();
-        bSetOut.hide();
-        bSlip.hide();
-        bStick.hide();
-        elementList.hide();
-        playerList.hide();
+        bLeak.setVisible(false);
+        bMove.setVisible(false);
+        bRepair.setVisible(false);
+        bPipeTamper.setVisible(false);
+        bSetIn.setVisible(false);
+        bPumpTamper.setVisible(false);
+        bSetOut.setVisible(false);
+        bSlip.setVisible(false);
+        bStick.setVisible(false);
+        elementList.setVisible(false);
+        playerList.setVisible(false);
         g.setColor(Color.lightGray);
         g.fillRect(0,0, size.width, size.height);
         g.setColor(Color.red);
