@@ -306,15 +306,18 @@ public class GamePanel extends JPanel {
             return;
         }
         drawBackGround(g);
-        for (IViewable e: game.getGraphicList()) {
+        for (int i = 0; i < game.getGraphicList().size(); i++) {
+            IViewable e = game.getGraphicList().get(i);
             if(e.toString().contains("pi"))
                 e.Draw(this, g);
         }
-        for (IViewable e: game.getGraphicList()) {
+        for (int i = 0; i < game.getGraphicList().size(); i++) {
+            IViewable e = game.getGraphicList().get(i);
             if(e.toString().contains("ci") || e.toString().contains("pu") || e.toString().contains("so"))
                 e.Draw(this, g);
         }
-        for (IViewable e: game.getGraphicList()) {
+        for (int i = 0; i < game.getGraphicList().size(); i++) {
+            IViewable e = game.getGraphicList().get(i);
             if(e.toString().contains("m_") || e.toString().contains("s_"))
                 e.Draw(this, g);
         }
